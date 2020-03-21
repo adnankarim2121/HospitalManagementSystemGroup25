@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {HomePage, Patient, Doctor, Nurse, Admin} from './Home';
+import {HomePage} from './HomePage';
+import {Patient} from './Patient';
+import {Doctor} from './Doctor';
+import {Nurse} from './Nurse';
+import {Admin} from './Admin';
+import {LoginPage} from './LoginPage';
 
 
 
@@ -14,6 +19,7 @@ ReactDOM.render(
             <Route path='/Doctors' component={Doctor}/>
             <Route path='/Nurses' component={Nurse}/>
             <Route path='/Admin' component={Admin}/>
+            <Route path='/LoginPage' component={LoginPage}/>
         </div>
     </BrowserRouter>
 

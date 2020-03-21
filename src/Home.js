@@ -25,6 +25,7 @@ class Header extends React.Component {
                 <li><Link to='/Doctors'>Doctors</Link></li>
                 <li><Link to='/Nurses'>Nurses</Link></li>
                 <li><Link to='/Admin'>Administrator</Link></li>
+                <li><Link to='/LoginPage'>Login</Link></li>
               </ul>
             </nav>
           </header>
@@ -94,89 +95,8 @@ class Footer extends React.Component{
 }
 }
 
-class Login extends React.Component{
-  render(){
-    return(
-      <div className="login">
-        <form className="modal-content" action="/action_page.php" method="post">
 
-            <div className="imgcontainer">
-              <img src={this.props.img} alt="Avatar" width='200' height='200'/>
-            </div>
-        
-            <div className="credentials">
-              <label for="uname"><b>Username</b></label>
-              <input type="text" placeholder="Enter Username" name="uname" required/>
-        
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required/>
-                
-              <button type="submit">Login</button>
-            </div>
-        </form>
-      </div>
-    );
-  }
-}
 
-class HomePage extends React.Component{
-  render() {
-    return (
-      <div>
-      <Header title='Alberta Hospital' subTitle='Scheduling tool'/>
-      <Body/>
-      <Footer/>
-      </div>
-    );
-  }
-}
 
-class Patient extends React.Component{
-  render(){
-    return (
-      <div>
-        <Header title='Patient' subTitle='Book an appointment or manage your upcoming schedule'/>
-        <Login img={PatientIMG}/>
-        <Footer/>
-      </div>
-    )
-  }
-}
+export {Header, Body, Footer};
 
-class Doctor extends React.Component{
-  render(){
-    return (
-      <div>
-        <Header title='Doctors' subTitle='View and manage your upcoming schedule'/>
-        <Login img={DoctorIMG}/>
-        <Footer/>
-      </div>
-    )
-  }
-}
-
-class Nurse extends React.Component{
-  render(){
-    return (
-      <div>
-        <Header title='Nurses' subTitle='View and manage your upcoming schedule'/>
-        <Login img={NurseIMG}/>
-        <Footer/>
-      </div>
-    )
-  }
-}
-
-class Admin extends React.Component{
-  render(){
-    return (
-      <div>
-        <Header title='Administrator' subTitle='View and manage all upcoming schedule'/>
-        <Login img={AdminIMG}/>
-        <Footer/>
-      </div>
-    )
-  }
-}
-
-export {HomePage, Patient, Doctor, Nurse, Admin};
