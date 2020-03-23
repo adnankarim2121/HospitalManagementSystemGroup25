@@ -49,12 +49,12 @@ app.get('/HospitalManagementSystem/add', (req, res) => {
 });
 
 app.get('/HospitalManagementSystem/select', (req, res) => {
-	const { email, password, userType } = req.query;
+	const { email, password} = req.query;
 	console.log(password);
 
 	//const query = `INSERT INTO users (email, password, userType) VALUES(?, ?, ?)`;
-	const query = `SELECT * FROM users WHERE email=? AND password=? AND userType=?`;
-	const data = [email, password, userType];
+	const query = `SELECT * FROM users WHERE email=? AND password=?`;
+	const data = [email, password];
 	connection.query(query, data, (err, results) => {
 		if(err)
 		{

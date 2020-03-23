@@ -33,7 +33,7 @@ class Login extends React.Component{
     const { userInfo, checkIfUserExists } = this.state; 
 
     //alert("In Here!");
-    fetch(`http://localhost:4000/HospitalManagementSystem/select?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}`)
+    fetch(`http://localhost:4000/HospitalManagementSystem/select?email=${userInfo.email}&password=${userInfo.password}`)
     .then((response) => {return response.json()})
     //.then(response => this.setState({userInformation: response.data}))
     .then((response) => {
@@ -41,8 +41,6 @@ class Login extends React.Component{
     this.setState({userInformation: response.data})
     var data = JSON.stringify(response.data);
     var dataParsed = JSON.parse(data);
-    alert(data);
-    alert(dataParsed[0].email);
 
     if(data.length === 2)
     {
