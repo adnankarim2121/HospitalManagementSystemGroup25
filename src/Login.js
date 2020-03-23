@@ -32,10 +32,8 @@ class Login extends React.Component{
   {
     const { userInfo, checkIfUserExists } = this.state; 
 
-    //alert("In Here!");
     fetch(`http://localhost:4000/HospitalManagementSystem/select?email=${userInfo.email}&password=${userInfo.password}`)
     .then((response) => {return response.json()})
-    //.then(response => this.setState({userInformation: response.data}))
     .then((response) => {
 
     this.setState({userInformation: response.data})

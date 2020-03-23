@@ -44,13 +44,11 @@ class Admin extends React.Component{
     const { userInfo } = this.state; 
     if(userInfo.userType === 'Nurse' || userInfo.userType === 'Doctor' || userInfo.userType === 'Patient')
     {
-      //alert("In Here!");
       fetch(`http://localhost:4000/HospitalManagementSystem/add?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}`)
     .then((response) => {return response.json()})
     .then((data) => {
-    alert(JSON.stringify(data));
+
     })
-      //.then(this.onSubmit)
       .catch(err => console.error(err));
 
 

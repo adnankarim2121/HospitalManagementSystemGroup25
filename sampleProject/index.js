@@ -52,7 +52,6 @@ app.get('/HospitalManagementSystem/select', (req, res) => {
 	const { email, password} = req.query;
 	console.log(password);
 
-	//const query = `INSERT INTO users (email, password, userType) VALUES(?, ?, ?)`;
 	const query = `SELECT * FROM users WHERE email=? AND password=?`;
 	const data = [email, password];
 	connection.query(query, data, (err, results) => {
