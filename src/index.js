@@ -1,27 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route} from 'react-router-dom';
+import App from './App.js'
 import {HomePage} from './HomePage';
 import {Patient} from './Patient';
 import {Doctor} from './Doctor';
 import {Nurse} from './Nurse';
-import {Admin} from './Admin';
+import {AdminPage} from './AdminPage';
 import {LoginPage} from './LoginPage';
-
+import {Login} from './Login';
+import {BrowserRouter as Router,Route,
+ Redirect,Switch} from 'react-router-dom';
 
 
 ReactDOM.render(
 
-    <BrowserRouter>
+    <Router>
         <div>
-            <Route exact path='/' component={HomePage}/>
-            <Route path ='/Patients' component={Patient}/>
+            <Route exact path='/' component={App}/>
+            <Route exact path ='/Patients' component={Patient}/>
             <Route path='/Doctors' component={Doctor}/>
             <Route path='/Nurses' component={Nurse}/>
-            <Route path='/Admin' component={Admin}/>
+            <Route path='/AdminPage' component={AdminPage}/>
             <Route path='/LoginPage' component={LoginPage}/>
+            <Route path='/Login' component={Login}/>
+
         </div>
-    </BrowserRouter>
+    </Router>
 
     , document.getElementById('root'));
 
