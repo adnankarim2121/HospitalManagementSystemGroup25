@@ -21,13 +21,6 @@ class Login extends React.Component{
     }
   }
 
-  componentDidMount() 
-  {
-    //this.checkIfUserExists();
-
-  }
-
-
   checkIfUserExists = _ =>
   {
     const { userInfo, checkIfUserExists } = this.state; 
@@ -74,7 +67,7 @@ class Login extends React.Component{
   alert("made it here");
     window.open("http://localhost:3000/Patients")
     }
-  //handleChange = e => this.setState( {username: e.target.usernameValue})
+
   render(){
 
     const { userInformation, userInfo } = this.state;
