@@ -6,76 +6,51 @@ import './layout.css';
 
 class Login extends React.Component{
 
-  state = 
-  {
-    userInformation: [],
-    checkIfUserExists:{},
-    userInfo: 
-    {
-      email: '',
-      password: '',
-      userType: 'Patient'
-    }
-  }
+  constructor(props) {
+    super(props);
+    this.state = {username: '', password: ''};
 
-  checkIfUserExists = _ =>
-  {
-    const { userInfo, checkIfUserExists } = this.state; 
+    this.handleUsernameField = this.handleUsernameField.bind(this);
+    this.handlePasswordField = this.handlePasswordField.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
-    fetch(`http://localhost:4000/HospitalManagementSystem/select?email=${userInfo.email}&password=${userInfo.password}`)
-    .then((response) => {return response.json()})
-    .then((response) => {
-
-    this.setState({userInformation: response.data})
-    var data = JSON.stringify(response.data);
-    var dataParsed = JSON.parse(data);
-
-    if(data.length === 2)
-    {
-      alert("Wrong password or email. Please try again!");
-    }
-
-    else if(dataParsed[0].userType === 'patient')
-    {
-      alert("YOU ARE A PATIENT");
-    }
-
-    else if(dataParsed[0].userType === 'Patient')
-    {
-      alert("YOU ARE A PATIENT");
-    }
-
-    else if(dataParsed[0].userType === 'Nurse')
-    {
-      alert("YOU ARE A NURSE");
-    }
-
-    else if(dataParsed[0].userType === 'Doctor')
-    {
-      alert("YOU ARE A DOCTOR");
-    }
-
-    })
-    .catch(err => console.error(err))
 
   }
 
-  onSubmit = () => {
-  alert("made it here");
-    window.open("http://localhost:3000/Patients")
-    }
+  handleUsernameField(event) {
+    console.log('Click happened');
+    this.setState({username: event.target.value});
+    console.log(this.state.username);
+  }
 
+    handlePasswordField(event) {
+    this.setState({password: event.target.value});
+    console.log(this.state.username);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    var self = this;
+    // On submit of the form, send a POST request with the data to the server.
+    fetch('/Home', { 
+        method: 'POST',
+        data: {
+          username: this.state.username,
+          password: this.state.password
+        }
+      })
+      .then(function(response) {
+        return response.json()
+      }).then(function(body) {
+        console.log(body);
+      });
+
+  }
+  //handleChange = e => this.setState( {username: e.target.usernameValue})
   render(){
-
-    const { userInformation, userInfo } = this.state;
-
     return(
-
       <div className="login">
-
-      <div className="App">
-        </div>
-        <form className="modal-content">
+        <form className="modal-content" action="/action_page.php" method="post">
 
             <div className="imgcontainer">
               <img src={this.props.img} alt="Avatar" width='200' height='200'/>
@@ -86,19 +61,21 @@ class Login extends React.Component{
               <input 
               type="text" 
               placeholder="Enter Username" 
-              value={userInfo.email}
-              onChange={e => this.setState({ userInfo: {...userInfo, email: e.target.value}})}
+              value={this.state.username}
+              onChange={this.handleUsernameField}
+              ref="uname"
               name="uname" required/>
         
               <label for="psw"><b>Password</b></label>
               <input 
               type="password" 
               placeholder="Enter Password" 
-              value={userInfo.password}
-              onChange={e => this.setState({ userInfo: {...userInfo, password: e.target.value}})}
+              value={this.state.password}
+              onChange={this.handlePasswordField}
+              ref="password"
               name="psw" required/>
                 
-              <button onClick={this.checkIfUserExists} type="submit">Login</button>
+              <button onClick={this.handleSubmit} type="submit">Login</button>
             </div>
         </form>
       </div>
