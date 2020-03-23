@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import './layout.css';
 import {Header, Footer}from './Home.js';
 import {Login} from './Login.js'
 
-import AdminIMG from './images/Administrator.png'
+import LogoIMG from './images/healthservices.png'
 
 
 class LoginPage extends React.Component{
@@ -12,7 +12,10 @@ class LoginPage extends React.Component{
     return (
       <div>
         <Header title='Login' />
-        <Login img={AdminIMG}/>
+        <Login img={LogoIMG}/>
+        <Helmet>
+          <title>{'Login'}</title>
+      </Helmet>
         <Footer/>
       </div>
     )

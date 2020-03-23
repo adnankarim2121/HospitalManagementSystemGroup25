@@ -2,20 +2,19 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import './layout.css';
 import {Header, Footer}from './Home.js';
-import NurseIMG from './images/Nurse.png'
 
-class Nurse extends React.Component{
+class PatientGuide extends React.Component{
   render(){
     return (
       <div>
-        <Header title='Nurses' subTitle='View and manage your upcoming schedule'/>
+        <Header title='Patient Guide' subTitle='Learn more about our services'/>
         <Footer/>
         <Helmet>
-          <title>{'Nurse'}</title>
+          <title>{'Patient Guide'}</title>
       </Helmet>
       </div>
     )
   }
 }
 
-export {Nurse};
+export {PatientGuide};
