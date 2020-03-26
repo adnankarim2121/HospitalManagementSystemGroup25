@@ -21,6 +21,25 @@ class Login extends React.Component{
     }
   }
 
+  componentDidMount() 
+  {
+    //this.checkIfUserExists();
+  }
+
+
+  changePageForPatient = (props) => {
+  window.location.href = 'http://localhost:3000/AdminPage';
+  //window.location.replace("http://localhost:3000/AdminPage");
+}
+
+  changePageForDoctor = (props) => {
+  window.location.href = 'http://localhost:3000/AdminPage';
+}
+
+  changePageForNurse = (props) => {
+  window.location.href = 'http://localhost:3000/AdminPage';
+}
+
   checkIfUserExists = _ =>
   {
     const { userInfo, checkIfUserExists } = this.state; 
@@ -40,33 +59,32 @@ class Login extends React.Component{
 
     else if(dataParsed[0].userType === 'patient')
     {
-      alert("YOU ARE A PATIENT");
+      alert("YOU ARE A PATIENT/ Redirecting to patient homepage with correct credentials");
+      this.changePageForPatient();
     }
 
     else if(dataParsed[0].userType === 'Patient')
     {
-      alert("YOU ARE A PATIENT");
+      alert("YOU ARE A PATIENT/ Redirecting to patient homepage with correct credentials");
+      this.changePageForPatient();
     }
 
     else if(dataParsed[0].userType === 'Nurse')
     {
-      alert("YOU ARE A NURSE");
+      alert("YOU ARE A NURSE/ Redirecting to nurse homepage with correct credentials");
+      this.changePageForNurse();
     }
 
     else if(dataParsed[0].userType === 'Doctor')
     {
-      alert("YOU ARE A DOCTOR");
+      alert("YOU ARE A DOCTOR/ Redirecting to dotor homepage with correct credentials");
+      this.changePageForDoctor();
     }
 
     })
     .catch(err => console.error(err))
 
   }
-
-  onSubmit = () => {
-  alert("made it here");
-    window.open("http://localhost:3000/Patients")
-    }
 
   render(){
 

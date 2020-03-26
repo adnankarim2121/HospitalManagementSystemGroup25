@@ -7,6 +7,7 @@ import {Login} from './Login.js'
 import AdminIMG from './images/Administrator.png'
 
 
+
 class LoginPage extends React.Component{
   render(){
     return (

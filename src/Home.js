@@ -20,12 +20,12 @@ class Header extends React.Component {
             </div>
             <nav>
               <ul>
-                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/'>Login</Link></li>
                 <li><Link to='/Patients'>Patients</Link></li>
                 <li><Link to='/Doctors'>Doctors</Link></li>
                 <li><Link to='/Nurses'>Nurses</Link></li>
                 <li><Link to='/Admin'>Administrator</Link></li>
-                <li><Link to='/LoginPage'>Login</Link></li>
+                <li><Link to='/LoginPage'>Logout</Link></li>
               </ul>
             </nav>
           </header>

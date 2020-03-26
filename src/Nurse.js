@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink, withRouter} from 'react-router-dom';
 import './layout.css';
 import {Header, Footer}from './Home.js';
 import {Login} from './Login.js'
@@ -17,4 +17,4 @@ class Nurse extends React.Component{
   }
 }
 
-export {Nurse};
+export default withRouter(Nurse);
