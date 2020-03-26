@@ -1,11 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './layout.css';
 
-import PatientIMG from './images/Patient.png'
-import DoctorIMG from './images/Doctor.png'
-import NurseIMG from './images/Nurse.png'
-import AdminIMG from './images/Administrator.png'
+
+
 
 class Login extends React.Component{
 

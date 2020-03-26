@@ -4,22 +4,22 @@ import './layout.css';
 
 class App extends React.Component
 {
-  state = 
+  state =
   {
     userInformation: [],
-    userInfo: 
+    userInfo:
     {
       email: '',
       password: ''
     }
   }
 
-  componentDidMount() 
+  componentDidMount()
   {
     this.getProducts();
   }
 
-  getProducts = _ => 
+  getProducts = _ =>
   {
     fetch('http://localhost:4000/HospitalManagementSystem')
     .then(response => response.json())

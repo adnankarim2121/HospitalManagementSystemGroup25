@@ -20,12 +20,13 @@ class Header extends React.Component {
             </div>
             <nav>
               <ul>
-                <li><Link to='/'>Login</Link></li>
-                <li><Link to='/Patients'>Patients</Link></li>
-                <li><Link to='/Doctors'>Doctors</Link></li>
-                <li><Link to='/Nurses'>Nurses</Link></li>
-                <li><Link to='/Admin'>Administrator</Link></li>
-                <li><Link to='/LoginPage'>Logout</Link></li>
+
+
+              <li><Link to='/'>Home</Link></li>
+                <li><Link to='/PatientGuide'>Patient Guide</Link></li>
+                <li><Link to='/About'>About</Link></li>
+                <li><Link to='/LoginPage'>Login</Link></li>
+
               </ul>
             </nav>
           </header>
@@ -87,7 +88,7 @@ class Footer extends React.Component{
       <div className="wrapper row3">
         <footer id="footer" className="clear">
           <p className="fl_left">Group 25 - Tut 10 - Lec 02 </p>
-          <p className="fl_right">Something else to write</p>
+          <p className="fl_right">© 2020 Group 25</p>
         </footer>
       </div>
       </body>

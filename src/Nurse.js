@@ -1,8 +1,11 @@
 import React from 'react';
+
 import {Link, NavLink, withRouter} from 'react-router-dom';
+
+import { Helmet } from 'react-helmet';
+
 import './layout.css';
 import {Header, Footer}from './Home.js';
-import {Login} from './Login.js'
 import NurseIMG from './images/Nurse.png'
 
 class Nurse extends React.Component{
@@ -10,8 +13,10 @@ class Nurse extends React.Component{
     return (
       <div>
         <Header title='Nurses' subTitle='View and manage your upcoming schedule'/>
-        <Login img={NurseIMG}/>
         <Footer/>
+        <Helmet>
+          <title>{'Nurse'}</title>
+      </Helmet>
       </div>
     )
   }
