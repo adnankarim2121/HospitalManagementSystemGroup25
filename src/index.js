@@ -24,6 +24,7 @@ ReactDOM.render(
             <Route path='/AdminPage' component={AdminPage}/>
             <Route path='/LoginPage' component={LoginPage}/>
             <Route path='/Login' component={Login}/>
+            <Route path='/PatientGuide' component={PatientGuide}/>
 
 
     </BrowserRouter>
