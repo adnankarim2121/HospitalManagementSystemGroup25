@@ -26,7 +26,6 @@ ReactDOM.render(
             <Route path='/Login' component={Login}/>
             <Route path='/PatientGuide' component={PatientGuide}/>
 
-
     </BrowserRouter>
 
     , document.getElementById('root'));
