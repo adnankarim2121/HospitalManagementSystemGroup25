@@ -1,7 +1,7 @@
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
-import MenuItemComponent from './MenuItemComponent';
+import MenuItemComponent from '../MenuItemComponent';
 
 import IconBurger from '../icons/icon-burger';
 

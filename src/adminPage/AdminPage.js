@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     }
 });
 
-class App extends React.Component {
+class Admin extends React.Component {
 
     state = { selectedItem: 'Overview' };
 
@@ -49,4 +49,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default Admin;
