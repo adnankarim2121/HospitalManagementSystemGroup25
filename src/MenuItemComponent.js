@@ -32,17 +32,16 @@ const styles = StyleSheet.create({
         lineHeight: '20px',
         letterSpacing: '0.2px',
         color: '#A4A6B3',
-        marginLeft: 24
-    }
+        marginLeft: 16
+    },
 });
 
 function MenuItemComponent(props) {
-    const { active, icon, title, ...otherProps } = props;
-    const Icon = icon;
+    const { active, imgName, image, title, ...otherProps } = props;
     return (
         <Row className={css(styles.container, active && styles.activeContainer)} vertical="center" {...otherProps}>
             {active && <div className={css(styles.activeBar)}></div>}
-            <Icon fill={active && "#DDE2FF"} opacity={!active && "0.4"} />
+            <img height = "24" width = "24" src={imgName} />
             <span className={css(styles.title, active && styles.activeTitle)}>{title}</span>
         </Row>
     );
@@ -56,4 +55,4 @@ MenuItemComponent.propTypes = {
 
 export default MenuItemComponent;
 
-// https://dev.to/llorentegerman/building-a-ui-from-scratch-based-on-a-design-with-reactjs-3l1e
+//fill={active && "#DDE2FF"} opacity={!active && "0.4"}
