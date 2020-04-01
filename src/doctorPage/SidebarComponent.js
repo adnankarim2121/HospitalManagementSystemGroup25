@@ -108,11 +108,6 @@ class SidebarComponent extends React.Component {
                             />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="Overview" imgName = {IconOverview}
-                                onClick={() => this.onItemClicked('Overview')}
-                                active={this.props.selectedItem === 'Overview'}
-                            />
-                            <MenuItemComponent
                                 title="My Schedule" imgName = {IconSchedule}
                                 onClick={() => this.onItemClicked('My Schedule')}
                                 active={this.props.selectedItem === 'My Schedule'} />
@@ -134,6 +129,7 @@ class SidebarComponent extends React.Component {
                                 title="My Nurses" imgName = {IconMyNurse}
                                 onClick={() => this.onItemClicked('My Nurses')}
                                 active={this.props.selectedItem === 'My Nurses'} />
+                            <div className={css(styles.separator)}></div>
                             <MenuItemComponent
                                 title="Settings" imgName = {IconSettings}
                                 onClick={() => this.onItemClicked('Settings')}

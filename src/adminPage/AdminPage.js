@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 
 class Admin extends React.Component {
 
-    state = { selectedItem: 'Overview' };
+    state = { selectedItem: 'Statistics' };
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);

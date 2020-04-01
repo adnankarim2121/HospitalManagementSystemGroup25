@@ -106,11 +106,6 @@ class SidebarComponent extends React.Component {
                             />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="Overview" imgName = {IconOverview}
-                                onClick={() => this.onItemClicked('Overview')}
-                                active={this.props.selectedItem === 'Overview'}
-                            />
-                            <MenuItemComponent
                                 title="My Schedule" imgName = {IconSchedule}
                                 onClick={() => this.onItemClicked('My Schedule')}
                                 active={this.props.selectedItem === 'My Schedule'}

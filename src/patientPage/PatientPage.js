@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 
 class PatientPage extends React.Component {
 
-    state = { selectedItem: 'Overview' };
+    state = { selectedItem: 'My Schedule' };
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
