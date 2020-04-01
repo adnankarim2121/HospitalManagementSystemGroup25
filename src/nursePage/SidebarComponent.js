@@ -4,7 +4,6 @@ import { StyleSheet, css } from 'aphrodite';
 import MenuItemComponent from '../MenuItemComponent';
 
 import IconBurger from '../icons/icon-burger';
-
 import IconHome from '../icons/health.png';
 import IconOverview from '../icons/overview.png';
 import IconSchedule from '../icons/schedule.png';
@@ -13,8 +12,7 @@ import IconTasks from '../icons/list.png'
 import IconNotes from '../icons/notes.png';
 import IconSettings from '../icons/settings.png'
 
-
-
+import history from '../History';
 
 
 const styles = StyleSheet.create({
@@ -103,7 +101,7 @@ class SidebarComponent extends React.Component {
                     <MenuItemComponent
                                 title="Home" 
                                 imgName = {IconHome}
-                                onClick={() => this.onItemClicked('Home')}
+                                onClick={() => history.push('/HomePage')}
                                 active={this.props.selectedItem === 'Home'}
                             />
                         <Column className={css(styles.menuItemList)}>

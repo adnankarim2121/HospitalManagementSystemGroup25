@@ -4,18 +4,10 @@ import { StyleSheet, css } from 'aphrodite';
 import MenuItemComponent from '../MenuItemComponent';
 
 import IconBurger from '../icons/icon-burger';
-
 import IconHome from '../icons/health.png';
 import IconOverview from '../icons/overview.png';
-import IconStatistics from '../icons/statistics.png'
-import IconAddDepartment from '../icons/department.png'
-import IconAddDoctor from '../icons/doctor.png'
-import IconAddStaff from '../icons/staff.png'
-import IconSettings from '../icons/settings.png'
 
-
-
-
+import history from '../History';
 
 const styles = StyleSheet.create({
     burgerIcon: {
@@ -103,7 +95,7 @@ class SidebarComponent extends React.Component {
                     <MenuItemComponent
                                 title="Home" 
                                 imgName = {IconHome}
-                                onClick={() => this.onItemClicked('Home')}
+                                onClick={() => history.push('/HomePage')}
                                 active={this.props.selectedItem === 'Home'}
                             />
                         <Column className={css(styles.menuItemList)}>
@@ -112,28 +104,6 @@ class SidebarComponent extends React.Component {
                                 onClick={() => this.onItemClicked('Overview')}
                                 active={this.props.selectedItem === 'Overview'}
                             />
-                            <MenuItemComponent
-                                title="Statistics" imgName = {IconStatistics}
-                                onClick={() => this.onItemClicked('Statistics')}
-                                active={this.props.selectedItem === 'Statistics'}
-                            />
-                            <MenuItemComponent
-                                title="Add/Edit Departments" imgName = {IconAddDepartment}
-                                onClick={() => this.onItemClicked('Add/Edit Departments')}
-                                active={this.props.selectedItem === 'Add/Edit Departments'} />
-                            <MenuItemComponent
-                                title="Add/Edit Doctors" imgName = {IconAddDoctor}
-                                onClick={() => this.onItemClicked('Add/Edit Doctors')}
-                                active={this.props.selectedItem === 'Add/Edit Doctors'} />
-                            <MenuItemComponent
-                                title="Add/Edit Hospital Staff" imgName = {IconAddStaff}
-                                onClick={() => this.onItemClicked('Add/Edit Hospital Staff')}
-                                active={this.props.selectedItem === 'Add/Edit Hospital Staff'} />
-                            <div className={css(styles.separator)}></div>
-                            <MenuItemComponent
-                                title="Settings" imgName = {IconSettings}
-                                onClick={() => this.onItemClicked('Settings')}
-                                active={this.props.selectedItem === 'Settings'} />
                         </Column>
                     </Column>
                     {isMobile && expanded && <div className={css(styles.outsideLayer)} onClick={this.toggleMenu}></div>}

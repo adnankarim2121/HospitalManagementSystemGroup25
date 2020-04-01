@@ -13,9 +13,7 @@ import IconAddDoctor from '../icons/doctor.png'
 import IconAddStaff from '../icons/staff.png'
 import IconSettings from '../icons/settings.png'
 
-
-
-
+import history from '../History';
 
 const styles = StyleSheet.create({
     burgerIcon: {
@@ -103,7 +101,7 @@ class SidebarComponent extends React.Component {
                     <MenuItemComponent
                                 title="Home" 
                                 imgName = {IconHome}
-                                onClick={() => this.onItemClicked('Home')}
+                                onClick={() => history.push('/HomePage')}
                                 active={this.props.selectedItem === 'Home'}
                             />
                         <Column className={css(styles.menuItemList)}>
