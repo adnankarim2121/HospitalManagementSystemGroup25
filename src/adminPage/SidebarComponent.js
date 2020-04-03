@@ -2,11 +2,10 @@ import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 import MenuItemComponent from '../MenuItemComponent';
+import LogoComponent from '../LogoComponent';
 
 import IconBurger from '../icons/icon-burger';
-
 import IconHome from '../icons/health.png';
-import IconOverview from '../icons/overview.png';
 import IconStatistics from '../icons/statistics.png'
 import IconAddDepartment from '../icons/department.png'
 import IconAddDoctor from '../icons/doctor.png'
@@ -98,33 +97,33 @@ class SidebarComponent extends React.Component {
                 <Row className={css(styles.mainContainer)} breakpoints={{ 768: css(styles.mainContainerMobile) }}>
                     {(isMobile && !expanded) && this.renderBurger()}
                     <Column className={css(styles.container)} breakpoints={{ 768: css(styles.containerMobile, expanded ? styles.show : styles.hide) }}>
-                    <MenuItemComponent
-                                title="Home" 
-                                imgName = {IconHome}
-                                onClick={() => history.push('/HomePage')}
-                                active={this.props.selectedItem === 'Home'}
-                            />
+                        <LogoComponent
+                            title="Home"
+                            imgName={IconHome}
+                            onClick={() => history.push('/')}
+                            active={this.selectedItem === 'Home'}
+                        />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="Statistics" imgName = {IconStatistics}
+                                title="Statistics" imgName={IconStatistics}
                                 onClick={() => this.onItemClicked('Statistics')}
                                 active={this.props.selectedItem === 'Statistics'}
                             />
                             <MenuItemComponent
-                                title="Add/Edit Departments" imgName = {IconAddDepartment}
+                                title="Add/Edit Departments" imgName={IconAddDepartment}
                                 onClick={() => this.onItemClicked('Add/Edit Departments')}
                                 active={this.props.selectedItem === 'Add/Edit Departments'} />
                             <MenuItemComponent
-                                title="Add/Edit Doctors" imgName = {IconAddDoctor}
+                                title="Add/Edit Doctors" imgName={IconAddDoctor}
                                 onClick={() => this.onItemClicked('Add/Edit Doctors')}
                                 active={this.props.selectedItem === 'Add/Edit Doctors'} />
                             <MenuItemComponent
-                                title="Add/Edit Hospital Staff" imgName = {IconAddStaff}
+                                title="Add/Edit Hospital Staff" imgName={IconAddStaff}
                                 onClick={() => this.onItemClicked('Add/Edit Hospital Staff')}
                                 active={this.props.selectedItem === 'Add/Edit Hospital Staff'} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
-                                title="Settings" imgName = {IconSettings}
+                                title="Settings" imgName={IconSettings}
                                 onClick={() => this.onItemClicked('Settings')}
                                 active={this.props.selectedItem === 'Settings'} />
                         </Column>
@@ -136,4 +135,4 @@ class SidebarComponent extends React.Component {
     };
 }
 
-export {SidebarComponent};
+export { SidebarComponent };

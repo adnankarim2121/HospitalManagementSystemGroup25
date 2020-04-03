@@ -2,6 +2,7 @@ import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 import MenuItemComponent from '../MenuItemComponent';
+import LogoComponent from '../LogoComponent';
 
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
@@ -93,15 +94,15 @@ class SidebarComponent extends React.Component {
                 <Row className={css(styles.mainContainer)} breakpoints={{ 768: css(styles.mainContainerMobile) }}>
                     {(isMobile && !expanded) && this.renderBurger()}
                     <Column className={css(styles.container)} breakpoints={{ 768: css(styles.containerMobile, expanded ? styles.show : styles.hide) }}>
-                    <MenuItemComponent
-                                title="Home" 
-                                imgName = {IconHome}
-                                onClick={() => history.push('/HomePage')}
-                                active={this.props.selectedItem === 'Home'}
-                            />
+                        <LogoComponent
+                            title="Home"
+                            imgName={IconHome}
+                            onClick={() => history.push('/')}
+                            active={this.selectedItem === 'Home'}
+                        />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="Login" imgName = {IconOverview}
+                                title="Login" imgName={IconOverview}
                                 onClick={() => this.onItemClicked('Login')}
                                 active={this.props.selectedItem === 'Login'}
                             />
@@ -114,4 +115,4 @@ class SidebarComponent extends React.Component {
     };
 }
 
-export {SidebarComponent};
+export { SidebarComponent };

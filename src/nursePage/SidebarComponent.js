@@ -2,10 +2,10 @@ import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 import MenuItemComponent from '../MenuItemComponent';
+import LogoComponent from '../LogoComponent';
 
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
-import IconOverview from '../icons/overview.png';
 import IconSchedule from '../icons/schedule.png';
 import IconMyPatient from '../icons/patient.png';
 import IconTasks from '../icons/list.png'
@@ -98,39 +98,39 @@ class SidebarComponent extends React.Component {
                 <Row className={css(styles.mainContainer)} breakpoints={{ 768: css(styles.mainContainerMobile) }}>
                     {(isMobile && !expanded) && this.renderBurger()}
                     <Column className={css(styles.container)} breakpoints={{ 768: css(styles.containerMobile, expanded ? styles.show : styles.hide) }}>
-                    <MenuItemComponent
-                                title="Home" 
-                                imgName = {IconHome}
-                                onClick={() => history.push('/HomePage')}
-                                active={this.props.selectedItem === 'Home'}
-                            />
+                        <LogoComponent
+                            title="Home"
+                            imgName={IconHome}
+                            onClick={() => history.push('/')}
+                            active={this.selectedItem === 'Home'}
+                        />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="My Schedule" imgName = {IconSchedule}
+                                title="My Schedule" imgName={IconSchedule}
                                 onClick={() => this.onItemClicked('My Schedule')}
                                 active={this.props.selectedItem === 'My Schedule'}
                             />
                             <MenuItemComponent
-                                title="My Patient" imgName = {IconMyPatient}
+                                title="My Patient" imgName={IconMyPatient}
                                 onClick={() => this.onItemClicked('My Patient')}
-                                active={this.props.selectedItem === 'My Patient'} 
-                                />
+                                active={this.props.selectedItem === 'My Patient'}
+                            />
                             <MenuItemComponent
-                                title="Allocate Tasks" imgName = {IconTasks}
+                                title="Allocate Tasks" imgName={IconTasks}
                                 onClick={() => this.onItemClicked('Allocate Tasks')}
-                                active={this.props.selectedItem === 'Allocate Tasks'} 
-                                />
+                                active={this.props.selectedItem === 'Allocate Tasks'}
+                            />
                             <MenuItemComponent
-                                title="Notes" imgName = {IconNotes}
+                                title="Notes" imgName={IconNotes}
                                 onClick={() => this.onItemClicked('Notes')}
-                                active={this.props.selectedItem === 'Notes'} 
-                                />
+                                active={this.props.selectedItem === 'Notes'}
+                            />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
-                                title="Settings" imgName = {IconSettings}
+                                title="Settings" imgName={IconSettings}
                                 onClick={() => this.onItemClicked('Settings')}
-                                active={this.props.selectedItem === 'Settings'} 
-                                />
+                                active={this.props.selectedItem === 'Settings'}
+                            />
                         </Column>
                     </Column>
                     {isMobile && expanded && <div className={css(styles.outsideLayer)} onClick={this.toggleMenu}></div>}
@@ -140,4 +140,4 @@ class SidebarComponent extends React.Component {
     };
 }
 
-export {SidebarComponent};
+export { SidebarComponent };

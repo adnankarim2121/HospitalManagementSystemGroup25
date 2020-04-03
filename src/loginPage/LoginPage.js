@@ -1,10 +1,10 @@
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
-import {SidebarComponent} from './SidebarComponent';
-import {HeaderComponent} from './HeaderComponent';
+import { SidebarComponent } from './SidebarComponent';
+import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
-import {Login} from './Login.js'
+import { Login } from './Login.js'
 import IconBurger from '../icons/icon-burger';
 
 
@@ -27,6 +27,7 @@ class LoginPage extends React.Component {
     state = { selectedItem: 'Login' };
 
     componentDidMount() {
+        document.title = "Login Page";
         window.addEventListener('resize', this.resize);
     }
 
@@ -44,7 +45,7 @@ class LoginPage extends React.Component {
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
                     <HeaderComponent title={selectedItem} />
                     <div className={css(styles.content)}>
-                        <span><Login img={IconBurger}/></span>
+                        <span><Login img={IconBurger} /></span>
                     </div>
                 </Column>
             </Row>

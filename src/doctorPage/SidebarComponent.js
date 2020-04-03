@@ -1,12 +1,12 @@
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
+
 import MenuItemComponent from '../MenuItemComponent';
+import LogoComponent from '../LogoComponent';
 
 import IconBurger from '../icons/icon-burger';
-
 import IconHome from '../icons/health.png';
-import IconOverview from '../icons/overview.png';
 import IconSchedule from '../icons/schedule.png';
 import IconMyPatients from '../icons/patient.png';
 import IconPrescriptions from '../icons/prescription.png';
@@ -100,38 +100,38 @@ class SidebarComponent extends React.Component {
                 <Row className={css(styles.mainContainer)} breakpoints={{ 768: css(styles.mainContainerMobile) }}>
                     {(isMobile && !expanded) && this.renderBurger()}
                     <Column className={css(styles.container)} breakpoints={{ 768: css(styles.containerMobile, expanded ? styles.show : styles.hide) }}>
-                    <MenuItemComponent
-                                title="Home" 
-                                imgName = {IconHome}
-                                onClick={() => history.push('/HomePage')}
-                                active={this.props.selectedItem === 'Home'}
-                            />
+                        <LogoComponent
+                            title="Home"
+                            imgName={IconHome}
+                            onClick={() => history.push('/')}
+                            active={this.selectedItem === 'Home'}
+                        />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="My Schedule" imgName = {IconSchedule}
+                                title="My Schedule" imgName={IconSchedule}
                                 onClick={() => this.onItemClicked('My Schedule')}
                                 active={this.props.selectedItem === 'My Schedule'} />
                             <MenuItemComponent
-                                title="My Patients" imgName = {IconMyPatients}
+                                title="My Patients" imgName={IconMyPatients}
                                 onClick={() => this.onItemClicked('My Patients')}
                                 active={this.props.selectedItem === 'My Patients'} />
                             <MenuItemComponent
-                                title="Prescriptions" imgName = {IconPrescriptions}
+                                title="Prescriptions" imgName={IconPrescriptions}
                                 onClick={() => this.onItemClicked('Prescriptions')}
                                 active={this.props.selectedItem === 'Prescriptions'}
                             />
-                             <MenuItemComponent
-                                title="Referrals" imgName = {IconReferrals}
+                            <MenuItemComponent
+                                title="Referrals" imgName={IconReferrals}
                                 onClick={() => this.onItemClicked('Referrals')}
                                 active={this.props.selectedItem === 'Referrals'}
                             />
                             <MenuItemComponent
-                                title="My Nurses" imgName = {IconMyNurse}
+                                title="My Nurses" imgName={IconMyNurse}
                                 onClick={() => this.onItemClicked('My Nurses')}
                                 active={this.props.selectedItem === 'My Nurses'} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
-                                title="Settings" imgName = {IconSettings}
+                                title="Settings" imgName={IconSettings}
                                 onClick={() => this.onItemClicked('Settings')}
                                 active={this.props.selectedItem === 'Settings'} />
                         </Column>
@@ -143,4 +143,4 @@ class SidebarComponent extends React.Component {
     };
 }
 
-export {SidebarComponent};
+export { SidebarComponent };

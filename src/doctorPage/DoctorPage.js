@@ -1,8 +1,8 @@
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
-import {SidebarComponent} from './SidebarComponent';
-import {HeaderComponent} from './HeaderComponent';
+import { SidebarComponent } from './SidebarComponent';
+import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 
 const styles = StyleSheet.create({
@@ -25,6 +25,7 @@ class DoctorPage extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
+        document.title = "Doctor";
     }
 
     componentWillUnmount() {

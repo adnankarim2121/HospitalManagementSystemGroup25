@@ -82,4 +82,4 @@ HeaderComponent.propTypes = {
     title: string
 };
 
-export{HeaderComponent};
+export { HeaderComponent };

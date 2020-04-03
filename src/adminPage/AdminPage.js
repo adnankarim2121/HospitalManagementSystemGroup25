@@ -25,6 +25,7 @@ class Admin extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
+        document.title = "Administrator";
     }
 
     componentWillUnmount() {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
-import {SidebarComponent} from './SidebarComponent';
-import {HeaderComponent} from './HeaderComponent';
+import { SidebarComponent } from './SidebarComponent';
+import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 
 const styles = StyleSheet.create({
@@ -19,12 +19,14 @@ const styles = StyleSheet.create({
     }
 });
 
-class HomePage extends React.Component {
+class App extends React.Component {
 
     state = { selectedItem: 'Home' };
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
+        document.title = "Home";
+
     }
 
     componentWillUnmount() {
@@ -42,6 +44,7 @@ class HomePage extends React.Component {
                     <HeaderComponent title={selectedItem} />
                     <div className={css(styles.content)}>
                         <span>Content</span>
+
                     </div>
                 </Column>
             </Row>
@@ -49,4 +52,4 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage;
+export default App;
