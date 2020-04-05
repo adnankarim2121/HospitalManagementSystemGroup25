@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     }
 });
 
-class Admin extends React.Component {
+class AdminPage extends React.Component {
 
     state = { selectedItem: 'Statistics' };
 
@@ -50,4 +50,4 @@ class Admin extends React.Component {
     }
 }
 
-export default Admin;
+export default AdminPage;
