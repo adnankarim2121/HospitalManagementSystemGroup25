@@ -5,6 +5,9 @@ import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 import { Login } from './Login.js'
+// import {Header, Footer}from './Home.js';
+import { Helmet } from 'react-helmet';
+import LogoIMG from '../icons/login.png'
 import IconBurger from '../icons/icon-burger';
 
 
@@ -45,8 +48,9 @@ class LoginPage extends React.Component {
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
                     <HeaderComponent title={selectedItem} />
                     <div className={css(styles.content)}>
-                        <span><Login img={IconBurger} /></span>
+                        <span><Login img={LogoIMG} /></span>
                     </div>
+
                 </Column>
             </Row>
         );
