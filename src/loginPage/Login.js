@@ -24,16 +24,23 @@ class Login extends React.Component {
 
 
   changePageForPatient = (props) => {
-    window.location.href = 'http://localhost:3000/AdminPage';
+    const { userInfo, checkIfUserExists } = this.state;
+    localStorage.setItem("username",userInfo.email);
+    window.location.href = 'http://localhost:3000/PatientPage';
     //window.location.replace("http://localhost:3000/AdminPage");
+
   }
 
   changePageForDoctor = (props) => {
-    window.location.href = 'http://localhost:3000/AdminPage';
+    const { userInfo, checkIfUserExists } = this.state;
+    localStorage.setItem("username",userInfo.email);
+    window.location.href = 'http://localhost:3000/DoctorPage';
   }
 
   changePageForNurse = (props) => {
-    window.location.href = 'http://localhost:3000/AdminPage';
+    const { userInfo, checkIfUserExists } = this.state;
+    localStorage.setItem("username",userInfo.email);
+    window.location.href = 'http://localhost:3000/NursePage';
   }
 
   checkIfUserExists = _ => {

@@ -3,6 +3,7 @@ import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 import MenuItemComponent from '../MenuItemComponent';
 import LogoComponent from '../LogoComponent';
+import Admin  from './Admin.js'
 
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
@@ -89,6 +90,11 @@ class SidebarComponent extends React.Component {
         </div>
     }
 
+    Admin = () =>
+    {
+        return <Admin/>
+    }
+
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -114,13 +120,9 @@ class SidebarComponent extends React.Component {
                                 onClick={() => this.onItemClicked('Add/Edit Departments')}
                                 active={this.props.selectedItem === 'Add/Edit Departments'} />
                             <MenuItemComponent
-                                title="Add/Edit Doctors" imgName={IconAddDoctor}
-                                onClick={() => this.onItemClicked('Add/Edit Doctors')}
-                                active={this.props.selectedItem === 'Add/Edit Doctors'} />
-                            <MenuItemComponent
                                 title="Add/Edit Hospital Staff" imgName={IconAddStaff}
-                                onClick={() => this.onItemClicked('Add/Edit Hospital Staff')}
-                                active={this.props.selectedItem === 'Add/Edit Hospital Staff'} />
+                                onClick={this.Admin}
+                                active={this.props.selectedItem === this.Admin} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
                                 title="Settings" imgName={IconSettings}

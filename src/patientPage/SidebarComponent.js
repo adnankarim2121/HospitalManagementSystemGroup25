@@ -90,6 +90,47 @@ class SidebarComponent extends React.Component {
         </div>
     }
 
+  changePageToHome = (props) => {
+    alert(localStorage.getItem("username"));
+    window.location.href = 'http://localhost:3000/HomePage';
+
+    //window.location.replace("http://localhost:3000/AdminPage");
+  }
+
+  changePageToSchedhule = (props) => {
+    alert(localStorage.getItem("username"));
+    window.location.href = 'http://localhost:3000/HomePage';
+
+    //window.location.replace("http://localhost:3000/AdminPage");
+  }
+
+  changePageToPrescriptions= (props) => {
+    alert(localStorage.getItem("username"));
+    window.location.href = 'http://localhost:3000/HomePage';
+
+    //window.location.replace("http://localhost:3000/AdminPage");
+  }
+
+  changePageToRefferals= (props) => {
+    alert(localStorage.getItem("username"));
+    window.location.href = 'http://localhost:3000/HomePage';
+
+    //window.location.replace("http://localhost:3000/AdminPage");
+  }
+
+  changePageToOtherServices= (props) => {
+    alert(localStorage.getItem("username"));
+    window.location.href = 'http://localhost:3000/HomePage';
+
+    //window.location.replace("http://localhost:3000/AdminPage");
+  }
+
+  changePageToSettings= (props) => {
+    alert(localStorage.getItem("username"));
+    window.location.href = 'http://localhost:3000/HomePage';
+
+    //window.location.replace("http://localhost:3000/AdminPage");
+  }
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -101,7 +142,7 @@ class SidebarComponent extends React.Component {
                         <LogoComponent
                             title="Home"
                             imgName={IconHome}
-                            onClick={() => history.push('/')}
+                            onClick={() => this.changePageToHome()}
                             active={this.selectedItem === 'Home'}
                         />
                         <Column className={css(styles.menuItemList)}>
