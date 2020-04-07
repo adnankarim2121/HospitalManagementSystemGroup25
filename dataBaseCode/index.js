@@ -36,7 +36,9 @@ app.get('/HospitalManagementSystem/add', (req, res) => {
 	connection.query(query, data, (err, results) => {
 		if(err)
 		{
-			return res.send(err);
+			return res.json({
+				data: 'fail'
+			})
 		}
 
 		else

@@ -42,8 +42,19 @@ class Admin extends React.Component{
     {
       fetch(`http://localhost:4000/HospitalManagementSystem/add?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}`)
     .then((response) => {return response.json()})
-    .then((data) => {
+    .then((response) => {
+        this.setState({ userInformation: response.data })
+        alert(response.data);
+        var data = JSON.stringify(response.data);
+        var dataParsed = JSON.parse(data);
+        if (dataParsed.affectedRows === 0) {
+          alert("Username already exists! Please try again.");
+        }
 
+        else
+        {
+          alert("User added successfully!")
+        }
     })
       .catch(err => console.error(err));
 
