@@ -11,6 +11,7 @@ import NursePage  from './nursePage/NursePage.js';
 import DoctorPage  from './doctorPage/DoctorPage.js';
 import HomePage  from './homePage/HomePage.js';
 import AddStaff from './adminPage/AddStaff.js';
+import SetFee from './adminPage/SetFee.js';
 import './index.css';
 import history from './History';
 
@@ -26,8 +27,8 @@ ReactDOM.render(
             <Route path='/NursePage' component={NursePage}/>
             <Route path='/PatientPage' component={PatientPage}/>
             <Route path='/AdminPage' component={AdminPage}/>   
-            <Route path='/AddStaff' component={AddStaff}/>    
-
+            <Route path='/AddStaff' component={AddStaff}/>
+            <Route path='/SetFee' component={SetFee}/>     
 
     </BrowserRouter>
 
