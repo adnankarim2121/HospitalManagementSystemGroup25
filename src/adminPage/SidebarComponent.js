@@ -95,6 +95,10 @@ class SidebarComponent extends React.Component {
         return <Admin/>
     }
 
+  changePageToAddStaff = (props) => {
+    window.location.href = 'http://localhost:3000/AddStaff';
+  }
+
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -121,7 +125,7 @@ class SidebarComponent extends React.Component {
                                 active={this.props.selectedItem === 'Add/Edit Departments'} />
                             <MenuItemComponent
                                 title="Add/Edit Hospital Staff" imgName={IconAddStaff}
-                                onClick={this.Admin}
+                                onClick={() => this.changePageToAddStaff()}
                                 active={this.props.selectedItem === this.Admin} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
