@@ -89,10 +89,7 @@ class SidebarComponent extends React.Component {
     }
 
   changePageToLoginPage = (props) => {
-    alert(localStorage.getItem("username"));
     window.location.href = 'http://localhost:3000/LoginPage';
-
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
 
   changePageToAboutPage = (props) => {
