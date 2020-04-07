@@ -1,7 +1,32 @@
 import React from 'react';
 import '../App.css';
+import { Column, Row } from 'simple-flexbox';
+import { StyleSheet, css } from 'aphrodite';
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
+    textAlign: 'center'
+
+  },
+  title: {
+    fontFamily: 'Muli',
+    fontSize: 16,
+    lineHeight: '20px',
+    letterSpacing: '0.2px',
+    color: '#A4A6B3',
+    marginLeft: 16
+  },
+
+  padding: {
+    padding: 30
+  }
+});
 
 
 class Login extends React.Component {
@@ -25,7 +50,7 @@ class Login extends React.Component {
 
   changePageForPatient = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
-    localStorage.setItem("username",userInfo.email);
+    localStorage.setItem("username", userInfo.email);
     window.location.href = 'http://localhost:3000/PatientPage';
     //window.location.replace("http://localhost:3000/AdminPage");
 
@@ -33,13 +58,13 @@ class Login extends React.Component {
 
   changePageForDoctor = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
-    localStorage.setItem("username",userInfo.email);
+    localStorage.setItem("username", userInfo.email);
     window.location.href = 'http://localhost:3000/DoctorPage';
   }
 
   changePageForNurse = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
-    localStorage.setItem("username",userInfo.email);
+    localStorage.setItem("username", userInfo.email);
     window.location.href = 'http://localhost:3000/NursePage';
   }
 
@@ -89,37 +114,51 @@ class Login extends React.Component {
 
     return (
 
-      <div className="login">
+      <Column className={css(styles.container)}>
+        <div className={css(styles.title)}> 
+          <div className="App">
+          </div>
+          <form className="modal-content">
+          <div className={css(styles.padding)}>
 
-        <div className="App">
+            <div className={"imgcontainer"} >
+              <img src={this.props.img} alt="Avatar" width='100' height='100' />
+            </div>
+            </div>
+            <div className={css(styles.padding)}>
+
+            <div className="username">
+              <label for="uname"><b>Username</b></label>
+              <input
+                type="text"
+                placeholder="Enter Username"
+                value={userInfo.email}
+                onChange={e => this.setState({ userInfo: { ...userInfo, email: e.target.value } })}
+                name="uname" required />
+            </div>
+            </div>
+
+            <div className="password">
+
+              <label for="psw"><b>Password</b></label>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                value={userInfo.password}
+                onChange={e => this.setState({ userInfo: { ...userInfo, password: e.target.value } })}
+                name="psw" required />
+            </div>
+            <div className={css(styles.padding)}>
+
+            <div className="button">
+
+              <button onClick={this.checkIfUserExists} type="submit" color='#482acc'>Login</button>
+            </div>
+            </div>
+
+          </form>
         </div>
-        <form className="modal-content">
-
-          <div className="imgcontainer">
-            <img src={this.props.img} alt="Avatar" width='200' height='200' />
-          </div>
-
-          <div className="credentials">
-            <label for="uname"><b>Username</b></label>
-            <input
-              type="text"
-              placeholder="Enter Username"
-              value={userInfo.email}
-              onChange={e => this.setState({ userInfo: { ...userInfo, email: e.target.value } })}
-              name="uname" required />
-
-            <label for="psw"><b>Password</b></label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={userInfo.password}
-              onChange={e => this.setState({ userInfo: { ...userInfo, password: e.target.value } })}
-              name="psw" required />
-
-            <button onClick={this.checkIfUserExists} type="submit">Login</button>
-          </div>
-        </form>
-      </div>
+      </Column>
     );
   }
 }

@@ -17,11 +17,18 @@ const styles = StyleSheet.create({
         minHeight: '100vh'
     },
     content: {
-        marginTop: 54
+        marginTop: 54,
+        marginLeft: 100
     },
     mainBlock: {
         backgroundColor: '#F7F8FC',
         padding: 30
+    },
+    loginContainer: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop : 60
+
     }
 });
 
@@ -45,9 +52,8 @@ class LoginPage extends React.Component {
         return (
             <Row className={css(styles.container)}>
                 <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
-                <Column flexGrow={1} className={css(styles.mainBlock)}>
-                    <HeaderComponent title={selectedItem} />
-                    <div className={css(styles.content)}>
+                <Column flexGrow={1} className={css(styles.loginContainer)}>
+                    <div className={css(styles.loginContainer)}>
                         <span><Login img={LogoIMG} /></span>
                     </div>
 
