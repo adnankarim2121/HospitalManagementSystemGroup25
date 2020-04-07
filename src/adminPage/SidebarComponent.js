@@ -126,12 +126,8 @@ class SidebarComponent extends React.Component {
                             <MenuItemComponent
                                 title="Set Cancellation Fee" imgName={IconStatistics}
                                 onClick={() => this.changePageToSetFee()}
-                                active={this.props.selectedItem === 'Statistics'}
+                                active={this.props.selectedItem === 'Set Cancellation Fee'}
                             />
-                            <MenuItemComponent
-                                title="Add/Edit Departments" imgName={IconAddDepartment}
-                                onClick={() => this.onItemClicked('Add/Edit Departments')}
-                                active={this.props.selectedItem === 'Add/Edit Departments'} />
                             <MenuItemComponent
                                 title="Add/Edit Hospital Staff" imgName={IconAddStaff}
                                 onClick={() => this.changePageToAddStaff()}
