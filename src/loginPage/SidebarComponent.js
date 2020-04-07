@@ -86,6 +86,13 @@ class SidebarComponent extends React.Component {
         </div>
     }
 
+  changePageToLoginPage = (props) => {
+    window.location.href = 'http://localhost:3000/LoginPage';
+  }
+
+changePageToHomePage = (props) => {
+    window.location.href = 'http://localhost:3000/HomePage';
+  }
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -97,13 +104,13 @@ class SidebarComponent extends React.Component {
                         <LogoComponent
                             title="Home"
                             imgName={IconHome}
-                            onClick={() => history.push('/')}
+                            onClick={() => this.changePageToHomePage()}
                             active={this.selectedItem === 'Home'}
                         />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
                                 title="Login" imgName={IconOverview}
-                                onClick={() => this.onItemClicked('Login')}
+                                onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'Login'}
                             />
                         </Column>

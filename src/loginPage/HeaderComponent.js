@@ -70,9 +70,7 @@ function HeaderComponent(props) {
             <span className={css(styles.title)}>{title}</span>
             <Row vertical="center">
                 <div className={css(styles.separator)}></div>
-                <Row vertical="center">
-                    <span className={css(styles.name, styles.cursorPointer)}>Please Login</span>
-                </Row>
+
             </Row>
         </Row>
     );

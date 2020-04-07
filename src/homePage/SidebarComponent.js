@@ -88,6 +88,17 @@ class SidebarComponent extends React.Component {
         </div>
     }
 
+  changePageToLoginPage = (props) => {
+    alert(localStorage.getItem("username"));
+    window.location.href = 'http://localhost:3000/LoginPage';
+
+    //window.location.replace("http://localhost:3000/AdminPage");
+  }
+
+  changePageToAboutPage = (props) => {
+    //TO-DO
+  }
+
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -110,24 +121,8 @@ class SidebarComponent extends React.Component {
                             />
                             <MenuItemComponent
                                 title="Login" imgName={IconLogin}
-                                onClick={() => history.push('./LoginPage')}
+                                onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'Login'}
-                            />
-                            <MenuItemComponent
-                                title="Doctor" imgName={IconDoctor}
-                                onClick={() => history.push('./DoctorPage')}
-                            />
-                            <MenuItemComponent
-                                title="Nurse" imgName={IconDoctor}
-                                onClick={() => history.push('./NursePage')}
-                            />
-                            <MenuItemComponent
-                                title="Patient" imgName={IconStaff}
-                                onClick={() => history.push('./PatientPage')}
-                            />
-                            <MenuItemComponent
-                                title="Admin" imgName={IconStaff}
-                                onClick={() => history.push('./AdminPage')}
                             />
                         </Column>
                     </Column>
