@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
     mainBlock: {
         backgroundColor: '#F7F8FC',
         padding: 30
-    }
+    },
+
+
 });
 
 class PatientSetAppointment extends React.Component {
@@ -51,36 +53,28 @@ class PatientSetAppointment extends React.Component {
   addAppointment = _ =>
   {
     const { date, doctorName } = this.state;
-    var updatedAppointment = "Appointment at " + date + " with " + doctorName.name;
-    alert (typeof(updatedAppointment));
-    fetch(`http://localhost:4000/HospitalManagementSystem/setAppointment?username=${localStorage.getItem("username")}&appointments=${updatedAppointment}&doctorName=${doctorName.name}`)
-    .then((response) => {return response.json()})
-    .then((response) => {
-        this.setState({ userInformation: response.data })
-        alert(response.data);
-        var data = JSON.stringify(response.data);
-        var dataParsed = JSON.parse(data);
-        if (dataParsed.affectedRows === 0) {
-          alert("Username already exists! Please try again.");
-        }
 
-        else
-        {
-          alert("User added successfully!")
-        }
-    })
-      .catch(err => console.error(err));
+    if(doctorName.name === '')
+    {
+        alert("Please choose a doctor.");
+    }
+    else{
+    var updatedAppointment = "Appointment on " + date + " with " + doctorName.name;
+    var response = window.confirm(`Are you sure you want to set an ${updatedAppointment}?` );
+    if(response == true){
+        fetch(`http://localhost:4000/HospitalManagementSystem/setAppointment?username=${localStorage.getItem("username")}&appointments=${updatedAppointment}&doctorName=${doctorName.name}`)
+        .then((response) => {return response.json()})
+          .catch(err => console.error(err));
+          window.location.href = 'http://localhost:3000/PatientSetAppointment';
+    }
+  }
 
   }
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
-    renderProduct = ({email, userType}) => <div key={email}>
-    <table>
-        <td> Name of Doctor: </td>
-        <td> {email} </td>
-    </table>
-    </div>;
+    renderDoctors = ({email, userType}) =>
+    <option value={email}>{email}</option>;
 
     render() {
         const { selectedItem, doctors, doctorName } = this.state;
@@ -92,18 +86,20 @@ class PatientSetAppointment extends React.Component {
                     <div>
 
                       <TitleComponent title={'Doctors Available'} />
-                      {doctors.map(this.renderProduct)}
+                      Appointment at 
                       <DateTimePicker
+                        required='true'
                         onChange={this.onChange}
                         value={this.state.date}
                       />
 
-                    <input
-                    type="text"
-                    placeholder="Enter Doctor's name"
-                    value={doctorName.name}
-                    onChange={e => this.setState({ doctorName: {...doctorName, name: e.target.value}})}
-                    name="nameOfDoctor" required/>
+                    With Doctor:
+
+                    <select id="doctors"
+                    onChange={e => this.setState({ doctorName: {...doctorName, name: e.target.value}})}>
+                    <option value="" selected disabled hidden>Choose Doctor</option>
+                        {doctors.map(this.renderDoctors)}
+                    </select>
 
                     <button onClick={this.addAppointment} type="submit">Set Appointment</button>
 

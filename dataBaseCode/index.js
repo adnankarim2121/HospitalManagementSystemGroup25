@@ -95,9 +95,11 @@ app.get('/HospitalManagementSystem/getDoctors', (req, res) => {
 app.get('/HospitalManagementSystem/setAppointment', (req, res) => {
 	const { username, appointments, doctorName} = req.query;
 
-	const query = `INSERT INTO appointments (setBy, appointments, doctorName) VALUES (?, ?, ?)`;
-	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
-	const data = [username, appointments, doctorName];
+	//Handles duplicates
+	const query = `INSERT INTO appointments (setBy, appointments, doctorName) SELECT ?, ?, ? FROM DUAL WHERE NOT EXISTS (SELECT * FROM appointments WHERE appointments=?) LIMIT 1`;
+
+
+	const data = [username, appointments, doctorName, appointments];
 	connection.query(query, data, (err, results) => {
 		if(err)
 		{

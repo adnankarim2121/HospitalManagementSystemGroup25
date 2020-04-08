@@ -54,15 +54,10 @@ class PatientViewAppointment extends React.Component {
     renderProduct = ({setBy, appointments}) => <div key={setBy}>{appointments}<button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit">
     Cancel Appointment</button> </div> ;
 
-    // renderProduct({setBy, appointments})
-    // {
-    //     <div key={setBy}>{appointments}</div>;
-    // }
-
 
   deleteAppointment(e)
   {
-    var response = window.confirm(`Are you sure you want to cancel the appointment? You will be charged ${localStorage.getItem("fee")}`);
+    var response = window.confirm(`Are you sure you want to cancel the appointment? You will be charged $ ${localStorage.getItem("fee")} ` );
     if(response == true)
     {
         fetch(`http://localhost:4000/HospitalManagementSystem/deleteAppointment?appointment=${e.target.value}`)
@@ -77,7 +72,7 @@ class PatientViewAppointment extends React.Component {
 
     else
     {
-        
+
     }
 
   }
@@ -89,7 +84,7 @@ class PatientViewAppointment extends React.Component {
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
                     <HeaderComponent title={selectedItem} />
                     <div>
-
+                    
                       {appointments.map(this.renderProduct)} 
 
 
