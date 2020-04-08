@@ -71,6 +71,90 @@ app.get('/HospitalManagementSystem/select', (req, res) => {
 	})
 });
 
+app.get('/HospitalManagementSystem/getDoctors', (req, res) => {
+	const { email, password} = req.query;
+	console.log(password);
+
+	const query = `SELECT * FROM users WHERE userType=?`;
+	const data = ['Doctor'];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+app.get('/HospitalManagementSystem/setAppointment', (req, res) => {
+	const { username, appointments, doctorName} = req.query;
+
+	const query = `INSERT INTO appointments (setBy, appointments, doctorName) VALUES (?, ?, ?)`;
+	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
+	const data = [username, appointments, doctorName];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+app.get('/HospitalManagementSystem/getAppointment', (req, res) => {
+	const { username} = req.query;
+
+	const query = `SELECT * FROM appointments WHERE setBy=?`;
+
+	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
+	const data = [username];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+app.get('/HospitalManagementSystem/deleteAppointment', (req, res) => {
+	const {appointment} = req.query;
+	const query = `DELETE FROM appointments WHERE appointments=?;`;
+	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
+	const data = [appointment];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
 app.get('/HospitalManagementSystem', (req, res) => {
 	connection.query(query, (err, results) => {
 		if(err)

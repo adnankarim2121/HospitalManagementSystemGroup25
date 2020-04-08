@@ -14,6 +14,8 @@ import AddStaff from './adminPage/AddStaff.js';
 import SetFee from './adminPage/SetFee.js';
 import './index.css';
 import history from './History';
+import PatientSetAppointment  from './patientPage/PatientSetAppointment.js';
+import PatientViewAppointment  from './patientPage/PatientViewAppointment.js';
 
 
 ReactDOM.render(
@@ -28,7 +30,9 @@ ReactDOM.render(
             <Route path='/PatientPage' component={PatientPage}/>
             <Route path='/AdminPage' component={AdminPage}/>   
             <Route path='/AddStaff' component={AddStaff}/>
-            <Route path='/SetFee' component={SetFee}/>     
+            <Route path='/SetFee' component={SetFee}/> 
+            <Route path='/PatientSetAppointment' component={PatientSetAppointment}/> 
+            <Route path='/PatientViewAppointment' component={PatientViewAppointment}/>     
 
     </BrowserRouter>
 

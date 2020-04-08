@@ -40,7 +40,7 @@ class Admin extends React.Component{
     const { userInfo } = this.state;
     if(userInfo.userType === 'Nurse' || userInfo.userType === 'Doctor' || userInfo.userType === 'Patient')
     {
-      fetch(`http://localhost:4000/HospitalManagementSystem/add?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}`)
+    fetch(`http://localhost:4000/HospitalManagementSystem/add?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}`)
     .then((response) => {return response.json()})
     .then((response) => {
         this.setState({ userInformation: response.data })
