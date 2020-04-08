@@ -4,8 +4,8 @@ import { StyleSheet, css } from 'aphrodite';
 import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
-import { Login } from './Login.js'
-// import {Header, Footer}from './Home.js';
+import  Admin  from './Admin.js'
+import  SetFeeBackend  from './SetFeeBackend.js'
 import { Helmet } from 'react-helmet';
 import LogoIMG from '../icons/login.png'
 import IconBurger from '../icons/icon-burger';
@@ -17,27 +17,20 @@ const styles = StyleSheet.create({
         minHeight: '100vh'
     },
     content: {
-        marginTop: 54,
-        marginLeft: 100
+        marginTop: 54
     },
     mainBlock: {
         backgroundColor: '#F7F8FC',
         padding: 30
-    },
-    loginContainer: {
-        flex: 1,
-        alignItems: 'center',
-        marginTop : 60
-
     }
 });
 
-class LoginPage extends React.Component {
+class SetFee extends React.Component {
 
-    state = { selectedItem: 'Login' };
+    state = { selectedItem: 'Set the Cancellation Fee' };
 
     componentDidMount() {
-        document.title = "Login Page";
+        document.title = "Cancellation Fee";
         window.addEventListener('resize', this.resize);
     }
 
@@ -52,9 +45,10 @@ class LoginPage extends React.Component {
         return (
             <Row className={css(styles.container)}>
                 <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
-                <Column flexGrow={1} className={css(styles.loginContainer)}>
-                    <div className={css(styles.loginContainer)}>
-                        <span><Login img={LogoIMG} /></span>
+                <Column flexGrow={1} className={css(styles.mainBlock)}>
+                    <HeaderComponent title={selectedItem} />
+                    <div className={css(styles.content)}>
+                        <span><SetFeeBackend img={LogoIMG} /></span>
                     </div>
 
                 </Column>
@@ -63,4 +57,4 @@ class LoginPage extends React.Component {
     }
 }
 
-export default LoginPage;
+export default SetFee;

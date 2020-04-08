@@ -7,6 +7,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 
 var initialize_calendar;
+
 initialize_calendar = function() {
   $('.calendar').each(function(){
     var calendar = $(this);

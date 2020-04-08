@@ -91,45 +91,38 @@ class SidebarComponent extends React.Component {
     }
 
   changePageToHome = (props) => {
-    alert(localStorage.getItem("username"));
     window.location.href = 'http://localhost:3000/HomePage';
 
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
 
-  changePageToSchedhule = (props) => {
-    alert(localStorage.getItem("username"));
-    window.location.href = 'http://localhost:3000/HomePage';
+  changePageToSetAppointments = (props) => {
+    window.location.href = 'http://localhost:3000/PatientSetAppointment';
 
-    //window.location.replace("http://localhost:3000/AdminPage");
+  }
+
+  changePageToViewAppointments = (props) => {
+    window.location.href = 'http://localhost:3000/PatientViewAppointment';
+
   }
 
   changePageToPrescriptions= (props) => {
-    alert(localStorage.getItem("username"));
     window.location.href = 'http://localhost:3000/HomePage';
 
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
 
   changePageToRefferals= (props) => {
-    alert(localStorage.getItem("username"));
     window.location.href = 'http://localhost:3000/HomePage';
 
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
 
   changePageToOtherServices= (props) => {
-    alert(localStorage.getItem("username"));
     window.location.href = 'http://localhost:3000/HomePage';
 
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
 
   changePageToSettings= (props) => {
-    alert(localStorage.getItem("username"));
     window.location.href = 'http://localhost:3000/HomePage';
 
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
     render() {
         const { expanded } = this.state;
@@ -147,9 +140,15 @@ class SidebarComponent extends React.Component {
                         />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="My Schedule" imgName={IconSchedule}
-                                onClick={() => this.onItemClicked('My Schedule')}
+                                title="Set Appointments" imgName={IconSchedule}
+                                onClick={() => this.changePageToSetAppointments()}
+                                active={this.props.selectedItem === 'Set an Appointment'} />
+
+                            <MenuItemComponent
+                                title="View/Cancel Appointments" imgName={IconSchedule}
+                                onClick={() => this.changePageToViewAppointments()}
                                 active={this.props.selectedItem === 'My Schedule'} />
+
                             <MenuItemComponent
                                 title="My Prescriptions" imgName={IconMyPrescriptions}
                                 onClick={() => this.onItemClicked('My Prescriptions')}
