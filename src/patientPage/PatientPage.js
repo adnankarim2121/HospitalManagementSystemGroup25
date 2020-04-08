@@ -5,6 +5,8 @@ import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 
+//import Calendar from 'react-calendar';
+
 const styles = StyleSheet.create({
     container: {
         height: '100%',
@@ -21,7 +23,10 @@ const styles = StyleSheet.create({
 
 class PatientPage extends React.Component {
 
-    state = { selectedItem: 'My Schedule' };
+    state = {
+        selectedItem: 'My Schedule',
+        //date: new Date()
+    };
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
@@ -33,6 +38,8 @@ class PatientPage extends React.Component {
     }
 
     resize = () => this.forceUpdate();
+
+    onChange = date => this.setState({ date })
 
     render() {
         const { selectedItem } = this.state;

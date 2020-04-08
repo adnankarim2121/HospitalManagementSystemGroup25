@@ -10,6 +10,7 @@ import PatientPage  from './patientPage/PatientPage.js';
 import NursePage  from './nursePage/NursePage.js';
 import DoctorPage  from './doctorPage/DoctorPage.js';
 import HomePage  from './homePage/HomePage.js';
+import CalPage from './Calendar.js'
 import './index.css';
 import history from './History';
 
@@ -24,8 +25,9 @@ ReactDOM.render(
 
             <Route path='/NursePage' component={NursePage}/>
             <Route path='/PatientPage' component={PatientPage}/>
-            <Route path='/AdminPage' component={AdminPage}/>    
+            <Route path='/AdminPage' component={AdminPage}/>   
 
+            <Route path='/CalPage' component={CalPage}/>
 
     </BrowserRouter>
 

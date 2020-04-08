@@ -1,17 +1,27 @@
-import React from 'react';
-import {Link, NavLink, withRouter} from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react';
+import moment from 'moment';
 
-class Calendar extends React.Component {
-    render() {
-        return(
-            <div>
-                <title>Calendar</title>
-		        <link href="themes/business.css" rel="stylesheet"/>
-                <div id="calendar" style="position: absolute; width: 100%; height: 100%;"></div>	
-                <script src="MindFusion.Scheduling.js" type="text/javascript"></script>
-                <script src="Schedule.js" type="text/javascript"></script>
-            </div>
-        )
-    }
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+
+var initialize_calendar;
+initialize_calendar = function() {
+  $('.calendar').each(function(){
+    var calendar = $(this);
+    calendar.fullCalendar({});
+  })(jQuery)
+};
+$(document).on('turboLinks:load', initialize_calendar)(jQuery);
+
+class CalPage extends React.Component {
+  render() {
+    return (
+      <div class="calendar"></div>
+    );
+  }
 }
+
+
+export default CalPage;
