@@ -1,21 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import {BrowserRouter, Router, Switch, Route} from 'react-router-dom';
-
-
 import LoginPage  from './loginPage/LoginPage.js';
 import AdminPage  from './adminPage/AdminPage.js';
 import PatientPage  from './patientPage/PatientPage.js';
 import NursePage  from './nursePage/NursePage.js';
 import DoctorPage  from './doctorPage/DoctorPage.js';
 import HomePage  from './homePage/HomePage.js';
-<<<<<<< HEAD
-import CalPage from './Calendar.js'
-=======
 import AddStaff from './adminPage/AddStaff.js';
 import SetFee from './adminPage/SetFee.js';
->>>>>>> b6e2547f5221a1a91050d041460a2ae54bcb79b3
 import './index.css';
 import history from './History';
 import PatientSetAppointment  from './patientPage/PatientSetAppointment.js';
@@ -33,15 +26,10 @@ ReactDOM.render(
             <Route path='/NursePage' component={NursePage}/>
             <Route path='/PatientPage' component={PatientPage}/>
             <Route path='/AdminPage' component={AdminPage}/>   
-<<<<<<< HEAD
-
-            <Route path='/CalPage' component={CalPage}/>
-=======
             <Route path='/AddStaff' component={AddStaff}/>
             <Route path='/SetFee' component={SetFee}/> 
             <Route path='/PatientSetAppointment' component={PatientSetAppointment}/> 
             <Route path='/PatientViewAppointment' component={PatientViewAppointment}/>     
->>>>>>> b6e2547f5221a1a91050d041460a2ae54bcb79b3
 
     </BrowserRouter>
 

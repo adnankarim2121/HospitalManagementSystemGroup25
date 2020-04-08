@@ -13,13 +13,13 @@
     "aphrodite": "^2.4.0",
     "moment": "^2.24.0",
     "react": "^16.13.0",
-<<<<<<< HEAD
+
     "react-big-calendar": "^0.24.1",
     "react-calendar": "^3.0.1",
-=======
+
     "react-charts": "^2.0.0-beta.6",
     "react-datetime-picker": "^3.0.1",
->>>>>>> b6e2547f5221a1a91050d041460a2ae54bcb79b3
+
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
     "react-navigation": "^4.3.2",
