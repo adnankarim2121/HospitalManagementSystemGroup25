@@ -6,10 +6,7 @@ import LogoComponent from '../LogoComponent';
 
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
-import IconOverview from '../icons/overview.png';
-
-import history from '../History';
-
+import IconLogin from '../icons/login.png';
 
 const styles = StyleSheet.create({
     burgerIcon: {
@@ -109,7 +106,7 @@ changePageToHomePage = (props) => {
                         />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="Login" imgName={IconOverview}
+                                title="Login" imgName={IconLogin}
                                 onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'Login'}
                             />

@@ -1,20 +1,42 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import {Link} from 'react-router-dom';
-import { withRouter } from "react-router-dom";
-import { Redirect } from 'react-router-dom'
+import { Column, Row } from 'simple-flexbox';
+import { StyleSheet, css } from 'aphrodite';
+import LogoCancel from '../icons/cancel.png';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
 
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    marginTop: 50
 
-class SetFeeBackend extends React.Component{
+  },
+  title: {
+    fontFamily: 'Muli',
+    fontSize: 16,
+    lineHeight: '20px',
+    letterSpacing: '0.2px',
+    color: '#A4A6B3',
+    marginLeft: 16
+  },
+
+  padding: {
+    padding: 20
+  }
+});
+
+class SetFeeBackend extends React.Component {
 
   state =
-  {
-    feeValue:
     {
-      fee: '',
+      feeValue:
+      {
+        fee: '',
+      }
     }
-  }
 
   setFee = _ => {
     const { feeValue } = this.state;
@@ -22,33 +44,33 @@ class SetFeeBackend extends React.Component{
     alert(feeValue.fee);
   }
 
-  render(){
+  render() {
 
     const { feeValue } = this.state;
 
-    return(
-
-      <div className="login">
-        <form className="modal-content">
-
+    return (
+      <Column className={css(styles.container)}>
+        <div className={css(styles.title)}>{"Set the cancellation fee for appointments cancelled by patients"}</div>
+        <div className={css(styles.padding)}></div>
+        <div className="login">
+          <form className="modal-content">
             <div className="imgcontainer">
-              <img src={this.props.img} alt="Avatar" width='200' height='200'/>
+              <img src={LogoCancel} alt="Avatar" width='130' height='130' />
             </div>
-
+            <div className={css(styles.padding)}></div>
             <div className="credentials">
-              <label for="uname"><b>Fee</b></label>
+              <label for="uname"><b>Fee($)</b></label>
               <input
-              type="text"
-              placeholder="Enter Fee as a Number"
-              value={feeValue.fee}
-              onChange={e => this.setState({ feeValue: {...feeValue, fee: e.target.value}})}
-              name="fee" required/>
-
-
+                type="text"
+                placeholder="Enter Fee as a Number"
+                value={feeValue.fee}
+                onChange={e => this.setState({ feeValue: { ...feeValue, fee: e.target.value } })}
+                name="fee" required />
               <button onClick={this.setFee} type="submit">Set Fee</button>
             </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      </Column>
     );
   }
 }

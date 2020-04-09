@@ -8,12 +8,10 @@ import Admin  from './Admin.js'
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconStatistics from '../icons/statistics.png'
-import IconAddDepartment from '../icons/department.png'
-import IconAddDoctor from '../icons/doctor.png'
+import cancelLogo from '../icons/cancel.png';
 import IconAddStaff from '../icons/staff.png'
 import IconSettings from '../icons/settings.png'
 
-import history from '../History';
 
 const styles = StyleSheet.create({
     burgerIcon: {
@@ -107,6 +105,10 @@ class SidebarComponent extends React.Component {
     window.location.href = 'http://localhost:3000/SetFee';
   }
 
+  changePageToHome = (props) => {
+    window.location.href = 'http://localhost:3000/HomePage';
+  }
+
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -118,7 +120,7 @@ class SidebarComponent extends React.Component {
                         <LogoComponent
                             title="Home"
                             imgName={IconHome}
-                            onClick={() => history.push('/')}
+                            onClick={() => this.changePageToHome()}
                             active={this.selectedItem === 'Home'}
                         />
                         <Column className={css(styles.menuItemList)}>
@@ -128,14 +130,14 @@ class SidebarComponent extends React.Component {
                                 active={this.props.selectedItem === 'Statistics'}
                             />
                             <MenuItemComponent
-                                title="Set Cancellation Fee" imgName={IconStatistics}
+                                title="Set Cancellation Fee" imgName={cancelLogo}
                                 onClick={() => this.changePageToSetFee()}
                                 active={this.props.selectedItem === 'Set Cancellation Fee'}
                             />
                             <MenuItemComponent
                                 title="Add/Edit Hospital Staff" imgName={IconAddStaff}
                                 onClick={() => this.changePageToAddStaff()}
-                                active={this.props.selectedItem === this.Admin} />
+                                active={this.props.selectedItem === 'Add/Edit Hospital Staff'} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
                                 title="Settings" imgName={IconSettings}

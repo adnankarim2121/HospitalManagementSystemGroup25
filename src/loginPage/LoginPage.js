@@ -2,13 +2,9 @@ import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 import { SidebarComponent } from './SidebarComponent';
-import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 import { Login } from './Login.js'
-// import {Header, Footer}from './Home.js';
-import { Helmet } from 'react-helmet';
 import LogoIMG from '../icons/login.png'
-import IconBurger from '../icons/icon-burger';
 
 
 const styles = StyleSheet.create({
@@ -16,18 +12,10 @@ const styles = StyleSheet.create({
         height: '100%',
         minHeight: '100vh'
     },
-    content: {
-        marginTop: 54,
-        marginLeft: 100
-    },
-    mainBlock: {
-        backgroundColor: '#F7F8FC',
-        padding: 30
-    },
     loginContainer: {
         flex: 1,
         alignItems: 'center',
-        marginTop : 60
+        marginTop: 60
 
     }
 });

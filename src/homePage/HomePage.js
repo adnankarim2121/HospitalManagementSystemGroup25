@@ -42,9 +42,8 @@ class App extends React.Component {
             <Row className={css(styles.container)}>
                 <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
-                    <HeaderComponent title={selectedItem} />
+                    <HeaderComponent title={"Welcome to the Alberta Hosiptal Scheduling Tool!"} />
                     <div className={css(styles.content)}>
-                        <h2>Welcome to the Alberta Hosiptal Scheduling tool!</h2>
                         <img src={HospitalImg} alt='Hospital Pic' width='700' height='400' />
                         <h3> This site can do the following things:</h3>
                         <ul>

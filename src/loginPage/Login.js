@@ -7,13 +7,12 @@ import { StyleSheet, css } from 'aphrodite';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
     textAlign: 'center'
-
   },
+
   title: {
     fontFamily: 'Muli',
     fontSize: 16,
@@ -27,7 +26,6 @@ const styles = StyleSheet.create({
     padding: 30
   }
 });
-
 
 class Login extends React.Component {
 
@@ -71,7 +69,7 @@ class Login extends React.Component {
   changePageForAdmin = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
     localStorage.setItem("usernameForAdmin", userInfo.email);
-    window.location.href = 'http://localhost:3000/AdminPage';
+    window.location.href = 'http://localhost:3000/SeeStats';
   }
 
   checkIfUserExists = _ => {
@@ -115,36 +113,32 @@ class Login extends React.Component {
 
   render() {
 
-    const { userInformation, userInfo } = this.state;
+    const { userInfo } = this.state;
 
     return (
-
       <Column className={css(styles.container)}>
-        <div className={css(styles.title)}> 
-          <div className="App">
-          </div>
+        <div className={css(styles.title)}>
           <form className="modal-content">
-          <div className={css(styles.padding)}>
 
-            <div className={"imgcontainer"} >
-              <img src={this.props.img} alt="Avatar" width='100' height='100' />
-            </div>
-            </div>
             <div className={css(styles.padding)}>
-
-            <div className="username">
-              <label for="uname"><b>Username</b></label>
-              <input
-                type="text"
-                placeholder="Enter Username"
-                value={userInfo.email}
-                onChange={e => this.setState({ userInfo: { ...userInfo, email: e.target.value } })}
-                name="uname" required />
+              <div className={"imgcontainer"} >
+                <img src={this.props.img} alt="Avatar" width='100' height='100' />
+              </div>
             </div>
+
+            <div className={css(styles.padding)}>
+              <div className="username">
+                <label for="uname"><b>Username</b></label>
+                <input
+                  type="text"
+                  placeholder="Enter Username"
+                  value={userInfo.email}
+                  onChange={e => this.setState({ userInfo: { ...userInfo, email: e.target.value } })}
+                  name="uname" required />
+              </div>
             </div>
 
             <div className="password">
-
               <label for="psw"><b>Password</b></label>
               <input
                 type="password"
@@ -153,12 +147,11 @@ class Login extends React.Component {
                 onChange={e => this.setState({ userInfo: { ...userInfo, password: e.target.value } })}
                 name="psw" required />
             </div>
+
             <div className={css(styles.padding)}>
-
-            <div className="button">
-
-              <button onClick={this.checkIfUserExists} type="submit" color='#482acc'>Login</button>
-            </div>
+              <div className="button">
+                <button onClick={this.checkIfUserExists} type="submit" color='#482acc'>Login</button>
+              </div>
             </div>
 
           </form>

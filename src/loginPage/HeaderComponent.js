@@ -4,30 +4,8 @@ import { Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
-    avatar: {
-        height: 35,
-        width: 35,
-        borderRadius: 50,
-        marginLeft: 14,
-        border: '1px solid #DFE0EB',
-    },
     container: {
         height: 40
-    },
-    cursorPointer: {
-        cursor: 'pointer'
-    },
-    name: {
-        fontFamily: 'Muli',
-        fontStyle: 'normal',
-        fontWeight: 600,
-        fontSize: 14,
-        lineHeight: '20px',
-        textAlign: 'right',
-        letterSpacing: 0.2,
-        '@media (max-width: 768px)': {
-            display: 'none'
-        }
     },
     separator: {
         borderLeft: '1px solid #DFE0EB',
@@ -54,13 +32,6 @@ const styles = StyleSheet.create({
             fontSize: 20
         }
     },
-    iconStyles: {
-        cursor: 'pointer',
-        marginLeft: 25,
-        '@media (max-width: 768px)': {
-            marginLeft: 12
-        }
-    }
 });
 
 function HeaderComponent(props) {
@@ -70,7 +41,6 @@ function HeaderComponent(props) {
             <span className={css(styles.title)}>{title}</span>
             <Row vertical="center">
                 <div className={css(styles.separator)}></div>
-
             </Row>
         </Row>
     );
