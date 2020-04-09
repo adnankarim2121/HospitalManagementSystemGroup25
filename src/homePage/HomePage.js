@@ -46,7 +46,6 @@ class App extends React.Component {
                     <div className={css(styles.content)}>
                         <h2>Welcome to the Alberta Hosiptal Scheduling tool!</h2>
                         <img src={HospitalImg} alt='Hospital Pic' width='700' height='400' />
-
                         <h3> This site can do the following things:</h3>
                         <ul>
                             <li>Book an appointment</li>
