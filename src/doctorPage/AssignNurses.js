@@ -31,6 +31,7 @@ class AssignNurses extends React.Component {
     } ,
     appointmentName: {
       name:'',
+      notesFromDoctor: '',
     } };
 
     componentDidMount() {
@@ -104,7 +105,7 @@ class AssignNurses extends React.Component {
         var response = window.confirm(`Are you sure to assign ${nurseName.name} to the selected appointment?`);
         if(response == true)
         {
-            fetch(`http://localhost:4000/HospitalManagementSystem/assignNurse?nurseName=${nurseName.name}&appointments=${appointmentName.name}`)
+            fetch(`http://localhost:4000/HospitalManagementSystem/assignNurse?nurseName=${nurseName.name}&appointments=${appointmentName.name}&notesForNurse=${appointmentName.notesFromDoctor}`)
             .then((response) => {return response.json()})
               .catch(err => console.error(err));
               alert('Nurse successfully assigned!');
@@ -134,7 +135,16 @@ class AssignNurses extends React.Component {
                     <option value="" selected disabled hidden>Choose Appointment</option>
                         {patients.map(this.renderAppointment)}
                     </select>
-
+            <div className={css(styles.padding10)}></div>
+            <div>
+              <label for="notesFromDoctor">Notes for Nurse Regarding Appointment</label>
+              <textarea
+                type="text"
+                placeholder="Notes"
+                value={appointmentName.notesFromDoctor}
+                onChange={e => this.setState({ appointmentName: { ...appointmentName, notesFromDoctor: e.target.value } })}
+                name="notesFromDoctor" required />
+              </div>
                     <button onClick={this.assignNurse} type="submit">Assign Nurse</button>
 
                     </div>

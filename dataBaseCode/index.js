@@ -273,11 +273,11 @@ app.get('/HospitalManagementSystem/getShiftsForDoctor', (req, res) => {
 });
 
 app.get('/HospitalManagementSystem/assignNurse', (req, res) => {
-	const {nurseName, appointments} = req.query;
+	const {nurseName, appointments, notesForNurse} = req.query;
 
-	const query = `UPDATE appointments SET nurseAssigned=? WHERE appointments=?`;
+	const query = `UPDATE appointments SET nurseAssigned=?, doctorNotesForNurse=? WHERE appointments=?`;
 
-	const data = [nurseName, appointments];
+	const data = [nurseName, notesForNurse, appointments];
 	connection.query(query, data, (err, results) => {
 		if(err)
 		{
