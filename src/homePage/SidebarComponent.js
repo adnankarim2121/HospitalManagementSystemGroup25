@@ -93,7 +93,7 @@ class SidebarComponent extends React.Component {
   }
 
   changePageToAboutPage = (props) => {
-    //TO-DO
+    window.location.href = 'http://localhost:3000/About';
   }
 
     render() {

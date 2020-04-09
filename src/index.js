@@ -25,7 +25,7 @@ import PatientViewAppointment  from './patientPage/PatientViewAppointment.js';
 ReactDOM.render(
 
     <BrowserRouter>
-            <Route exact path='/HomePage' component={HomePage}/>
+            <Route exact path='/' component={HomePage}/>
 
             <Route path='/LoginPage' component={LoginPage}/>
             <Route path='/DoctorPage' component={DoctorPage}/>
