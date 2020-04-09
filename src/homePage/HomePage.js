@@ -4,6 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
+import HospitalImg from '../images/hospital.jpg';
 
 const styles = StyleSheet.create({
     container: {
@@ -43,7 +44,13 @@ class App extends React.Component {
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
                     <HeaderComponent title={selectedItem} />
                     <div className={css(styles.content)}>
-                        <span>Content</span>
+                        <h2>Welcome to the Alberta Hosiptal Scheduling tool!</h2>
+                        <img src={HospitalImg} alt='Hospital Pic' width='700' height='400' />
+
+                        <h3> This site can do the following things:</h3>
+                        <ul>
+                            <li>Book an appointment</li>
+                        </ul>
 
                     </div>
                 </Column>
