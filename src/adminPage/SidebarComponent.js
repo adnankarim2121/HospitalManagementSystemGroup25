@@ -105,8 +105,14 @@ class SidebarComponent extends React.Component {
     window.location.href = 'http://localhost:3000/SetFee';
   }
 
+
   changePageToHome = (props) => {
     window.location.href = 'http://localhost:3000/HomePage';
+  }
+
+
+    changePageToSetSchedule = (props) => {
+    window.location.href = 'http://localhost:3000/AdminAssignWorkScedhule';
   }
 
     render() {
@@ -127,6 +133,11 @@ class SidebarComponent extends React.Component {
                             <MenuItemComponent
                                 title="Statistics" imgName={IconStatistics}
                                 onClick={() => this.changePageToStatistics()}
+                                active={this.props.selectedItem === 'Statistics'}
+                            />
+                            <MenuItemComponent
+                                title="Assign Work Schedule" imgName={IconStatistics}
+                                onClick={() => this.changePageToSetSchedule()}
                                 active={this.props.selectedItem === 'Statistics'}
                             />
                             <MenuItemComponent

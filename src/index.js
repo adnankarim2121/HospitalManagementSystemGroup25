@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Router, Switch, Route} from 'react-router-dom';
 import LoginPage  from './loginPage/LoginPage.js';
+
+//import AdminPage  from './adminPage/AdminPage.js';
+import AdminAssignWorkScedhule  from './adminPage/AdminAssignWorkScedhule.js';
+
 import SeeStats  from './adminPage/SeeStats.js';
 import PatientPage  from './patientPage/PatientPage.js';
 import NursePage  from './nursePage/NursePage.js';
@@ -29,6 +33,7 @@ ReactDOM.render(
             <Route path='/NursePage' component={NursePage}/>
             <Route path='/NurseViewPatients' component={NurseViewPatients}/>
             <Route path='/PatientPage' component={PatientPage}/>
+            <Route path='/AdminAssignWorkScedhule' component={AdminAssignWorkScedhule}/> 
             <Route path='/SeeStats' component={SeeStats}/>   
             <Route path='/AddStaff' component={AddStaff}/>
             <Route path='/SetFee' component={SetFee}/> 

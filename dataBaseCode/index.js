@@ -92,6 +92,27 @@ app.get('/HospitalManagementSystem/getDoctors', (req, res) => {
 	})
 });
 
+app.get('/HospitalManagementSystem/getDoctorsAndNurses', (req, res) => {
+	const { email, password} = req.query;
+	console.log(password);
+
+	const query = `SELECT * FROM users WHERE userType=? OR userType=?`;
+	const data = ['Doctor', 'Nurse'];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
 
 app.get('/HospitalManagementSystem/getNurses', (req, res) => {
 	const { email, password} = req.query;
@@ -122,6 +143,29 @@ app.get('/HospitalManagementSystem/setAppointment', (req, res) => {
 
 
 	const data = [username, appointments, doctorName, appointments];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+app.get('/HospitalManagementSystem/setShift', (req, res) => {
+	const { username, shift} = req.query;
+
+	//Handles duplicates
+	const query = `INSERT INTO schedule (name, workshift) SELECT ?, ? FROM DUAL WHERE NOT EXISTS (SELECT * FROM schedule WHERE workshift=?) LIMIT 1`;
+
+
+	const data = [username, shift, shift];
 	connection.query(query, data, (err, results) => {
 		if(err)
 		{
