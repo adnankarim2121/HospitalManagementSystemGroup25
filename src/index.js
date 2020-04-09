@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Router, Switch, Route} from 'react-router-dom';
 import LoginPage  from './loginPage/LoginPage.js';
 import AdminPage  from './adminPage/AdminPage.js';
+import SeeStats  from './adminPage/SeeStats.js';
 import PatientPage  from './patientPage/PatientPage.js';
 import NursePage  from './nursePage/NursePage.js';
 import DoctorPage  from './doctorPage/DoctorPage.js';
@@ -27,7 +28,8 @@ ReactDOM.render(
 
             <Route path='/NursePage' component={NursePage}/>
             <Route path='/PatientPage' component={PatientPage}/>
-            <Route path='/AdminPage' component={AdminPage}/>   
+            <Route path='/AdminPage' component={AdminPage}/> 
+            <Route path='/SeeStats' component={SeeStats}/>   
             <Route path='/AddStaff' component={AddStaff}/>
             <Route path='/SetFee' component={SetFee}/> 
             <Route path='/PatientSetAppointment' component={PatientSetAppointment}/> 
