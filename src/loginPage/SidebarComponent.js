@@ -90,6 +90,10 @@ class SidebarComponent extends React.Component {
 changePageToHomePage = (props) => {
     window.location.href = 'http://localhost:3000/HomePage';
   }
+
+changePageToRegistration = (props) => {
+    window.location.href = 'http://localhost:3000/RegisterNewPatient';
+  }
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -105,6 +109,11 @@ changePageToHomePage = (props) => {
                             active={this.selectedItem === 'Home'}
                         />
                         <Column className={css(styles.menuItemList)}>
+                            <MenuItemComponent
+                                title="Register" imgName={IconLogin}
+                                onClick={() => this.changePageToRegistration()}
+                                active={this.props.selectedItem === 'Register'}
+                            />
                             <MenuItemComponent
                                 title="Login" imgName={IconLogin}
                                 onClick={() => this.changePageToLoginPage()}

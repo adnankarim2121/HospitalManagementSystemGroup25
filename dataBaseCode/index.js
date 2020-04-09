@@ -50,6 +50,30 @@ app.get('/HospitalManagementSystem/add', (req, res) => {
 	})
 });
 
+
+app.get('/HospitalManagementSystem/addNewUser', (req, res) => {
+	const { email, password, address, healthCareNumber, gender, contactNumber} = req.query;
+	console.log(password);
+
+	const query = `INSERT INTO users (email, password, address, healthCareNumber, gender, contactNumber) SELECT ?, ?, ?, ?, ?, ? FROM DUAL WHERE NOT EXISTS (SELECT * FROM users WHERE email=? LIMIT 1)`;
+	const data = [email, password, address, healthCareNumber, gender, contactNumber, email];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.json({
+				data: 'fail'
+			})
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
 app.get('/HospitalManagementSystem/select', (req, res) => {
 	const { email, password} = req.query;
 	console.log(password);
