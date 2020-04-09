@@ -124,6 +124,14 @@ class SidebarComponent extends React.Component {
     window.location.href = 'http://localhost:3000/';
 
   }
+
+  changePageToLoginPage= (props) => {
+    var response = window.confirm(`Are you sure you want to logout?` );
+    if(response == true){
+        window.location.href = 'http://localhost:3000/LoginPage';
+    }
+
+  }
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -147,7 +155,7 @@ class SidebarComponent extends React.Component {
                             <MenuItemComponent
                                 title="View/Cancel Appointments" imgName={IconSchedule}
                                 onClick={() => this.changePageToViewAppointments()}
-                                active={this.props.selectedItem === 'My Schedule'} />
+                                active={this.props.selectedItem === 'My Appointments'} />
 
                             <MenuItemComponent
                                 title="My Prescriptions" imgName={IconMyPrescriptions}
@@ -168,6 +176,10 @@ class SidebarComponent extends React.Component {
                                 title="Settings" imgName={IconSettings}
                                 onClick={() => this.onItemClicked('Settings')}
                                 active={this.props.selectedItem === 'Settings'} />
+                            <MenuItemComponent
+                                title="Logout" imgName={IconSettings}
+                                onClick={() => this.changePageToLoginPage()}
+                                active={this.props.selectedItem === 'Logout'} />
                         </Column>
                     </Column>
                     {isMobile && expanded && <div className={css(styles.outsideLayer)} onClick={this.toggleMenu}></div>}

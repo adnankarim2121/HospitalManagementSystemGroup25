@@ -75,27 +75,6 @@ class NurseViewSchedule extends React.Component {
     }
 
   }
-  deleteAppointment(e)
-  {
-    // var response = window.confirm(`Are you sure you want to cancel the appointment?` );
-    // if(response == true)
-    // {
-    //     fetch(`http://localhost:4000/HospitalManagementSystem/deleteAppointment?appointment=${e.target.value}`)
-    //     .then((response) => {return response.json()})
-    //     .then((response) => {
-
-    //     })
-    //       .catch(err => console.error(err));
-
-    //     window.location.href = 'http://localhost:3000/NurseViewSchedule';
-    // }
-
-    // else
-    // {
-
-    // }
-
-  }
 
     render() {
         const { selectedItem, shifts} = this.state;
