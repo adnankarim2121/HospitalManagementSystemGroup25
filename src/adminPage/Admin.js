@@ -49,25 +49,16 @@ class Admin extends React.Component {
     }
 
   componentDidMount() {
-    this.getUsers();
 
-  }
-
-  getUsers = _ => {
-    fetch('http://localhost:4000/HospitalManagementSystem')
-      .then(response => response.json())
-      .then(response => this.setState({ userInformation: response.data }))
-      .catch(err => console.error(err))
   }
 
   addUser = _ => {
     const { userInfo } = this.state;
-    if (userInfo.userType === 'Nurse' || userInfo.userType === 'Doctor' || userInfo.userType === 'Patient') {
+    if (userInfo.userType === 'Nurse' || userInfo.userType === 'Doctor') {
       fetch(`http://localhost:4000/HospitalManagementSystem/add?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}`)
         .then((response) => { return response.json() })
         .then((response) => {
           this.setState({ userInformation: response.data })
-          alert(response.data);
           var data = JSON.stringify(response.data);
           var dataParsed = JSON.parse(data);
           if (dataParsed.affectedRows === 0) {
@@ -95,14 +86,13 @@ class Admin extends React.Component {
   }
   renderProduct = ({ email, password }) => <div key={email}>{password}</div>
 
-  //handleChange = e => this.setState( {username: e.target.usernameValue})
   render() {
 
     const {userInfo } = this.state;
 
     return (
       <Column className={css(styles.container)}>
-        <div className={css(styles.title)}>{"Add Doctors, Nurses, or Patients "}</div>
+        <div className={css(styles.title)}>{"Add Doctors or Nurses "}</div>
         <div className={css(styles.padding)}></div>
         <div className="login">
           <form className="modal-content">
@@ -131,13 +121,13 @@ class Admin extends React.Component {
             </div>
             <div className={css(styles.padding10)}></div>
             <div>
-              <label for="userType"><b>User Type</b></label>
-              <input
-                type="text"
-                placeholder="Enter Doctor, Nurse or Patient"
-                value={userInfo.userType}
-                onChange={e => this.setState({ userInfo: { ...userInfo, userType: e.target.value } })}
-                name="psw" required />
+            <label for="psw"><b>Staff Type</b></label>
+                  <select id="userType"
+                    onChange={e => this.setState({ userInfo: {...userInfo, userType: e.target.value}})}>
+                    <option value="" selected disabled hidden>Select Staff Type</option>
+                    <option value="Doctor">Doctor </option>;
+                    <option value="Nurse">Nurse </option>;
+                    </select>
             </div>
             <div className={css(styles.padding10)}></div>
             <div>
