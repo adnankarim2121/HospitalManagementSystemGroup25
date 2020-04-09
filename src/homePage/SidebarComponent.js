@@ -88,6 +88,10 @@ class SidebarComponent extends React.Component {
         </div>
     }
 
+    changePageToHomePage = (props) => {
+        window.location.href = 'http://localhost:3000/';
+      }
+
   changePageToLoginPage = (props) => {
     window.location.href = 'http://localhost:3000/LoginPage';
   }
@@ -107,13 +111,13 @@ class SidebarComponent extends React.Component {
                         <LogoComponent
                             title="Home"
                             imgName={IconHome}
-                            onClick={() => this.onItemClicked('Home')}
+                            onClick={() => this.changePageToHomePage()}
                             active={this.props.selectedItem === 'Home'}
                         />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
                                 title="About" imgName={IconOverview}
-                                onClick={() => this.onItemClicked('About')}
+                                onClick={() => this.changePageToAboutPage()}
                                 active={this.props.selectedItem === 'About'}
                             />
                             <MenuItemComponent

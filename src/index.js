@@ -20,12 +20,14 @@ import './index.css';
 import history from './History';
 import PatientSetAppointment  from './patientPage/PatientSetAppointment.js';
 import PatientViewAppointment  from './patientPage/PatientViewAppointment.js';
-
+import About from './homePage/About.js';
 
 ReactDOM.render(
 
     <BrowserRouter>
             <Route exact path='/' component={HomePage}/>
+
+            <Route path='/About' component={About}/>
 
             <Route path='/LoginPage' component={LoginPage}/>
             <Route path='/DoctorPage' component={DoctorPage}/>
