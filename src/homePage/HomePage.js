@@ -49,6 +49,8 @@ class App extends React.Component {
                         <h3> This site can do the following things:</h3>
                         <ul>
                             <li>Book an appointment</li>
+                            <li>View upcoming appointments</li>
+                            <li>Cancel upcoming appointment</li>
                         </ul>
 
                     </div>
