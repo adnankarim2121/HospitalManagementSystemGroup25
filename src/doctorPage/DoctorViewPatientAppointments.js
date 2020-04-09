@@ -50,9 +50,10 @@ class DoctorViewPatientAppointments extends React.Component {
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
-    renderProduct = ({doctorName, appointments, setBy}) => <div key={doctorName}>You have an <strong>{appointments.replace(doctorName, setBy)}</strong>
-    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit"> Cancel </button>
-    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit"> Done </button></div> ;
+    renderProduct = ({doctorName, appointments, setBy, reasonForVisit}) => <div key={doctorName}> <p>You have an <strong>{appointments.replace(doctorName, setBy)}</strong></p>
+    <p id="reasonForVisit">Reason for Visit: <strong>{reasonForVisit}</strong></p>
+    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit"> Cancel Appointment</button>
+    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit"> Appointment Complete </button></div> ;
 
 
 
