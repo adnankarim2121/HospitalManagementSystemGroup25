@@ -115,6 +115,12 @@ class SidebarComponent extends React.Component {
     window.location.href = 'http://localhost:3000/AdminAssignWorkScedhule';
   }
 
+  changePageToLoginPage= (props) => {
+    var response = window.confirm(`Are you sure you want to logout?` );
+    if(response == true){
+        window.location.href = 'http://localhost:3000/LoginPage';
+    }
+}
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -133,12 +139,12 @@ class SidebarComponent extends React.Component {
                             <MenuItemComponent
                                 title="Statistics" imgName={IconStatistics}
                                 onClick={() => this.changePageToStatistics()}
-                                active={this.props.selectedItem === 'Statistics'}
+                                active={this.props.selectedItem === 'StatisticsPage'}
                             />
                             <MenuItemComponent
                                 title="Assign Work Schedule" imgName={IconStatistics}
                                 onClick={() => this.changePageToSetSchedule()}
-                                active={this.props.selectedItem === 'Statistics'}
+                                active={this.props.selectedItem === 'Assign Work Schedule'}
                             />
                             <MenuItemComponent
                                 title="Set Cancellation Fee" imgName={cancelLogo}
@@ -154,6 +160,10 @@ class SidebarComponent extends React.Component {
                                 title="Settings" imgName={IconSettings}
                                 onClick={() => this.onItemClicked('Settings')}
                                 active={this.props.selectedItem === 'Settings'} />
+                            <MenuItemComponent
+                                title="Logout" imgName={IconSettings}
+                                onClick={() => this.changePageToLoginPage()}
+                                active={this.props.selectedItem === 'Logout'} />
                         </Column>
                     </Column>
                     {isMobile && expanded && <div className={css(styles.outsideLayer)} onClick={this.toggleMenu}></div>}

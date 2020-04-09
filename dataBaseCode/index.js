@@ -225,6 +225,29 @@ app.get('/HospitalManagementSystem/getShiftsForNurse', (req, res) => {
 	})
 });
 
+
+app.get('/HospitalManagementSystem/getShiftsForDoctor', (req, res) => {
+	const { doctorName} = req.query;
+
+	const query = `SELECT * FROM schedule WHERE name=?`;
+
+	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
+	const data = [doctorName];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
 app.get('/HospitalManagementSystem/assignNurse', (req, res) => {
 	const {nurseName, appointments} = req.query;
 

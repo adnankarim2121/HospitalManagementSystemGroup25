@@ -99,9 +99,11 @@ class SidebarComponent extends React.Component {
   }
 
   changePageToSchedhule = (props) => {
-    window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
+    window.location.href = 'http://localhost:3000/DoctorViewSchedule';
+  }
 
-    //window.location.replace("http://localhost:3000/AdminPage");
+  changePageToAppointments = (props) => {
+    window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
   }
 
   changePageToAssignNurses= (props) => {
@@ -141,6 +143,10 @@ class SidebarComponent extends React.Component {
                                 title="My Schedule" imgName={IconSchedule}
                                 onClick={() => this.changePageToSchedhule()}
                                 active={this.props.selectedItem === 'My Schedule'} />
+                            <MenuItemComponent
+                                title="My Appointments" imgName={IconSchedule}
+                                onClick={() => this.changePageToAppointments()}
+                                active={this.props.selectedItem === 'My Appointments'} />
 
                             <MenuItemComponent
                                 title="Assign Nurses to Patients" imgName={IconMyNurse}
