@@ -91,7 +91,7 @@ class SidebarComponent extends React.Component {
     }
 
   changePageToHome = (props) => {
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/';
 
   }
 
@@ -106,22 +106,22 @@ class SidebarComponent extends React.Component {
   }
 
   changePageToPrescriptions= (props) => {
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/';
 
   }
 
   changePageToRefferals= (props) => {
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/';
 
   }
 
   changePageToOtherServices= (props) => {
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/';
 
   }
 
   changePageToSettings= (props) => {
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/';
 
   }
     render() {
