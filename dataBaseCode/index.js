@@ -92,6 +92,28 @@ app.get('/HospitalManagementSystem/getDoctors', (req, res) => {
 	})
 });
 
+
+app.get('/HospitalManagementSystem/getNurses', (req, res) => {
+	const { email, password} = req.query;
+	console.log(password);
+
+	const query = `SELECT * FROM users WHERE userType=?`;
+	const data = ['Nurse'];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
 app.get('/HospitalManagementSystem/setAppointment', (req, res) => {
 	const { username, appointments, doctorName} = req.query;
 
@@ -122,6 +144,95 @@ app.get('/HospitalManagementSystem/getAppointment', (req, res) => {
 
 	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
 	const data = [username];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+app.get('/HospitalManagementSystem/assignNurse', (req, res) => {
+	const {nurseName, appointments} = req.query;
+
+	const query = `UPDATE appointments SET nurseAssigned=? WHERE appointments=?`;
+
+	const data = [nurseName, appointments];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+app.get('/HospitalManagementSystem/getAppointmentsForDoctors', (req, res) => {
+	const {doctorName} = req.query;
+
+	const query = `SELECT * FROM appointments WHERE doctorName=?`;
+
+	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
+	const data = [doctorName];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+
+
+app.get('/HospitalManagementSystem/getAppointmentsForNurses', (req, res) => {
+	const {nurseName} = req.query;
+
+	const query = `SELECT * FROM appointments WHERE nurseAssigned=?`;
+
+	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
+	const data = [nurseName];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+app.get('/HospitalManagementSystem/getPatientsForDoctors', (req, res) => {
+	const {doctorName} = req.query;
+
+	const query = `SELECT * FROM appointments WHERE doctorName=?`;
+
+	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
+	const data = [doctorName];
 	connection.query(query, data, (err, results) => {
 		if(err)
 		{

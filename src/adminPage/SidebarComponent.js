@@ -95,6 +95,10 @@ class SidebarComponent extends React.Component {
         return <Admin/>
     }
 
+
+  changePageToStatistics = (props) => {
+    window.location.href = 'http://localhost:3000/SeeStats';
+  }
   changePageToAddStaff = (props) => {
     window.location.href = 'http://localhost:3000/AddStaff';
   }
@@ -120,7 +124,7 @@ class SidebarComponent extends React.Component {
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
                                 title="Statistics" imgName={IconStatistics}
-                                onClick={() => this.onItemClicked('Statistics')}
+                                onClick={() => this.changePageToStatistics()}
                                 active={this.props.selectedItem === 'Statistics'}
                             />
                             <MenuItemComponent

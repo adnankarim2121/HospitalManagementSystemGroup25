@@ -99,42 +99,18 @@ class SidebarComponent extends React.Component {
   }
 
   changePageToSchedhule = (props) => {
-    alert(localStorage.getItem("username"));
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
 
     //window.location.replace("http://localhost:3000/AdminPage");
   }
 
-  changePageToPatients= (props) => {
-    alert(localStorage.getItem("username"));
-    window.location.href = 'http://localhost:3000/HomePage';
-
-    //window.location.replace("http://localhost:3000/AdminPage");
-  }
-
-  changePageToPrescriptions= (props) => {
-    alert(localStorage.getItem("username"));
-    window.location.href = 'http://localhost:3000/HomePage';
-
-    //window.location.replace("http://localhost:3000/AdminPage");
-  }
-
-  changePageToRefferals= (props) => {
-    alert(localStorage.getItem("username"));
-    window.location.href = 'http://localhost:3000/HomePage';
-
-    //window.location.replace("http://localhost:3000/AdminPage");
-  }
-
-  changePageToNurses= (props) => {
-    alert(localStorage.getItem("username"));
-    window.location.href = 'http://localhost:3000/HomePage';
+  changePageToAssignNurses= (props) => {
+    window.location.href = 'http://localhost:3000/AssignNurses';
 
     //window.location.replace("http://localhost:3000/AdminPage");
   }
 
   changePageToSettings= (props) => {
-    alert(localStorage.getItem("username"));
     window.location.href = 'http://localhost:3000/HomePage';
 
     //window.location.replace("http://localhost:3000/AdminPage");
@@ -156,25 +132,12 @@ class SidebarComponent extends React.Component {
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
                                 title="My Schedule" imgName={IconSchedule}
-                                onClick={() => this.onItemClicked('My Schedule')}
+                                onClick={() => this.changePageToSchedhule()}
                                 active={this.props.selectedItem === 'My Schedule'} />
+
                             <MenuItemComponent
-                                title="My Patients" imgName={IconMyPatients}
-                                onClick={() => this.onItemClicked('My Patients')}
-                                active={this.props.selectedItem === 'My Patients'} />
-                            <MenuItemComponent
-                                title="Prescriptions" imgName={IconPrescriptions}
-                                onClick={() => this.onItemClicked('Prescriptions')}
-                                active={this.props.selectedItem === 'Prescriptions'}
-                            />
-                            <MenuItemComponent
-                                title="Referrals" imgName={IconReferrals}
-                                onClick={() => this.onItemClicked('Referrals')}
-                                active={this.props.selectedItem === 'Referrals'}
-                            />
-                            <MenuItemComponent
-                                title="My Nurses" imgName={IconMyNurse}
-                                onClick={() => this.onItemClicked('My Nurses')}
+                                title="Assign Nurses to Patients" imgName={IconMyNurse}
+                                onClick={() => this.changePageToAssignNurses()}
                                 active={this.props.selectedItem === 'My Nurses'} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent

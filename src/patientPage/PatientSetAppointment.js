@@ -65,6 +65,7 @@ class PatientSetAppointment extends React.Component {
         fetch(`http://localhost:4000/HospitalManagementSystem/setAppointment?username=${localStorage.getItem("username")}&appointments=${updatedAppointment}&doctorName=${doctorName.name}`)
         .then((response) => {return response.json()})
           .catch(err => console.error(err));
+          alert('Appointment successfully made!');
           window.location.href = 'http://localhost:3000/PatientSetAppointment';
     }
   }
