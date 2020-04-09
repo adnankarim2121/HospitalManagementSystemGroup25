@@ -71,7 +71,7 @@ function HeaderComponent(props) {
             <Row vertical="center">
                 <div className={css(styles.separator)}></div>
                 <Row vertical="center">
-                    <span className={css(styles.name, styles.cursorPointer)}>Hello, {localStorage.getItem("username")}</span>
+                    <span className={css(styles.name, styles.cursorPointer)}>Hello, {localStorage.getItem("usernameForDoctor")}</span>
                 </Row>
             </Row>
         </Row>

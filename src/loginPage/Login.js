@@ -58,14 +58,20 @@ class Login extends React.Component {
 
   changePageForDoctor = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
-    localStorage.setItem("username", userInfo.email);
+    localStorage.setItem("usernameForDoctor", userInfo.email);
     window.location.href = 'http://localhost:3000/DoctorPage';
   }
 
   changePageForNurse = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
-    localStorage.setItem("username", userInfo.email);
+    localStorage.setItem("usernameForNurse", userInfo.email);
     window.location.href = 'http://localhost:3000/NursePage';
+  }
+
+  changePageForAdmin = (props) => {
+    const { userInfo, checkIfUserExists } = this.state;
+    localStorage.setItem("usernameForAdmin", userInfo.email);
+    window.location.href = 'http://localhost:3000/AdminPage';
   }
 
   checkIfUserExists = _ => {
@@ -84,23 +90,22 @@ class Login extends React.Component {
         }
 
         else if (dataParsed[0].userType === 'patient') {
-          alert("YOU ARE A PATIENT/ Redirecting to patient homepage with correct credentials");
           this.changePageForPatient();
         }
 
         else if (dataParsed[0].userType === 'Patient') {
-          alert("YOU ARE A PATIENT/ Redirecting to patient homepage with correct credentials");
           this.changePageForPatient();
         }
 
         else if (dataParsed[0].userType === 'Nurse') {
-          alert("YOU ARE A NURSE/ Redirecting to nurse homepage with correct credentials");
           this.changePageForNurse();
         }
 
         else if (dataParsed[0].userType === 'Doctor') {
-          alert("YOU ARE A DOCTOR/ Redirecting to dotor homepage with correct credentials");
           this.changePageForDoctor();
+        }
+        else if (dataParsed[0].userType === 'Admin') {
+          this.changePageForAdmin();
         }
 
       })
