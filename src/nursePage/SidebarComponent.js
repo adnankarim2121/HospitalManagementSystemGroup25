@@ -90,7 +90,7 @@ class SidebarComponent extends React.Component {
         </div>
     }
   changePageToHome = (props) => {
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/';
   }
 
   changePageToPatientsAndTasks = (props) => {
@@ -98,11 +98,11 @@ class SidebarComponent extends React.Component {
   }
 
   changePageToNotes= (props) => {
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/';
   }
 
   changePageToSettings= (props) => {
-    window.location.href = 'http://localhost:3000/HomePage';
+    window.location.href = 'http://localhost:3000/';
 
   }
     render() {
