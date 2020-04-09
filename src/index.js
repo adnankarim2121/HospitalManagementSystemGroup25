@@ -6,6 +6,7 @@ import AdminPage  from './adminPage/AdminPage.js';
 import SeeStats  from './adminPage/SeeStats.js';
 import PatientPage  from './patientPage/PatientPage.js';
 import NursePage  from './nursePage/NursePage.js';
+import NurseViewPatients  from './nursePage/NurseViewPatients.js';
 import DoctorPage  from './doctorPage/DoctorPage.js';
 import DoctorViewPatientAppointments  from './doctorPage/DoctorViewPatientAppointments.js';
 import AssignNurses  from './doctorPage/AssignNurses.js';
@@ -27,6 +28,7 @@ ReactDOM.render(
             <Route path='/DoctorPage' component={DoctorPage}/>
 
             <Route path='/NursePage' component={NursePage}/>
+            <Route path='/NurseViewPatients' component={NurseViewPatients}/>
             <Route path='/PatientPage' component={PatientPage}/>
             <Route path='/AdminPage' component={AdminPage}/> 
             <Route path='/SeeStats' component={SeeStats}/>   

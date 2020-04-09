@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     }
 });
 
-class DoctorViewPatientAppointments extends React.Component {
+class NurseViewPatients extends React.Component {
 
     state = { selectedItem: 'Upcoming/Past Appointments',
     appointments: [],
@@ -41,7 +41,7 @@ class DoctorViewPatientAppointments extends React.Component {
 
     getAppointments = _ =>
     {
-      fetch(`http://localhost:4000/HospitalManagementSystem/getAppointmentsForDoctors?doctorName=${localStorage.getItem("usernameForDoctor")}`)
+      fetch(`http://localhost:4000/HospitalManagementSystem/getAppointmentsForNurses?nurseName=${localStorage.getItem("usernameForNurse")}`)
       .then(response => response.json())
       .then(response => this.setState({appointments: response.data}))
       .catch(err => console.error(err))
@@ -50,9 +50,7 @@ class DoctorViewPatientAppointments extends React.Component {
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
-    renderProduct = ({doctorName, appointments, setBy}) => <div key={doctorName}>You have an <strong>{appointments.replace(doctorName, setBy)}</strong>
-    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit"> Cancel </button>
-    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit"> Done </button></div> ;
+    renderPatientsGivenByDoctor = ({doctorName, appointments, setBy}) => <div key={doctorName}>Assigned to <strong>{appointments.replace(doctorName, "patient ")} {setBy} </strong>by <strong>Dr. {doctorName}</strong></div> ;
 
 
 
@@ -68,7 +66,7 @@ class DoctorViewPatientAppointments extends React.Component {
         })
           .catch(err => console.error(err));
 
-        window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
+        window.location.href = 'http://localhost:3000/NurseViewPatients';
     }
 
     else
@@ -89,7 +87,7 @@ class DoctorViewPatientAppointments extends React.Component {
         })
           .catch(err => console.error(err));
 
-        window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
+        window.location.href = 'http://localhost:3000/NurseViewPatients';
     }
 
     else
@@ -108,7 +106,7 @@ class DoctorViewPatientAppointments extends React.Component {
                     <HeaderComponent title={selectedItem} />
                     <div>
                     
-                      {appointments.map(this.renderProduct)} 
+                      {appointments.map(this.renderPatientsGivenByDoctor)} 
 
 
                     </div>
@@ -118,4 +116,4 @@ class DoctorViewPatientAppointments extends React.Component {
     }
 }
 
-export default DoctorViewPatientAppointments
+export default NurseViewPatients
