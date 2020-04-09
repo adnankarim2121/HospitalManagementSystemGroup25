@@ -28,6 +28,8 @@ class PatientSetAppointment extends React.Component {
     state = { selectedItem: 'My Schedule',
     doctors: [],
     date: new Date(),
+    reasonForVisit: {
+        reasonForVisit: ''},
     doctorName: {
       name:'',
     } };
@@ -52,17 +54,17 @@ class PatientSetAppointment extends React.Component {
 
   addAppointment = _ =>
   {
-    const { date, doctorName } = this.state;
+    const { date, doctorName, reasonForVisit } = this.state;
 
-    if(doctorName.name === '')
+    if(doctorName.name === '' || reasonForVisit.reasonForVisit === '')
     {
-        alert("Please choose a doctor.");
+        alert("Please choose a doctor and/or provide a reason for your visit.");
     }
     else{
     var updatedAppointment = "Appointment on " + date + " with " + doctorName.name;
     var response = window.confirm(`Are you sure you want to set an ${updatedAppointment}?` );
     if(response == true){
-        fetch(`http://localhost:4000/HospitalManagementSystem/setAppointment?username=${localStorage.getItem("username")}&appointments=${updatedAppointment}&doctorName=${doctorName.name}`)
+        fetch(`http://localhost:4000/HospitalManagementSystem/setAppointment?username=${localStorage.getItem("username")}&reasonForVisit=${reasonForVisit.reasonForVisit}&appointments=${updatedAppointment}&doctorName=${doctorName.name}`)
         .then((response) => {return response.json()})
           .catch(err => console.error(err));
           alert('Appointment successfully made!');
@@ -78,7 +80,7 @@ class PatientSetAppointment extends React.Component {
     <option value={email}>{email}</option>;
 
     render() {
-        const { selectedItem, doctors, doctorName } = this.state;
+        const { selectedItem, doctors, doctorName, reasonForVisit } = this.state;
         return (
             <Row className={css(styles.container)}>
                 <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
@@ -101,7 +103,16 @@ class PatientSetAppointment extends React.Component {
                     <option value="" selected disabled hidden>Choose Doctor</option>
                         {doctors.map(this.renderDoctors)}
                     </select>
-
+            <div className={css(styles.padding10)}></div>
+            <div>
+              <label for="reasonForVisit">Reason For Visit</label>
+              <textarea
+                type="text"
+                placeholder="Reason for Visit, Notes, etc."
+                value={reasonForVisit.reasonForVisit}
+                onChange={e => this.setState({ reasonForVisit: { ...reasonForVisit, reasonForVisit: e.target.value } })}
+                name="reasonForVisit" required />
+              </div>
                     <button onClick={this.addAppointment} type="submit">Set Appointment</button>
 
                     </div>
