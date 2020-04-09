@@ -10,6 +10,7 @@ import SeeStats  from './adminPage/SeeStats.js';
 import PatientPage  from './patientPage/PatientPage.js';
 import NursePage  from './nursePage/NursePage.js';
 import NurseViewPatients  from './nursePage/NurseViewPatients.js';
+import NurseViewSchedule  from './nursePage/NurseViewSchedule.js';
 import DoctorPage  from './doctorPage/DoctorPage.js';
 import DoctorViewPatientAppointments  from './doctorPage/DoctorViewPatientAppointments.js';
 import AssignNurses  from './doctorPage/AssignNurses.js';
@@ -25,13 +26,14 @@ import PatientViewAppointment  from './patientPage/PatientViewAppointment.js';
 ReactDOM.render(
 
     <BrowserRouter>
-            <Route exact path='/' component={HomePage}/>
+            <Route exact path='/HomePage' component={HomePage}/>
 
             <Route path='/LoginPage' component={LoginPage}/>
             <Route path='/DoctorPage' component={DoctorPage}/>
 
             <Route path='/NursePage' component={NursePage}/>
             <Route path='/NurseViewPatients' component={NurseViewPatients}/>
+            <Route path='/NurseViewSchedule' component={NurseViewSchedule}/>
             <Route path='/PatientPage' component={PatientPage}/>
             <Route path='/AdminAssignWorkScedhule' component={AdminAssignWorkScedhule}/> 
             <Route path='/SeeStats' component={SeeStats}/>   

@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
     }
 });
 
-class NurseViewPatients extends React.Component {
+class NurseViewSchedule extends React.Component {
 
-    state = { selectedItem: 'Patients Assigned To',
-    appointments: [],
+    state = { selectedItem: 'Your Work Schedule',
+    shifts: [],
     date: new Date(),
     doctorName: {
       name:'',
@@ -32,25 +32,25 @@ class NurseViewPatients extends React.Component {
     componentDidMount() {
         window.addEventListener('resize', this.resize);
         document.title = "Patient";
-        this.getAppointments();
+        this.getSchedule();
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
     }
 
-    getAppointments = _ =>
+    getSchedule = _ =>
     {
-      fetch(`http://localhost:4000/HospitalManagementSystem/getAppointmentsForNurses?nurseName=${localStorage.getItem("usernameForNurse")}`)
+      fetch(`http://localhost:4000/HospitalManagementSystem/getShiftsForNurse?nurseName=${localStorage.getItem("usernameForNurse")}`)
       .then(response => response.json())
-      .then(response => this.setState({appointments: response.data}))
+      .then(response => this.setState({shifts: response.data}))
       .catch(err => console.error(err))
     }
 
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
-    renderPatientsGivenByDoctor = ({doctorName, appointments, setBy}) => <div key={doctorName}>Assigned to <strong>{appointments.replace(doctorName, "patient ")} {setBy} </strong>by <strong>Dr. {doctorName}</strong></div> ;
+    renderNurseSchedule = ({name, workshift}) => <div key={name}><strong>{workshift}</strong></div> ;
 
 
 
@@ -66,7 +66,7 @@ class NurseViewPatients extends React.Component {
         })
           .catch(err => console.error(err));
 
-        window.location.href = 'http://localhost:3000/NurseViewPatients';
+        window.location.href = 'http://localhost:3000/NurseViewSchedule';
     }
 
     else
@@ -77,28 +77,28 @@ class NurseViewPatients extends React.Component {
   }
   deleteAppointment(e)
   {
-    var response = window.confirm(`Are you sure you want to cancel the appointment?` );
-    if(response == true)
-    {
-        fetch(`http://localhost:4000/HospitalManagementSystem/deleteAppointment?appointment=${e.target.value}`)
-        .then((response) => {return response.json()})
-        .then((response) => {
+    // var response = window.confirm(`Are you sure you want to cancel the appointment?` );
+    // if(response == true)
+    // {
+    //     fetch(`http://localhost:4000/HospitalManagementSystem/deleteAppointment?appointment=${e.target.value}`)
+    //     .then((response) => {return response.json()})
+    //     .then((response) => {
 
-        })
-          .catch(err => console.error(err));
+    //     })
+    //       .catch(err => console.error(err));
 
-        window.location.href = 'http://localhost:3000/NurseViewPatients';
-    }
+    //     window.location.href = 'http://localhost:3000/NurseViewSchedule';
+    // }
 
-    else
-    {
+    // else
+    // {
 
-    }
+    // }
 
   }
 
     render() {
-        const { selectedItem, appointments} = this.state;
+        const { selectedItem, shifts} = this.state;
         return (
             <Row className={css(styles.container)}>
                 <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
@@ -106,7 +106,7 @@ class NurseViewPatients extends React.Component {
                     <HeaderComponent title={selectedItem} />
                     <div>
                     
-                      {appointments.map(this.renderPatientsGivenByDoctor)} 
+                      {shifts.map(this.renderNurseSchedule)} 
 
 
                     </div>
@@ -116,4 +116,4 @@ class NurseViewPatients extends React.Component {
     }
 }
 
-export default NurseViewPatients
+export default NurseViewSchedule

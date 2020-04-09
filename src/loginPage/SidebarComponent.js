@@ -88,7 +88,7 @@ class SidebarComponent extends React.Component {
   }
 
 changePageToHomePage = (props) => {
-    window.location.href = 'http://localhost:3000/';
+    window.location.href = 'http://localhost:3000/HomePage';
   }
     render() {
         const { expanded } = this.state;

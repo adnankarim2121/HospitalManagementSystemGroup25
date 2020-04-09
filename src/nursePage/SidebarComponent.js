@@ -93,6 +93,10 @@ class SidebarComponent extends React.Component {
     window.location.href = 'http://localhost:3000/';
   }
 
+  changePageToSchedule = (props) => {
+    window.location.href = 'http://localhost:3000/NurseViewSchedule';
+  }
+
   changePageToPatientsAndTasks = (props) => {
     window.location.href = 'http://localhost:3000/NurseViewPatients';
   }
@@ -121,7 +125,13 @@ class SidebarComponent extends React.Component {
                         />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
-                                title="My Schedule and Tasks" imgName={IconSchedule}
+                                title="My Schedule" imgName={IconSchedule}
+                                onClick={() => this.changePageToSchedule()}
+                                active={this.props.selectedItem === 'My Schedule'}
+                            />
+
+                            <MenuItemComponent
+                                title="My Tasks" imgName={IconSchedule}
                                 onClick={() => this.changePageToPatientsAndTasks()}
                                 active={this.props.selectedItem === 'My Schedule'}
                             />
