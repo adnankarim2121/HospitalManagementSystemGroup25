@@ -130,7 +130,7 @@ class SidebarComponent extends React.Component {
                                 active={this.props.selectedItem === 'RegisterHome'}
                             />
                             <MenuItemComponent
-                                title="Login" imgName={IconLogin}
+                                title="Login" imgName={IconLogin} 
                                 onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'LoginHome'}
                             />
