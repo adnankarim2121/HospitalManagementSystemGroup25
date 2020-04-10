@@ -31,6 +31,7 @@ class AdminAssignWorkScedhule extends React.Component {
     state = { selectedItem: 'Assign Work Schedule',
     doctorsAndNurses: [],
     date: new Date(),
+    endDate: new Date(),
     userName: {
       name:'',
     } };
@@ -55,14 +56,14 @@ class AdminAssignWorkScedhule extends React.Component {
 
   addShift = _ =>
   {
-    const { date, userName } = this.state;
+    const { date, endDate, userName } = this.state;
 
     if(userName.name === '')
     {
         alert("Please choose a staff member.");
     }
     else{
-    var updatedShift = "Shift on " + date ;
+    var updatedShift = "Shift on " + date + " to " + endDate;
     var response = window.confirm(`Are you sure you want to set a ${updatedShift} for ${userName.name}?` );
     if(response == true){
         fetch(`http://localhost:4000/HospitalManagementSystem/setShift?username=${userName.name}&shift=${updatedShift}`)
@@ -91,10 +92,18 @@ class AdminAssignWorkScedhule extends React.Component {
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
                     <HeaderComponent title={selectedItem} />
                     <div>
+                    Start of Shift:
                       <DateTimePicker
                         required='true'
                         onChange={this.onChange}
                         value={this.state.date}
+                      />
+
+                     End of Shift:
+                      <DateTimePicker
+                        required='true'
+                        onChange={this.onChange}
+                        value={this.state.endDate}
                       />
 
                     <select id="doctorsAndNurses"
