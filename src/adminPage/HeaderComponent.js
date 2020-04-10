@@ -6,6 +6,9 @@ import { string } from 'prop-types';
 import { Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     avatar: {
         height: 35,
@@ -66,8 +69,19 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Class HeaderComponent
+*/
 function HeaderComponent(props) {
+
+    /*
+    Class Variable
+    */
     const { icon, title, ...otherProps } = props;
+    
+    /*
+    Render webpage
+    */
     return (
         <Row className={css(styles.container)} vertical="center" horizontal="space-between" {...otherProps}>
             <span className={css(styles.title)}>{title}</span>
@@ -85,4 +99,7 @@ HeaderComponent.propTypes = {
     title: string
 };
 
+/*
+Exporting component so other files can use component.
+*/
 export { HeaderComponent };

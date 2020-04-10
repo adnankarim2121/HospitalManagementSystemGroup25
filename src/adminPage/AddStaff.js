@@ -12,6 +12,9 @@ import Admin from './Admin.js'
 
 import LogoIMG from '../icons/login.png'
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     container: {
         height: '100%',
@@ -29,21 +32,40 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Class AddStaff
+*/
 class AddStaff extends React.Component {
+
+    /*
+    Class Variable
+    */
 
     state = { selectedItem: 'Add/Edit Hospital Staff' };
 
+    /*
+    componentDidMount loads variables/functions on startup
+    */
     componentDidMount() {
-        document.title = "Cancellation Fee";
+        document.title = "Add/Edit Hospital Staff";
         window.addEventListener('resize', this.resize);
     }
 
+    /*
+    componentWillUnmount is the last function to be called immediately before the component is removed from the DOM
+    */
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
     }
 
+    /*
+    component re-renders.
+    */
     resize = () => this.forceUpdate();
 
+    /*
+    Render components for the webpage. HTML tags and created components (<Admin>)
+    */
     render() {
         const { selectedItem } = this.state;
         return (
@@ -61,4 +83,7 @@ class AddStaff extends React.Component {
     }
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export default AddStaff;

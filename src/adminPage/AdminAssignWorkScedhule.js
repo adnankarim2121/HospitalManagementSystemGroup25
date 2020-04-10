@@ -10,6 +10,9 @@ import { HeaderComponent } from './HeaderComponent';
 
 import '../App.css';
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     container: {
         height: '100%',
@@ -26,8 +29,14 @@ const styles = StyleSheet.create({
 
 });
 
+/*
+Class AdminAssignWorkScedhule
+*/
 class AdminAssignWorkScedhule extends React.Component {
 
+    /*
+    Class Variable
+    */
     state = { selectedItem: 'Assign Work Schedule',
     doctorsAndNurses: [],
     date: new Date(),
@@ -36,16 +45,27 @@ class AdminAssignWorkScedhule extends React.Component {
       name:'',
     } };
 
+    /*
+    componentDidMount loads variables/functions on startup
+    */
     componentDidMount() {
         window.addEventListener('resize', this.resize);
         document.title = "Patient";
         this.getDoctorsAndNurses();
     }
 
+    /*
+    componentWillUnmount is the last function to be called immediately before the component is removed from the DOM
+    */
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
     }
 
+    /*
+    Function: getDoctorsAndNurses
+    Arguments: None
+    Purpose: Retrieve all doctors and nurses in database. 
+    */ 
     getDoctorsAndNurses = _ =>
     {
       fetch(`http://localhost:4000/HospitalManagementSystem/getDoctorsAndNurses`)
@@ -54,6 +74,11 @@ class AdminAssignWorkScedhule extends React.Component {
       .catch(err => console.error(err))
     }
 
+  /*
+  Function: addShift
+  Arguments: None
+  Purpose: Set a work shift for a doctor or nurse. 
+  */ 
   addShift = _ =>
   {
     const { date, endDate, userName } = this.state;
@@ -75,15 +100,27 @@ class AdminAssignWorkScedhule extends React.Component {
   }
 
   }
-    onChange = date => this.setState({ date })
+
+    /*
+    When date changes from calendar, update data.
+    */
+    onChangeStartDate = date => this.setState({ date })
+    onChangeEndDate = endDate => this.setState({ endDate })
+
+    /*
+    component re-renders.
+    */
     resize = () => this.forceUpdate();
 
-      /*
-      Display results from database on webpage.
-      */
+    /*
+    Display results from database on webpage in specific form (in this case, a drop down).
+    */
     renderDoctorsAndNurses = ({email, userType}) =>
     <option value={email}>{userType} : {email} </option>;
 
+    /*
+    Render components for the webpage. HTML tags.
+    */
     render() {
         const { selectedItem, doctorsAndNurses, userName } = this.state;
         return (
@@ -95,14 +132,14 @@ class AdminAssignWorkScedhule extends React.Component {
                     Start of Shift:
                       <DateTimePicker
                         required='true'
-                        onChange={this.onChange}
+                        onChange={this.onChangeStartDate}
                         value={this.state.date}
                       />
 
                      End of Shift:
                       <DateTimePicker
                         required='true'
-                        onChange={this.onChange}
+                        onChange={this.onChangeEndDate}
                         value={this.state.endDate}
                       />
 
@@ -121,4 +158,7 @@ class AdminAssignWorkScedhule extends React.Component {
     }
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export default AdminAssignWorkScedhule

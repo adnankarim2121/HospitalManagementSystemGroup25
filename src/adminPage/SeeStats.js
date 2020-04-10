@@ -10,6 +10,9 @@ import Iframe from 'react-iframe'
 
 import '../App.css';
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     container: {
         height: '100%',
@@ -39,21 +42,39 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Class SeeStats
+*/
 class SeeStats extends React.Component {
 
+    /*
+    Class Variable
+    */
     state = { selectedItem: 'Statistics' };
 
+    /*
+    componentDidMount loads variables/functions on startup
+    */
     componentDidMount() {
         window.addEventListener('resize', this.resize);
         document.title = this.state;
     }
 
+    /*
+    componentWillUnmount is the last function to be called immediately before the component is removed from the DOM
+    */
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
     }
 
+    /*
+    component re-renders.
+    */
     resize = () => this.forceUpdate();
 
+    /*
+    Render components for the webpage. HTML tags. Graph from:https://ourworldindata.org/grapher/total-cases-covid-19
+    */
     render() {
         const { selectedItem } = this.state;
         return (
@@ -78,4 +99,7 @@ class SeeStats extends React.Component {
     }
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export default SeeStats;

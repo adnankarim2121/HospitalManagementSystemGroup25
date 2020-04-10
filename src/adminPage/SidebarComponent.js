@@ -15,7 +15,9 @@ import cancelLogo from '../icons/cancel.png';
 import IconAddStaff from '../icons/staff.png'
 import IconSettings from '../icons/settings.png'
 
-
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     burgerIcon: {
         cursor: 'pointer',
@@ -72,58 +74,127 @@ const styles = StyleSheet.create({
     }
 });
 
+
+/*
+Class SidebarComponent
+*/
 class SidebarComponent extends React.Component {
 
+    /*
+    Class Variable
+    */
     state = { expanded: false };
 
+
+    /*
+    Function: onItemClicked
+    Arguments: None
+    Purpose: When sidebar attribute clicked, update neccessary variables. 
+    */
     onItemClicked = (item) => {
         this.setState({ expanded: false });
         return this.props.onChange(item);
     }
 
+
+    /*
+    Function: isMobile
+    Arguments: None
+    Purpose: Set width of sidebar. 
+    */
     isMobile = () => window.innerWidth <= 768;
 
+
+    /*
+    Function: toggleMenu
+    Arguments: None
+    Purpose: Handle sidebar menu toggling. 
+    */
     toggleMenu = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
 
+    /*
+    Function: renderBurger
+    Arguments: None
+    Purpose: Return IconBurger component. 
+    */
     renderBurger = () => {
         return <div onClick={this.toggleMenu} className={css(styles.burgerIcon)}>
             <IconBurger />
         </div>
     }
 
+    /*
+    Function: Admin
+    Arguments: None
+    Purpose: Return Admin component. 
+    */
     Admin = () =>
     {
         return <Admin/>
     }
 
 
+  /*
+  Function: changePageToStatistics
+  Arguments: None
+  Purpose: Changing to stats page when clicked on sidebar. 
+  */ 
   changePageToStatistics = (props) => {
     window.location.href = 'http://localhost:3000/SeeStats';
   }
+
+  /*
+  Function: changePageToAddStaff
+  Arguments: None
+  Purpose: Changing to add staff page when clicked on sidebar. 
+  */ 
+
   changePageToAddStaff = (props) => {
     window.location.href = 'http://localhost:3000/AddStaff';
   }
 
+  /*
+  Function: changePageToSetFee
+  Arguments: None
+  Purpose: Changing to set fee page when clicked on sidebar. 
+  */ 
     changePageToSetFee = (props) => {
     window.location.href = 'http://localhost:3000/SetFee';
   }
 
-
+  /*
+  Function: changePageToHome
+  Arguments: None
+  Purpose: Changing to home page when clicked on sidebar. 
+  */ 
   changePageToHome = (props) => {
     window.location.href = 'http://localhost:3000/';
   }
 
-
+  /*
+  Function: changePageToSetSchedule
+  Arguments: None
+  Purpose: Changing to schedule page when clicked on sidebar. 
+  */ 
     changePageToSetSchedule = (props) => {
     window.location.href = 'http://localhost:3000/AdminAssignWorkScedhule';
   }
 
+  /*
+  Function: changePageToLoginPage
+  Arguments: None
+  Purpose: Changing to login page when clicked on sidebar. 
+  */ 
   changePageToLoginPage= (props) => {
     var response = window.confirm(`Are you sure you want to logout?` );
     if(response == true){
         window.location.href = 'http://localhost:3000/LoginPage';
     }
 }
+
+    /*
+    Render webpage
+    */
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -176,4 +247,7 @@ class SidebarComponent extends React.Component {
     };
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export { SidebarComponent };
