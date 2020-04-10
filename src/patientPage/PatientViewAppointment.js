@@ -51,7 +51,10 @@ class PatientViewAppointment extends React.Component {
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
-    renderProduct = ({setBy, appointments}) => <div key={setBy}>{appointments}<button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit">
+    /*
+    Display results from database on webpage.
+    */
+    renderViewAppointments = ({setBy, appointments}) => <div key={setBy}>{appointments}<button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit">
     Cancel Appointment</button> </div> ;
 
 
@@ -85,7 +88,7 @@ class PatientViewAppointment extends React.Component {
                     <HeaderComponent title={selectedItem} />
                     <div>
                     
-                      {appointments.map(this.renderProduct)} 
+                      {appointments.map(this.renderViewAppointments)} 
 
 
                     </div>

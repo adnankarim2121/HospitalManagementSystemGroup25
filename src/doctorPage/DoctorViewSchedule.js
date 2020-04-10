@@ -50,6 +50,9 @@ class DoctorViewSchedule extends React.Component {
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
+      /*
+      Display results from database on webpage.
+      */
     renderDoctorSchedule = ({name, workshift}) => <div key={name}><strong>{workshift}</strong></div> ;
 
 

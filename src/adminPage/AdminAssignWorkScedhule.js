@@ -77,6 +77,9 @@ class AdminAssignWorkScedhule extends React.Component {
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
+      /*
+      Display results from database on webpage.
+      */
     renderDoctorsAndNurses = ({email, userType}) =>
     <option value={email}>{userType} : {email} </option>;
 

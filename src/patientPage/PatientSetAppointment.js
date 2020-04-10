@@ -76,6 +76,9 @@ class PatientSetAppointment extends React.Component {
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
+    /*
+    Display results from database on webpage.
+    */
     renderDoctors = ({email, userType}) =>
     <option value={email}>{email}</option>;
 

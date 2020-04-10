@@ -50,6 +50,9 @@ class NurseViewPatients extends React.Component {
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
+      /*
+      Display results from database on webpage.
+      */
     renderPatientsGivenByDoctor = ({doctorName, appointments, setBy, doctorNotesForNurse, reasonForVisit}) => <div key={doctorName}><p>Assigned to <strong>{appointments.replace(doctorName, "patient ")} {setBy} </strong>by <strong>Dr. {doctorName}</strong></p>
     <p>Patient's Reason for Visit: <strong>{reasonForVisit}</strong></p>
     <p>Notes By Doctor Regarding Appointment: <i>{doctorNotesForNurse}</i></p>

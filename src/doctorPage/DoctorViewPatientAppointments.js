@@ -50,7 +50,10 @@ class DoctorViewPatientAppointments extends React.Component {
     onChange = date => this.setState({ date })
     resize = () => this.forceUpdate();
 
-    renderProduct = ({doctorName, appointments, setBy, reasonForVisit}) => <div key={doctorName}> <p>You have an <strong>{appointments.replace(doctorName, setBy)}</strong></p>
+      /*
+      Display results from database on webpage.
+      */
+    renderPatientInformation = ({doctorName, appointments, setBy, reasonForVisit}) => <div key={doctorName}> <p>You have an <strong>{appointments.replace(doctorName, setBy)}</strong></p>
     <p id="reasonForVisit">Reason for Visit: <strong>{reasonForVisit}</strong></p>
     <button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit"> Appointment Complete </button>
     <button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit"> Cancel Appointment</button></div> ;
@@ -109,7 +112,7 @@ class DoctorViewPatientAppointments extends React.Component {
                     <HeaderComponent title={selectedItem} />
                     <div>
                     
-                      {appointments.map(this.renderProduct)} 
+                      {appointments.map(this.renderPatientInformation)} 
 
 
                     </div>

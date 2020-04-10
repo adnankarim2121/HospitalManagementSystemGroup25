@@ -83,6 +83,9 @@ class Admin extends React.Component {
     console.log(userInfo);
   }
 
+  /*
+  Display results from database on webpage.
+  */
   renderProduct = ({ email, password }) => <div key={email}>{password}</div>
 
   render() {

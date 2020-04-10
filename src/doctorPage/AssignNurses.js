@@ -86,9 +86,15 @@ class AssignNurses extends React.Component {
 
   }
 
+    /*
+    Display results from database on webpage.
+    */
     renderNurses = ({email, userType}) =>
     <option value={email}>{email} </option>;
 
+    /*
+    Display results from database on webpage.
+    */
     renderAppointment = ({doctorName, setBy, appointments}) =>
     <option value={appointments}>{appointments.replace(doctorName, "with ")} patient {setBy}</option>;
 
