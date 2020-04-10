@@ -56,7 +56,7 @@ class Login extends React.Component {
   changePageForDoctor = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
     localStorage.setItem("usernameForDoctor", userInfo.email);
-    window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
+    window.location.href = 'http://localhost:3000/DoctorViewSchedule';
   }
 
   changePageForNurse = (props) => {
