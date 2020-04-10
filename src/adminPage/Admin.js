@@ -80,10 +80,6 @@ class Admin extends React.Component {
     console.log(userInfo);
   }
 
-  onSubmit = () => {
-    alert("made it here");
-    window.open("http://localhost:3000/Patients")
-  }
   renderProduct = ({ email, password }) => <div key={email}>{password}</div>
 
   render() {

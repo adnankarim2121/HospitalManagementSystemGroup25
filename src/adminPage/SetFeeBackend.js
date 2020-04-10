@@ -40,8 +40,13 @@ class SetFeeBackend extends React.Component {
 
   setFee = _ => {
     const { feeValue } = this.state;
-    localStorage.setItem("fee", feeValue.fee);
-    alert(feeValue.fee);
+
+    var response = window.confirm(`Are you sure you want to set the fee value at $${feeValue.fee}?` );
+    if(response == true)
+    {
+      localStorage.setItem("fee", feeValue.fee);
+      window.location.href = 'http://localhost:3000/SetFee';
+    }
   }
 
   render() {

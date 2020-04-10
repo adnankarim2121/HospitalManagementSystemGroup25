@@ -92,10 +92,7 @@ class SidebarComponent extends React.Component {
         </div>
     }
   changePageToHome = (props) => {
-    alert(localStorage.getItem("username"));
     window.location.href = 'http://localhost:3000/';
-
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
 
   changePageToSchedhule = (props) => {
@@ -108,14 +105,11 @@ class SidebarComponent extends React.Component {
 
   changePageToAssignNurses= (props) => {
     window.location.href = 'http://localhost:3000/AssignNurses';
-
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
 
   changePageToSettings= (props) => {
     window.location.href = 'http://localhost:3000/';
 
-    //window.location.replace("http://localhost:3000/AdminPage");
   }
 
   changePageToLoginPage= (props) => {
