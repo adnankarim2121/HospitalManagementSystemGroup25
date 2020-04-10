@@ -54,7 +54,7 @@ class App extends React.Component {
                             <li>If you are the administrator, you account will have already been set up. If you need to contact the IT team, please phone this number: (403) 999-9999.</li>
                         </ul>
                         <h4>We hope your experience with Alberta Hospital is smooth and comfortable!</h4>
-                            <img src={KidImg}/>
+                        <img src={KidImg}/>
                         
                     </div>
                 </Column>

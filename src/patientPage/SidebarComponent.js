@@ -116,7 +116,7 @@ class SidebarComponent extends React.Component {
   }
 
   changePageToOtherServices= (props) => {
-    window.location.href = 'http://localhost:3000/';
+    window.location.href = 'http://localhost:3000/OtherServices';
 
   }
 
@@ -159,7 +159,7 @@ class SidebarComponent extends React.Component {
                                 
                             <MenuItemComponent
                                 title="Other Services" imgName={IconOtherServices}
-                                onClick={() => this.onItemClicked('Other Services')}
+                                onClick={() => this.changePageToOtherServices()}
                                 active={this.props.selectedItem === 'Other Services'} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent

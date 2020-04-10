@@ -25,6 +25,7 @@ import history from './History';
 import PatientSetAppointment  from './patientPage/PatientSetAppointment.js';
 import PatientViewAppointment  from './patientPage/PatientViewAppointment.js';
 import About from './homePage/About.js';
+import OtherServices from './patientPage/OtherServices.js';
 
 ReactDOM.render(
 
@@ -40,6 +41,7 @@ ReactDOM.render(
             <Route path='/NurseViewPatients' component={NurseViewPatients}/>
             <Route path='/NurseViewSchedule' component={NurseViewSchedule}/>
             <Route path='/PatientPage' component={PatientPage}/>
+            <Route path='/OtherServices' component={OtherServices}/>
             <Route path='/AdminAssignWorkScedhule' component={AdminAssignWorkScedhule}/> 
             <Route path='/SeeStats' component={SeeStats}/>   
             <Route path='/AddStaff' component={AddStaff}/>
