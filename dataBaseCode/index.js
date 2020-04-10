@@ -19,13 +19,7 @@ connection.connect(err => {
 	}
 });
 
-console.log(connection);
-
 app.use(cors());
-
-app.get('/', (req, res) => {
-	res.send('hello')
-});
 
 app.get('/HospitalManagementSystem/add', (req, res) => {
 	const { email, password, userType} = req.query;
@@ -210,7 +204,6 @@ app.get('/HospitalManagementSystem/getAppointment', (req, res) => {
 
 	const query = `SELECT * FROM appointments WHERE setBy=?`;
 
-	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
 	const data = [username];
 	connection.query(query, data, (err, results) => {
 		if(err)
@@ -232,7 +225,6 @@ app.get('/HospitalManagementSystem/getShiftsForNurse', (req, res) => {
 
 	const query = `SELECT * FROM schedule WHERE name=?`;
 
-	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
 	const data = [nurseName];
 	connection.query(query, data, (err, results) => {
 		if(err)
@@ -255,7 +247,6 @@ app.get('/HospitalManagementSystem/getShiftsForDoctor', (req, res) => {
 
 	const query = `SELECT * FROM schedule WHERE name=?`;
 
-	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
 	const data = [doctorName];
 	connection.query(query, data, (err, results) => {
 		if(err)
@@ -298,7 +289,6 @@ app.get('/HospitalManagementSystem/getAppointmentsForDoctors', (req, res) => {
 
 	const query = `SELECT * FROM appointments WHERE doctorName=?`;
 
-	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
 	const data = [doctorName];
 	connection.query(query, data, (err, results) => {
 		if(err)
@@ -322,7 +312,6 @@ app.get('/HospitalManagementSystem/getAppointmentsForNurses', (req, res) => {
 
 	const query = `SELECT * FROM appointments WHERE nurseAssigned=?`;
 
-	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
 	const data = [nurseName];
 	connection.query(query, data, (err, results) => {
 		if(err)
@@ -344,7 +333,6 @@ app.get('/HospitalManagementSystem/getPatientsForDoctors', (req, res) => {
 
 	const query = `SELECT * FROM appointments WHERE doctorName=?`;
 
-	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
 	const data = [doctorName];
 	connection.query(query, data, (err, results) => {
 		if(err)
@@ -364,7 +352,6 @@ app.get('/HospitalManagementSystem/getPatientsForDoctors', (req, res) => {
 app.get('/HospitalManagementSystem/deleteAppointment', (req, res) => {
 	const {appointment} = req.query;
 	const query = `DELETE FROM appointments WHERE appointments=?;`;
-	// const query = `UPDATE appointments SET appointments=?, setBy=?, doctorName=? WHERE email=?`;
 	const data = [appointment];
 	connection.query(query, data, (err, results) => {
 		if(err)
@@ -398,5 +385,5 @@ app.get('/HospitalManagementSystem', (req, res) => {
 });
 
 app.listen(4000, () =>{
-	console.log("listening!");
+	console.log("Database is up and running!");
 })

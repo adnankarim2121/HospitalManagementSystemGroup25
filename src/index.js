@@ -26,12 +26,9 @@ ReactDOM.render(
 
     <BrowserRouter>
             <Route exact path='/' component={HomePage}/>
-
             <Route path='/About' component={About}/>
-
             <Route path='/LoginPage' component={LoginPage}/>
             <Route path='/DoctorPage' component={DoctorPage}/>
-
             <Route path='/NursePage' component={NursePage}/>
             <Route path='/NurseViewPatients' component={NurseViewPatients}/>
             <Route path='/NurseViewSchedule' component={NurseViewSchedule}/>
@@ -46,7 +43,6 @@ ReactDOM.render(
             <Route path='/AssignNurses' component={AssignNurses}/>
             <Route path='/DoctorViewSchedule' component={DoctorViewSchedule}/> 
             <Route path='/RegisterNewPatient' component={RegisterNewPatient}/>     
-
     </BrowserRouter>
 
 
