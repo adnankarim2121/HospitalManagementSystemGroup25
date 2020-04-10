@@ -1,10 +1,18 @@
+/*
+Some functions will be more descriptive than others since they are not as self-explanatory.
+*/
+/*
+Set up nodejs variables to it can access the neccesary APIs such as mysql, cors and express.
+*/
+
 const express = require('express');
 const cors = require('cors');
 const sql = require('mysql');
 const app = express();
 
-const query = "SELECT * FROM users";
-
+/*
+Create connection with database.
+*/
 const connection = sql.createConnection({
   host: "localhost",
   user: "root",
@@ -12,6 +20,9 @@ const connection = sql.createConnection({
   database: "HospitalManagementSystem"
 })
 
+/*
+If connection failed, let user know. 
+*/
 connection.connect(err => {
 	if(err)
 	{
@@ -19,12 +30,18 @@ connection.connect(err => {
 	}
 });
 
+/*
+Required connection to make in order to interact with database.
+*/
 app.use(cors());
 
+
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/add
+Adding new users into database.
+*/
 app.get('/HospitalManagementSystem/add', (req, res) => {
 	const { email, password, userType} = req.query;
-	console.log(password);
-
 	const query = `INSERT INTO users (email, password, userType) SELECT ?, ?, ? FROM DUAL WHERE NOT EXISTS (SELECT * FROM users WHERE email=? LIMIT 1)`;
 	const data = [email, password, userType, email];
 	connection.query(query, data, (err, results) => {
@@ -45,10 +62,12 @@ app.get('/HospitalManagementSystem/add', (req, res) => {
 });
 
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/addNewUser
+Adding new users with more information.
+*/
 app.get('/HospitalManagementSystem/addNewUser', (req, res) => {
 	const { email, password, address, healthCareNumber, gender, contactNumber} = req.query;
-	console.log(password);
-
 	const query = `INSERT INTO users (email, password, address, healthCareNumber, gender, contactNumber) SELECT ?, ?, ?, ?, ?, ? FROM DUAL WHERE NOT EXISTS (SELECT * FROM users WHERE email=? LIMIT 1)`;
 	const data = [email, password, address, healthCareNumber, gender, contactNumber, email];
 	connection.query(query, data, (err, results) => {
@@ -68,10 +87,12 @@ app.get('/HospitalManagementSystem/addNewUser', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/select
+Information when logging in.
+*/
 app.get('/HospitalManagementSystem/select', (req, res) => {
 	const { email, password} = req.query;
-	console.log(password);
-
 	const query = `SELECT * FROM users WHERE email=? AND password=?`;
 	const data = [email, password];
 	connection.query(query, data, (err, results) => {
@@ -89,10 +110,11 @@ app.get('/HospitalManagementSystem/select', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getDoctors
+*/
 app.get('/HospitalManagementSystem/getDoctors', (req, res) => {
 	const { email, password} = req.query;
-	console.log(password);
-
 	const query = `SELECT * FROM users WHERE userType=?`;
 	const data = ['Doctor'];
 	connection.query(query, data, (err, results) => {
@@ -110,10 +132,11 @@ app.get('/HospitalManagementSystem/getDoctors', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getDoctorsAndNurses
+*/
 app.get('/HospitalManagementSystem/getDoctorsAndNurses', (req, res) => {
 	const { email, password} = req.query;
-	console.log(password);
-
 	const query = `SELECT * FROM users WHERE userType=? OR userType=?`;
 	const data = ['Doctor', 'Nurse'];
 	connection.query(query, data, (err, results) => {
@@ -131,11 +154,11 @@ app.get('/HospitalManagementSystem/getDoctorsAndNurses', (req, res) => {
 	})
 });
 
-
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getNurses
+*/
 app.get('/HospitalManagementSystem/getNurses', (req, res) => {
 	const { email, password} = req.query;
-	console.log(password);
-
 	const query = `SELECT * FROM users WHERE userType=?`;
 	const data = ['Nurse'];
 	connection.query(query, data, (err, results) => {
@@ -153,6 +176,10 @@ app.get('/HospitalManagementSystem/getNurses', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/setAppointment
+Patients setting appointments that are stored in database.
+*/
 app.get('/HospitalManagementSystem/setAppointment', (req, res) => {
 	const { username, appointments, doctorName, reasonForVisit} = req.query;
 
@@ -176,6 +203,10 @@ app.get('/HospitalManagementSystem/setAppointment', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/setShift
+Admin setting shifts for doctors and nurses.
+*/
 app.get('/HospitalManagementSystem/setShift', (req, res) => {
 	const { username, shift} = req.query;
 
@@ -199,6 +230,10 @@ app.get('/HospitalManagementSystem/setShift', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getAppointment
+Patients viewing their appointments.
+*/
 app.get('/HospitalManagementSystem/getAppointment', (req, res) => {
 	const { username} = req.query;
 
@@ -220,6 +255,10 @@ app.get('/HospitalManagementSystem/getAppointment', (req, res) => {
 	})
 });
 
+
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getShiftsForNurse
+*/
 app.get('/HospitalManagementSystem/getShiftsForNurse', (req, res) => {
 	const { nurseName} = req.query;
 
@@ -241,7 +280,9 @@ app.get('/HospitalManagementSystem/getShiftsForNurse', (req, res) => {
 	})
 });
 
-
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getShiftsForDoctor
+*/
 app.get('/HospitalManagementSystem/getShiftsForDoctor', (req, res) => {
 	const { doctorName} = req.query;
 
@@ -263,6 +304,10 @@ app.get('/HospitalManagementSystem/getShiftsForDoctor', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/assignNurse
+When doctor assigns a nurse to an appointment, this function runs. 
+*/
 app.get('/HospitalManagementSystem/assignNurse', (req, res) => {
 	const {nurseName, appointments, notesForNurse} = req.query;
 
@@ -284,6 +329,9 @@ app.get('/HospitalManagementSystem/assignNurse', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getAppointmentsForDoctors
+*/
 app.get('/HospitalManagementSystem/getAppointmentsForDoctors', (req, res) => {
 	const {doctorName} = req.query;
 
@@ -305,8 +353,9 @@ app.get('/HospitalManagementSystem/getAppointmentsForDoctors', (req, res) => {
 	})
 });
 
-
-
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getAppointmentsForNurses
+*/
 app.get('/HospitalManagementSystem/getAppointmentsForNurses', (req, res) => {
 	const {nurseName} = req.query;
 
@@ -328,6 +377,9 @@ app.get('/HospitalManagementSystem/getAppointmentsForNurses', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getPatientsForDoctors
+*/
 app.get('/HospitalManagementSystem/getPatientsForDoctors', (req, res) => {
 	const {doctorName} = req.query;
 
@@ -349,6 +401,10 @@ app.get('/HospitalManagementSystem/getPatientsForDoctors', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/deleteAppointment
+When patients/doctors delete appointments.
+*/
 app.get('/HospitalManagementSystem/deleteAppointment', (req, res) => {
 	const {appointment} = req.query;
 	const query = `DELETE FROM appointments WHERE appointments=?;`;
@@ -368,7 +424,12 @@ app.get('/HospitalManagementSystem/deleteAppointment', (req, res) => {
 	})
 });
 
+/*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem
+Show everything in user table. Used for debugging.
+*/
 app.get('/HospitalManagementSystem', (req, res) => {
+	const query = `SELECT * FROM users;`;
 	connection.query(query, (err, results) => {
 		if(err)
 		{
@@ -384,6 +445,9 @@ app.get('/HospitalManagementSystem', (req, res) => {
 	})
 });
 
+/*
+Display message to terminal if connection to database is successfully running. 
+*/
 app.listen(4000, () =>{
 	console.log("Database is up and running!");
 })
