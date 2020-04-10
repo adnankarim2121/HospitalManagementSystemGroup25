@@ -7,6 +7,7 @@ import LogoComponent from '../LogoComponent';
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconLogin from '../icons/login.png';
+import IconOverview from '../icons/overview.png';
 
 const styles = StyleSheet.create({
     burgerIcon: {
@@ -94,6 +95,10 @@ changePageToHomePage = (props) => {
 changePageToRegistration = (props) => {
     window.location.href = 'http://localhost:3000/RegisterNewPatient';
   }
+
+  changePageToAboutPage = (props) => {
+    window.location.href = 'http://localhost:3000/About';
+  }  
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -108,7 +113,13 @@ changePageToRegistration = (props) => {
                             onClick={() => this.changePageToHomePage()}
                             active={this.selectedItem === 'Home'}
                         />
+
                         <Column className={css(styles.menuItemList)}>
+                            <MenuItemComponent
+                                title="About" imgName={IconOverview}
+                                onClick={() => this.changePageToAboutPage()}
+                                active={this.props.selectedItem === 'About'}
+                            />
                             <MenuItemComponent
                                 title="Register" imgName={IconLogin}
                                 onClick={() => this.changePageToRegistration()}
@@ -117,7 +128,7 @@ changePageToRegistration = (props) => {
                             <MenuItemComponent
                                 title="Login" imgName={IconLogin}
                                 onClick={() => this.changePageToLoginPage()}
-                                active={this.props.selectedItem === 'Login'}
+                                active={this.props.selectedItem === 'LoginPage'}
                             />
                         </Column>
                     </Column>

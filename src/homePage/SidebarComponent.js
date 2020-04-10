@@ -96,6 +96,10 @@ class SidebarComponent extends React.Component {
     window.location.href = 'http://localhost:3000/LoginPage';
   }
 
+  changePageToRegisterPage = (props) => {
+    window.location.href = 'http://localhost:3000/RegisterNewPatient';
+  }
+
   changePageToAboutPage = (props) => {
     window.location.href = 'http://localhost:3000/About';
   }
@@ -112,18 +116,23 @@ class SidebarComponent extends React.Component {
                             title="Home"
                             imgName={IconHome}
                             onClick={() => this.changePageToHomePage()}
-                            active={this.props.selectedItem === 'Home'}
+                            active={this.props.selectedItem === 'HomePage'}
                         />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
                                 title="About" imgName={IconOverview}
                                 onClick={() => this.changePageToAboutPage()}
-                                active={this.props.selectedItem === 'About'}
+                                active={this.props.selectedItem === 'AboutHome'}
+                            />
+                            <MenuItemComponent
+                                title="Register" imgName={IconLogin}
+                                onClick={() => this.changePageToRegisterPage()}
+                                active={this.props.selectedItem === 'RegisterHome'}
                             />
                             <MenuItemComponent
                                 title="Login" imgName={IconLogin}
                                 onClick={() => this.changePageToLoginPage()}
-                                active={this.props.selectedItem === 'Login'}
+                                active={this.props.selectedItem === 'LoginHome'}
                             />
                         </Column>
                     </Column>
