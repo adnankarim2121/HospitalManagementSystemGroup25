@@ -1,3 +1,6 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import { Column, Row } from 'simple-flexbox';

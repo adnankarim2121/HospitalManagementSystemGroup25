@@ -1,3 +1,7 @@
+/*
+Importing all necessary components required
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Router, Switch, Route} from 'react-router-dom';
@@ -24,6 +28,9 @@ import About from './homePage/About.js';
 
 ReactDOM.render(
 
+    /*
+    Creating routing so links can be viewed by local host when typed in URL bar.
+     */
     <BrowserRouter>
             <Route exact path='/' component={HomePage}/>
             <Route path='/About' component={About}/>

@@ -1,3 +1,7 @@
+/*
+Importing all necessary components required
+*/
+
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';

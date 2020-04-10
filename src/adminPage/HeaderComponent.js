@@ -1,3 +1,6 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { string } from 'prop-types';
 import { Row } from 'simple-flexbox';

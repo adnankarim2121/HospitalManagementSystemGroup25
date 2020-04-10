@@ -1,3 +1,6 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import { Column, Row } from 'simple-flexbox';
