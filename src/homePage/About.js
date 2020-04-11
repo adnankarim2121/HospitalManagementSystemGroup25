@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
 
 class App extends React.Component {
 
-    state = { selectedItem: 'Home' };
+    state = { selectedItem: 'About' };
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
-        document.title = "Home";
+        document.title = "About";
 
     }
 

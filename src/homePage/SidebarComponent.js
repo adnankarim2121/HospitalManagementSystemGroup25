@@ -8,6 +8,7 @@ import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconOverview from '../icons/overview.png';
 import IconLogin from '../icons/login.png';
+import IconRegister from '../icons/register.png';
 import IconDoctor from '../icons/doctor.png'
 import IconStaff from '../icons/staff.png'
 
@@ -116,23 +117,23 @@ class SidebarComponent extends React.Component {
                             title="Home"
                             imgName={IconHome}
                             onClick={() => this.changePageToHomePage()}
-                            active={this.props.selectedItem === 'HomePage'}
+                            active={this.props.selectedItem === 'Home'}
                         />
                         <Column className={css(styles.menuItemList)}>
                             <MenuItemComponent
                                 title="About" imgName={IconOverview}
                                 onClick={() => this.changePageToAboutPage()}
-                                active={this.props.selectedItem === 'AboutHome'}
+                                active={this.props.selectedItem === 'About'}
                             />
                             <MenuItemComponent
-                                title="Register" imgName={IconLogin}
+                                title="Register" imgName={IconRegister}
                                 onClick={() => this.changePageToRegisterPage()}
-                                active={this.props.selectedItem === 'RegisterHome'}
+                                active={this.props.selectedItem === 'Register'}
                             />
                             <MenuItemComponent
                                 title="Login" imgName={IconLogin} 
                                 onClick={() => this.changePageToLoginPage()}
-                                active={this.props.selectedItem === 'LoginHome'}
+                                active={this.props.selectedItem === 'Login'}
                             />
                         </Column>
                     </Column>

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import { Column, Row } from 'simple-flexbox';
+import { Column} from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 
 

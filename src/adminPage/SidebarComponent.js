@@ -13,7 +13,7 @@ import IconHome from '../icons/health.png';
 import IconStatistics from '../icons/statistics.png'
 import cancelLogo from '../icons/cancel.png';
 import IconAddStaff from '../icons/staff.png'
-import IconSettings from '../icons/settings.png'
+import IconLogout from '../icons/logout.png'
 
 /*
 Styling the webpage attributes.
@@ -231,11 +231,7 @@ class SidebarComponent extends React.Component {
                                 active={this.props.selectedItem === 'Add/Edit Hospital Staff'} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
-                                title="Settings" imgName={IconSettings}
-                                onClick={() => this.onItemClicked('Settings')}
-                                active={this.props.selectedItem === 'Settings'} />
-                            <MenuItemComponent
-                                title="Logout" imgName={IconSettings}
+                                title="Logout" imgName={IconLogout}
                                 onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'Logout'} />
                         </Column>

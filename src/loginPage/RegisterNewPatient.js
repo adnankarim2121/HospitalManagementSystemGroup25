@@ -1,12 +1,13 @@
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
-import { SidebarComponent } from './SidebarComponent';
-import { HeaderComponent } from './HeaderComponent';
+import { SidebarComponent } from '../homePage/SidebarComponent';
+import { HeaderComponent } from '../homePage/HeaderComponent';
 import '../App.css';
+
 import RegisterBackend from './RegisterBackend.js'
 
-import LogoIMG from '../icons/login.png'
+import LogoIMG from '../icons/login.png';
 
 const styles = StyleSheet.create({
     container: {
@@ -27,10 +28,10 @@ const styles = StyleSheet.create({
 
 class RegisterNewPatient extends React.Component {
 
-    state = { selectedItem: 'Registration' };
+    state = { selectedItem: 'Register' };
 
     componentDidMount() {
-        document.title = "Cancellation Fee";
+        document.title = "Register";
         window.addEventListener('resize', this.resize);
     }
 
@@ -46,7 +47,7 @@ class RegisterNewPatient extends React.Component {
             <Row className={css(styles.container)}>
                 <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
                 <Column flexGrow={1} className={css(styles.mainBlock)}>
-                    <HeaderComponent title={selectedItem} />
+                    <HeaderComponent title={"Registration"} />
                     <div className={css(styles.contentContainer)}>
                         <span><RegisterBackend img={LogoIMG} /></span>
                     </div>
