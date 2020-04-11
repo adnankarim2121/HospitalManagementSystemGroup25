@@ -55,7 +55,7 @@ class NurseViewPatients extends React.Component {
       */
     renderPatientsGivenByDoctor = ({doctorName, appointments, setBy, doctorNotesForNurse, reasonForVisit}) => <div key={doctorName}> <p><li>Assigned to <strong>{appointments.replace(doctorName, "patient ")} {setBy} </strong>by <strong>Dr. {doctorName}</strong></li></p>
     <p>Patient's Reason for Visit: <strong>{reasonForVisit}</strong></p>
-    <p>Notes By Doctor Regarding Appointment: <i>{doctorNotesForNurse}</i></p> 
+    <p>Notes By Doctor Regarding Appointment: <i>{doctorNotesForNurse}</i></p> <br/>
     </div> ;
 
 
