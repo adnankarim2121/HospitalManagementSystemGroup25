@@ -85,8 +85,8 @@ class DoctorViewPatientAppointments extends React.Component {
   */
   renderPatientInformation = ({ doctorName, appointments, setBy, reasonForVisit }) => <div key={doctorName}> <p><li>You have an <strong>{appointments.replace(doctorName, setBy)}</strong></li></p>
     <p id="reasonForVisit">Reason for Visit: <strong>{reasonForVisit}</strong></p>
-    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Appointment Complete </button>
-    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Cancel Appointment</button></div>;
+    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Appointment Complete </button> &nbsp; 
+    &nbsp; <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Cancel Appointment</button></div>;
 
 
 

@@ -82,8 +82,8 @@ class PatientViewAppointment extends React.Component {
     /*
     Display results from database on webpage.
     */
-    renderViewAppointments = ({setBy, appointments}) => <div key={setBy}><li>{appointments}<button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit">
-    Cancel Appointment</button></li> </div> ;
+    renderViewAppointments = ({setBy, appointments}) => <div key={setBy}><li>{appointments} <pre><button value={appointments} onClick={e => this.deleteAppointment(e, "value")}  type="submit">
+    Cancel Appointment</button></pre></li> </div> ;
 
 
   deleteAppointment(e)

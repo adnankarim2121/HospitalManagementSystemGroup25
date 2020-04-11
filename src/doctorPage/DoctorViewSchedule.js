@@ -83,7 +83,7 @@ class DoctorViewSchedule extends React.Component {
   /*
   Display results from database on webpage.
   */
-  renderDoctorSchedule = ({ name, workshift }) => <div key={name}><strong><li>{workshift}</li></strong></div>;
+  renderDoctorSchedule = ({ name, workshift }) => <div key={name}><strong><li>{workshift}</li><br/></strong></div>;
 
 
 

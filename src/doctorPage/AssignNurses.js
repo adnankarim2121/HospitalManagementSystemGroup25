@@ -167,13 +167,13 @@ class AssignNurses extends React.Component {
 
                   <div className={css(styles.padding)}></div>
                   <div>
-                    Assign Nurse
+                    Assign Nurse &nbsp;
                     <select id="nurses"
                       onChange={e => this.setState({ nurseName: { ...nurseName, name: e.target.value } })}>
                       <option value="" selected disabled hidden>Choose Nurse</option>
                       {nurses.map(this.renderNurses)}
                     </select>
-                    to
+                    &nbsp; to &nbsp;
                     <select id="patients"
                       onChange={e => this.setState({ appointmentName: { ...appointmentName, name: e.target.value } })}>
                       <option value="" selected disabled hidden>Choose Appointment</option>
@@ -183,7 +183,7 @@ class AssignNurses extends React.Component {
 
                   <div className={css(styles.padding)}></div>
                   <div>
-                    <label for="notesFromDoctor">Notes for Nurse Regarding Appointment</label>
+                    <label for="notesFromDoctor">Notes for Nurse Regarding Appointment &nbsp;</label>
                     <textarea
                       type="text"
                       placeholder="Notes"
