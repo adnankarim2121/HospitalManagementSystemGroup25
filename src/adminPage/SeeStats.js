@@ -60,7 +60,7 @@ class SeeStats extends React.Component {
     */
     componentDidMount() {
         window.addEventListener('resize', this.resize);
-        document.title = this.state;
+        document.title = 'Statistics';
     }
 
     /*

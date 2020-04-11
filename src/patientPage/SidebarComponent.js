@@ -9,8 +9,11 @@ import IconHome from '../icons/health.png';
 import IconSchedule from '../icons/schedule.png'
 import IconMyPrescriptions from '../icons/prescription.png'
 import IconReferrals from '../icons/referral.png'
+import IconAppointments from '../icons/appointments.png';
 import IconOtherServices from '../icons/info.png'
 import IconSettings from '../icons/settings.png'
+import IconLogout from '../icons/logout.png'
+
 
 import history from '../History';
 
@@ -150,12 +153,12 @@ class SidebarComponent extends React.Component {
                             <MenuItemComponent
                                 title="Set Appointments" imgName={IconSchedule}
                                 onClick={() => this.changePageToSetAppointments()}
-                                active={this.props.selectedItem === 'Set an Appointment'} />
+                                active={this.props.selectedItem === 'Set Appointments'} />
 
                             <MenuItemComponent
-                                title="View/Cancel Appointments" imgName={IconSchedule}
+                                title="View/Cancel Appointments" imgName={IconAppointments}
                                 onClick={() => this.changePageToViewAppointments()}
-                                active={this.props.selectedItem === 'My Appointments'} />
+                                active={this.props.selectedItem === 'View/Cancel Appointments'} />
                                 
                             <MenuItemComponent
                                 title="Other Services" imgName={IconOtherServices}
@@ -163,11 +166,7 @@ class SidebarComponent extends React.Component {
                                 active={this.props.selectedItem === 'Other Services'} />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
-                                title="Settings" imgName={IconSettings}
-                                onClick={() => this.onItemClicked('Settings')}
-                                active={this.props.selectedItem === 'Settings'} />
-                            <MenuItemComponent
-                                title="Logout" imgName={IconSettings}
+                                title="Logout" imgName={IconLogout}
                                 onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'Logout'} />
                         </Column>

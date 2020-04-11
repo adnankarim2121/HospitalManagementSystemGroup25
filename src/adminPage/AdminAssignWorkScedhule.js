@@ -82,7 +82,7 @@ class AdminAssignWorkScedhule extends React.Component {
   */
   componentDidMount() {
     window.addEventListener('resize', this.resize);
-    document.title = "Patient";
+    document.title = "Assign Work Schedule";
     this.getDoctorsAndNurses();
   }
 

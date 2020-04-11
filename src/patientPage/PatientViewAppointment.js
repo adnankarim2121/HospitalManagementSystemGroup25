@@ -6,24 +6,52 @@ import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import { TitleComponent } from './TitleComponent';
 import '../App.css';
+import IconAppointments from '../icons/appointments.png';
 
 const styles = StyleSheet.create({
-    container: {
-        height: '100%',
-        minHeight: '100vh'
-    },
-    content: {
-        marginTop: 54
-    },
-    mainBlock: {
-        backgroundColor: '#F7F8FC',
-        padding: 30
-    }
+  container: {
+    height: '100%',
+    minHeight: '100vh'
+  },
+
+  mainBlock: {
+    backgroundColor: '#F7F8FC',
+    padding: 30
+  },
+
+  columnContainer: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 60
+  },
+
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    marginTop: 50
+  },
+
+  title: {
+    fontFamily: 'Muli',
+    fontSize: 16,
+    lineHeight: '20px',
+    letterSpacing: '0.2px',
+    color: '#A4A6B3',
+    marginLeft: 16
+  },
+
+  padding: {
+    padding: 20
+  }
+
 });
 
 class PatientViewAppointment extends React.Component {
 
-    state = { selectedItem: 'Upcoming/Past Appointments',
+    state = { selectedItem: 'View/Cancel Appointments',
     appointments: [],
     date: new Date(),
     doctorName: {
@@ -32,7 +60,7 @@ class PatientViewAppointment extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
-        document.title = "Patient";
+        document.title = "View/Cancel Appointments";
         this.getAppointments();
     }
 
@@ -82,18 +110,30 @@ class PatientViewAppointment extends React.Component {
     render() {
         const { selectedItem, appointments} = this.state;
         return (
-            <Row className={css(styles.container)}>
-                <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
-                <Column flexGrow={1} className={css(styles.mainBlock)}>
-                    <HeaderComponent title={selectedItem} />
-                    <div>
-                    
-                      {appointments.map(this.renderViewAppointments)} 
-
-
+          <Row className={css(styles.container)}>
+            <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
+            <Column flexGrow={1} className={css(styles.mainBlock)}>
+              <HeaderComponent title={selectedItem} />
+              <div className={css(styles.contentContainer)}>
+                <span>
+                  <Column className={css(styles.contentContainer)}>
+                    <div className={css(styles.title)}>{"Upcoming/Past Appointments"}</div>
+    
+                    <div className={css(styles.padding)}>
+                      <div className={"imgcontainer"} >
+                        <img src={IconAppointments} alt="Avatar" width='100' height='100' />
+                      </div>
                     </div>
-                </Column>
-            </Row>
+    
+                    <div>
+                    {appointments.map(this.renderViewAppointments)} 
+                    </div>
+    
+                  </Column>
+                </span>
+              </div>
+            </Column>
+          </Row>
         );
     }
 }

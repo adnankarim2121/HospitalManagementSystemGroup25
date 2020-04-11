@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
 });
 
 class NurseViewSchedule extends React.Component {
-
-    state = { selectedItem: 'Your Work Schedule',
+//Your Work Schedule
+    state = { selectedItem: 'My Schedule',
     shifts: [],
     date: new Date(),
     doctorName: {

@@ -11,6 +11,7 @@ import IconMyPatient from '../icons/patient.png';
 import IconTasks from '../icons/list.png'
 import IconNotes from '../icons/notes.png';
 import IconSettings from '../icons/settings.png'
+import IconLogout from '../icons/logout.png'
 
 import history from '../History';
 
@@ -140,7 +141,7 @@ class SidebarComponent extends React.Component {
                             <MenuItemComponent
                                 title="My Tasks" imgName={IconSchedule}
                                 onClick={() => this.changePageToPatientsAndTasks()}
-                                active={this.props.selectedItem === 'My Schedule'}
+                                active={this.props.selectedItem === 'My Tasks'}
                             />
 
                             <MenuItemComponent
@@ -150,12 +151,7 @@ class SidebarComponent extends React.Component {
                             />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
-                                title="Settings" imgName={IconSettings}
-                                onClick={() => this.onItemClicked('Settings')}
-                                active={this.props.selectedItem === 'Settings'}
-                            />
-                            <MenuItemComponent
-                                title="Logout" imgName={IconSettings}
+                                title="Logout" imgName={IconLogout}
                                 onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'Logout'} />
                         </Column>

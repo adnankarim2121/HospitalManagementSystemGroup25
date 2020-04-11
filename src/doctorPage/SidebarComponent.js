@@ -10,7 +10,7 @@ import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconSchedule from '../icons/schedule.png';
 import IconMyNurse from '../icons/nurse.png'
-import IconSettings from '../icons/settings.png'
+import IconApppointments from '../icons/appointments.png';
 import IconLogout from '../icons/logout.png'
 
 /*
@@ -198,7 +198,7 @@ class SidebarComponent extends React.Component {
                                 onClick={() => this.changePageToSchedhule()}
                                 active={this.props.selectedItem === 'My Schedule'} />
                             <MenuItemComponent
-                                title="My Appointments" imgName={IconSchedule}
+                                title="My Appointments" imgName={IconApppointments}
                                 onClick={() => this.changePageToAppointments()}
                                 active={this.props.selectedItem === 'My Appointments'} />
 

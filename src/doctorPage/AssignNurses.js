@@ -68,7 +68,7 @@ class AssignNurses extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.resize);
-    document.title = "Patient";
+    document.title = "Assign Patients";
     this.getNurses();
     this.getPatients();
   }

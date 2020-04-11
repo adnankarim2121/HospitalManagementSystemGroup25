@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
 });
 
 class NurseViewPatients extends React.Component {
-
-    state = { selectedItem: 'Patients Assigned To',
+//Patients Assigned To
+    state = { selectedItem: 'My Tasks',
     appointments: [],
     date: new Date(),
     doctorName: {
