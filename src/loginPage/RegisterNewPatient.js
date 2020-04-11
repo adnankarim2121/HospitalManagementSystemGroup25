@@ -1,14 +1,18 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 import { SidebarComponent } from '../homePage/SidebarComponent';
 import { HeaderComponent } from '../homePage/HeaderComponent';
 import '../App.css';
-
 import RegisterBackend from './RegisterBackend.js'
-
 import LogoIMG from '../icons/login.png';
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     container: {
         height: '100%',
@@ -26,21 +30,38 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Class RegisterNewPatient
+*/
 class RegisterNewPatient extends React.Component {
-
+      /*
+      Class Variable
+      */
     state = { selectedItem: 'Register' };
 
+  /*
+  componentDidMount loads variables/functions on startup
+  */
     componentDidMount() {
         document.title = "Register";
         window.addEventListener('resize', this.resize);
     }
 
+    /*
+    componentWillUnmount is the last function to be called immediately before the component is removed from the DOM
+    */
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
     }
 
+    /*
+    component re-renders.
+    */
     resize = () => this.forceUpdate();
 
+      /*
+      Render components for the webpage. HTML tags.
+      */
     render() {
         const { selectedItem } = this.state;
         return (
@@ -58,4 +79,7 @@ class RegisterNewPatient extends React.Component {
     }
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export default RegisterNewPatient;

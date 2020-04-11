@@ -1,3 +1,6 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import { Column, Row } from 'simple-flexbox';
@@ -5,6 +8,9 @@ import { StyleSheet, css } from 'aphrodite';
 
 import IconAddStaff from '../icons/staff.png'
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -33,8 +39,13 @@ const styles = StyleSheet.create({
   }
 });
 
+/*
+Class RegisterBackend
+*/
 class RegisterBackend extends React.Component {
-
+  /*
+  Class Variable
+  */
   state =
     {
       userInformation: [],
@@ -52,11 +63,19 @@ class RegisterBackend extends React.Component {
       }
     }
 
+  /*
+  componentDidMount loads variables/functions on startup
+  */
   componentDidMount() {
     this.getUsers();
 
   }
 
+  /*
+  Function: getUsers
+  Arguments: None
+  Purpose: Get all registered users from database. 
+  */ 
   getUsers = _ => {
     fetch('http://localhost:4000/HospitalManagementSystem')
       .then(response => response.json())
@@ -64,6 +83,11 @@ class RegisterBackend extends React.Component {
       .catch(err => console.error(err))
   }
 
+  /*
+  Function: registerUser
+  Arguments: None
+  Purpose: Register new user to database given user does not exist. 
+  */ 
   registerUser = _ => {
     const { userInfo } = this.state;
 
@@ -93,6 +117,10 @@ class RegisterBackend extends React.Component {
 
     console.log(userInfo);
   }
+
+  /*
+  Render components for the webpage. HTML tags.
+  */
   render() {
 
     const {userInfo } = this.state;
@@ -179,5 +207,7 @@ class RegisterBackend extends React.Component {
   }
 }
 
-
+/*
+Exporting component so other files can use component.
+*/
 export default withRouter(RegisterBackend);
