@@ -11,7 +11,8 @@ import Admin  from './Admin.js'
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconStatistics from '../icons/statistics.png'
-import cancelLogo from '../icons/cancel.png';
+import IconSchedule from '../icons/schedule.png';
+import LogoCancel from '../icons/cancel.png';
 import IconAddStaff from '../icons/staff.png'
 import IconLogout from '../icons/logout.png'
 
@@ -213,15 +214,15 @@ class SidebarComponent extends React.Component {
                             <MenuItemComponent
                                 title="Statistics" imgName={IconStatistics}
                                 onClick={() => this.changePageToStatistics()}
-                                active={this.props.selectedItem === 'StatisticsPage'}
+                                active={this.props.selectedItem === 'Statistics'}
                             />
                             <MenuItemComponent
-                                title="Assign Work Schedule" imgName={IconStatistics}
+                                title="Assign Work Schedule" imgName={IconSchedule}
                                 onClick={() => this.changePageToSetSchedule()}
                                 active={this.props.selectedItem === 'Assign Work Schedule'}
                             />
                             <MenuItemComponent
-                                title="Set Cancellation Fee" imgName={cancelLogo}
+                                title="Set Cancellation Fee" imgName={LogoCancel}
                                 onClick={() => this.changePageToSetFee()}
                                 active={this.props.selectedItem === 'Set Cancellation Fee'}
                             />

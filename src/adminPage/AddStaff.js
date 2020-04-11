@@ -20,15 +20,16 @@ const styles = StyleSheet.create({
         height: '100%',
         minHeight: '100vh'
     },
+
     mainBlock: {
         backgroundColor: '#F7F8FC',
         padding: 30
     },
+
     contentContainer: {
         flex: 1,
         alignItems: 'center',
         marginTop: 60
-
     }
 });
 

@@ -9,14 +9,13 @@ import LogoCancel from '../icons/cancel.png';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
     textAlign: 'center',
     marginTop: 50
-
   },
+  
   title: {
     fontFamily: 'Muli',
     fontSize: 16,
@@ -44,9 +43,8 @@ class SetFeeBackend extends React.Component {
   setFee = _ => {
     const { feeValue } = this.state;
 
-    var response = window.confirm(`Are you sure you want to set the fee value at $${feeValue.fee}?` );
-    if(response == true)
-    {
+    var response = window.confirm(`Are you sure you want to set the fee value at $${feeValue.fee}?`);
+    if (response == true) {
       localStorage.setItem("fee", feeValue.fee);
       window.location.href = 'http://localhost:3000/SetFee';
     }

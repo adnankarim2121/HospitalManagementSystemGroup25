@@ -9,10 +9,6 @@ import IconHome from '../icons/health.png';
 import IconOverview from '../icons/overview.png';
 import IconLogin from '../icons/login.png';
 import IconRegister from '../icons/register.png';
-import IconDoctor from '../icons/doctor.png'
-import IconStaff from '../icons/staff.png'
-
-import history from '../History';
 
 const styles = StyleSheet.create({
     burgerIcon: {
@@ -21,12 +17,14 @@ const styles = StyleSheet.create({
         left: 24,
         top: 34
     },
+
     container: {
         backgroundColor: '#482acc',
         width: 255,
         paddingTop: 32,
         height: 'calc(100% - 32px)'
     },
+
     containerMobile: {
         transition: 'left 0.5s, right 0.5s',
         position: 'absolute',
@@ -34,10 +32,12 @@ const styles = StyleSheet.create({
         height: 'calc(100% - 32px)',
         zIndex: 901
     },
+
     mainContainer: {
         height: '100%',
         minHeight: '100vh'
     },
+
     mainContainerMobile: {
         position: 'absolute',
         width: '100vw',
@@ -45,9 +45,11 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0
     },
+
     menuItemList: {
         marginTop: 52
     },
+
     outsideLayer: {
         position: 'absolute',
         width: '100vw',
@@ -56,15 +58,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,.50)',
         zIndex: 900
     },
+
     separator: {
         borderTop: '1px solid #DFE0EB',
         marginTop: 16,
         marginBottom: 16,
         opacity: 0.06
     },
+
     hide: {
         left: -255
     },
+
     show: {
         left: 0
     }
@@ -91,19 +96,19 @@ class SidebarComponent extends React.Component {
 
     changePageToHomePage = (props) => {
         window.location.href = 'http://localhost:3000/';
-      }
+    }
 
-  changePageToLoginPage = (props) => {
-    window.location.href = 'http://localhost:3000/LoginPage';
-  }
+    changePageToLoginPage = (props) => {
+        window.location.href = 'http://localhost:3000/LoginPage';
+    }
 
-  changePageToRegisterPage = (props) => {
-    window.location.href = 'http://localhost:3000/RegisterNewPatient';
-  }
+    changePageToRegisterPage = (props) => {
+        window.location.href = 'http://localhost:3000/RegisterNewPatient';
+    }
 
-  changePageToAboutPage = (props) => {
-    window.location.href = 'http://localhost:3000/About';
-  }
+    changePageToAboutPage = (props) => {
+        window.location.href = 'http://localhost:3000/About';
+    }
 
     render() {
         const { expanded } = this.state;
@@ -131,7 +136,7 @@ class SidebarComponent extends React.Component {
                                 active={this.props.selectedItem === 'Register'}
                             />
                             <MenuItemComponent
-                                title="Login" imgName={IconLogin} 
+                                title="Login" imgName={IconLogin}
                                 onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'Login'}
                             />

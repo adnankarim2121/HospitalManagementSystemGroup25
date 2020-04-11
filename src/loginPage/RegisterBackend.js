@@ -8,14 +8,12 @@ import IconAddStaff from '../icons/staff.png'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
-    textAlign: 'center',
-    marginTop: 50
-
+    textAlign: 'center'
   },
+
   title: {
     fontFamily: 'Muli',
     fontSize: 16,
@@ -27,9 +25,6 @@ const styles = StyleSheet.create({
 
   padding: {
     padding: 20
-  },
-  padding10: {
-    padding: 10
   }
 });
 
@@ -95,29 +90,33 @@ class RegisterBackend extends React.Component {
   }
   render() {
 
-    const {userInfo } = this.state;
+    const { userInfo } = this.state;
 
     return (
       <Column className={css(styles.container)}>
-        <div className={css(styles.title)}>{"Sign Up! "}</div>
-        <div className={css(styles.padding)}></div>
-        <div className="login">
+        <div className={css(styles.title)}>
           <form className="modal-content">
-            <div className="imgcontainer">
-              <img src={IconAddStaff} alt="Avatar" width='130' height='130' />
+
+            <div className={css(styles.padding)}>
+              <div className="imgcontainer">
+                <img src={IconAddStaff} alt="Avatar" width='100' height='100' />
+              </div>
             </div>
-            <div className={css(styles.padding)}></div>
-            <div className="credentials">
-              <label for="uname"><b>Username</b></label>
-              <input
-                type="text"
-                placeholder="Enter Username"
-                value={userInfo.email}
-                onChange={e => this.setState({ userInfo: { ...userInfo, email: e.target.value } })}
-                name="uname" required />
+
+            <div className={css(styles.padding)}>
+              <div className="credentials">
+                <label for="uname"><b>Username</b></label>
+                <input
+                  type="text"
+                  placeholder="Enter Username"
+                  value={userInfo.email}
+                  onChange={e => this.setState({ userInfo: { ...userInfo, email: e.target.value } })}
+                  name="uname" required />
+              </div>
             </div>
-            <div className={css(styles.padding10)}></div>
-            <div>
+
+            <div className={css(styles.padding)}>
+            <div className ="password"> 
               <label for="psw"><b>Password</b></label>
               <input
                 type="password"
@@ -126,19 +125,22 @@ class RegisterBackend extends React.Component {
                 onChange={e => this.setState({ userInfo: { ...userInfo, password: e.target.value } })}
                 name="psw" required />
             </div>
+            </div>
 
-            <div className={css(styles.padding10)}></div>
+            <div className={css(styles.padding)}>
             <div>
-            <label for="psw"><b>Gender</b></label>
-                  <select id="patients"
-                    onChange={e => this.setState({ userInfo: {...userInfo, gender: e.target.value}})}>
-                    <option value="" selected disabled hidden>Select Gender</option>
-                    <option value="Male">Male </option>;
+              <label for="psw"><b>Gender</b></label>
+              <select id="patients"
+                onChange={e => this.setState({ userInfo: { ...userInfo, gender: e.target.value } })}>
+                <option value="" selected disabled hidden>Select Gender</option>
+                <option value="Male">Male </option>;
                     <option value="Female">Female </option>;
                     <option value="Other">Other </option>;
                     </select>
             </div>
-            <div className={css(styles.padding10)}></div>
+            </div>
+
+            <div className={css(styles.padding)}>
             <div>
               <label for="address"><b>Address</b></label>
               <input
@@ -147,8 +149,10 @@ class RegisterBackend extends React.Component {
                 value={userInfo.address}
                 onChange={e => this.setState({ userInfo: { ...userInfo, address: e.target.value } })}
                 name="psw" required />
-              </div>
-            <div className={css(styles.padding10)}></div>
+            </div>
+            </div>
+
+            <div className={css(styles.padding)}>
             <div>
               <label for="address"><b>Health Care Number</b></label>
               <input
@@ -157,8 +161,10 @@ class RegisterBackend extends React.Component {
                 value={userInfo.healthCareNumber}
                 onChange={e => this.setState({ userInfo: { ...userInfo, healthCareNumber: e.target.value } })}
                 name="psw" required />
-                </div>
-            <div className={css(styles.padding10)}></div>
+            </div>
+            </div>
+
+            <div className={css(styles.padding)}>
             <div>
               <label for="address"><b>Contact Number</b></label>
               <input
@@ -168,10 +174,14 @@ class RegisterBackend extends React.Component {
                 onChange={e => this.setState({ userInfo: { ...userInfo, contactNumber: e.target.value } })}
                 name="psw" required />
             </div>
-            <div className={css(styles.padding10)}></div>
+            </div>
+
+            <div className={css(styles.padding)}>
             <div>
               <button onClick={this.registerUser} type="submit">Register User</button>
             </div>
+            </div>
+
           </form>
         </div>
       </Column>

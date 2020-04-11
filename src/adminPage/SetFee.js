@@ -18,15 +18,16 @@ const styles = StyleSheet.create({
         height: '100%',
         minHeight: '100vh'
     },
+
     mainBlock: {
         backgroundColor: '#F7F8FC',
         padding: 30
     },
+
     contentContainer: {
         flex: 1,
         alignItems: 'center',
         marginTop: 60
-
     }
 });
 
@@ -74,7 +75,6 @@ class SetFee extends React.Component {
                     <div className={css(styles.contentContainer)}>
                         <span><SetFeeBackend img={LogoIMG} /></span>
                     </div>
-
                 </Column>
             </Row>
         );

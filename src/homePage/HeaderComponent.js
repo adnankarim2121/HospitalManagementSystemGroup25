@@ -11,12 +11,15 @@ const styles = StyleSheet.create({
         marginLeft: 14,
         border: '1px solid #DFE0EB',
     },
+
     container: {
         height: 40
     },
+
     cursorPointer: {
         cursor: 'pointer'
     },
+
     name: {
         fontFamily: 'Muli',
         fontStyle: 'normal',
@@ -29,6 +32,7 @@ const styles = StyleSheet.create({
             display: 'none'
         }
     },
+
     separator: {
         borderLeft: '1px solid #DFE0EB',
         marginLeft: 32,
@@ -40,6 +44,7 @@ const styles = StyleSheet.create({
             marginRight: 12
         }
     },
+
     title: {
         fontFamily: 'Muli',
         fontStyle: 'normal',
@@ -54,6 +59,7 @@ const styles = StyleSheet.create({
             fontSize: 20
         }
     },
+
     iconStyles: {
         cursor: 'pointer',
         marginLeft: 25,

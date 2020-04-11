@@ -11,9 +11,11 @@ const styles = StyleSheet.create({
         height: '100%',
         minHeight: '100vh'
     },
+
     content: {
         marginTop: 54
     },
+
     mainBlock: {
         backgroundColor: '#F7F8FC',
         padding: 30
@@ -51,7 +53,6 @@ class App extends React.Component {
                             <li>View upcoming appointments</li>
                             <li>Cancel upcoming appointment</li>
                         </ul>
-
                     </div>
                 </Column>
             </Row>
