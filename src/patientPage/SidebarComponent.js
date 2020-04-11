@@ -7,11 +7,8 @@ import LogoComponent from '../LogoComponent';
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconSchedule from '../icons/schedule.png'
-import IconMyPrescriptions from '../icons/prescription.png'
-import IconReferrals from '../icons/referral.png'
 import IconAppointments from '../icons/appointments.png';
 import IconOtherServices from '../icons/info.png'
-import IconSettings from '../icons/settings.png'
 import IconLogout from '../icons/logout.png'
 
 

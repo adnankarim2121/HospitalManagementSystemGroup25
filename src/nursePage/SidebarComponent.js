@@ -7,10 +7,7 @@ import LogoComponent from '../LogoComponent';
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconSchedule from '../icons/schedule.png';
-import IconMyPatient from '../icons/patient.png';
-import IconTasks from '../icons/list.png'
-import IconNotes from '../icons/notes.png';
-import IconSettings from '../icons/settings.png'
+import IconAppointments from '../icons/appointments.png';
 import IconLogout from '../icons/logout.png'
 
 import history from '../History';
@@ -139,15 +136,9 @@ class SidebarComponent extends React.Component {
                             />
 
                             <MenuItemComponent
-                                title="My Tasks" imgName={IconSchedule}
+                                title="My Tasks" imgName={IconAppointments}
                                 onClick={() => this.changePageToPatientsAndTasks()}
                                 active={this.props.selectedItem === 'My Tasks'}
-                            />
-
-                            <MenuItemComponent
-                                title="Notes" imgName={IconNotes}
-                                onClick={() => this.onItemClicked('Notes')}
-                                active={this.props.selectedItem === 'Notes'}
                             />
                             <div className={css(styles.separator)}></div>
                             <MenuItemComponent
