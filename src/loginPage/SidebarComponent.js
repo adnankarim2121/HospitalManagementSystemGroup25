@@ -1,14 +1,19 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 import MenuItemComponent from '../MenuItemComponent';
 import LogoComponent from '../LogoComponent';
-
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconLogin from '../icons/login.png';
 import IconOverview from '../icons/overview.png';
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     burgerIcon: {
         cursor: 'pointer',
@@ -65,40 +70,85 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Class SidebarComponent
+*/
 class SidebarComponent extends React.Component {
 
+    /*
+    Class Variable
+    */
     state = { expanded: false };
 
+    /*
+    Function: onItemClicked
+    Arguments: None
+    Purpose: When sidebar attribute clicked, update neccessary variables. 
+    */
     onItemClicked = (item) => {
         this.setState({ expanded: false });
         return this.props.onChange(item);
     }
 
+    /*
+    Function: isMobile
+    Arguments: None
+    Purpose: Set width of sidebar. 
+    */
     isMobile = () => window.innerWidth <= 768;
 
+    /*
+    Function: toggleMenu
+    Arguments: None
+    Purpose: Handle sidebar menu toggling. 
+    */
     toggleMenu = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
 
+    /*
+    Function: renderBurger
+    Arguments: None
+    Purpose: Return IconBurger component. 
+    */
     renderBurger = () => {
         return <div onClick={this.toggleMenu} className={css(styles.burgerIcon)}>
             <IconBurger />
         </div>
     }
 
-  changePageToLoginPage = (props) => {
-    window.location.href = 'http://localhost:3000/LoginPage';
-  }
+    changePageToLoginPage = (props) => {
+        window.location.href = 'http://localhost:3000/LoginPage';
+    }
 
-changePageToHomePage = (props) => {
-    window.location.href = 'http://localhost:3000/';
-  }
+    /*
+    Function: changePageToHome
+    Arguments: None
+    Purpose: Changing to home page when clicked on sidebar. 
+    */ 
+    changePageToHomePage = (props) => {
+        window.location.href = 'http://localhost:3000/';
+    }
 
-changePageToRegistration = (props) => {
-    window.location.href = 'http://localhost:3000/RegisterNewPatient';
-  }
+    /*
+    Function: changePageToRegistration
+    Arguments: None
+    Purpose: Changing to registration page when clicked on sidebar. 
+    */ 
+    changePageToRegistration = (props) => {
+        window.location.href = 'http://localhost:3000/RegisterNewPatient';
+    }
 
-  changePageToAboutPage = (props) => {
-    window.location.href = 'http://localhost:3000/About';
-  }  
+    /*
+    Function: changePageToAboutPage
+    Arguments: None
+    Purpose: Changing to about page when clicked on sidebar. 
+    */ 
+    changePageToAboutPage = (props) => {
+        window.location.href = 'http://localhost:3000/About';
+    }  
+
+    /*
+    Render webpage
+    */
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -139,4 +189,7 @@ changePageToRegistration = (props) => {
     };
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export { SidebarComponent };

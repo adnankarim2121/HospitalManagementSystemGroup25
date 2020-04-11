@@ -1,9 +1,14 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import '../App.css';
 import { Column} from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 
-
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -27,8 +32,14 @@ const styles = StyleSheet.create({
   }
 });
 
+/*
+Class Login
+*/
 class Login extends React.Component {
 
+  /*
+  Class Variable
+  */
   state =
     {
       userInformation: [],
@@ -41,11 +52,11 @@ class Login extends React.Component {
       }
     }
 
-  componentDidMount() {
-    //this.checkIfUserExists();
-  }
-
-
+  /*
+  Function: changePageForPatient
+  Arguments: None
+  Purpose: Changing to patient page when a patient logged in. 
+  */ 
   changePageForPatient = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
     localStorage.setItem("username", userInfo.email);
@@ -53,24 +64,45 @@ class Login extends React.Component {
 
   }
 
+  /*
+  Function: changePageForDoctor
+  Arguments: None
+  Purpose: Changing to doctor page when a doctor logged in. 
+  */ 
   changePageForDoctor = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
     localStorage.setItem("usernameForDoctor", userInfo.email);
     window.location.href = 'http://localhost:3000/DoctorViewSchedule';
   }
 
+  /*
+  Function: changePageForNurse
+  Arguments: None
+  Purpose: Changing to nurse page when a nurse logged in. 
+  */ 
   changePageForNurse = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
     localStorage.setItem("usernameForNurse", userInfo.email);
     window.location.href = 'http://localhost:3000/NurseViewSchedule';
   }
 
+  /*
+  Function: changePageForAdmin
+  Arguments: None
+  Purpose: Changing to admin page when a admin logged in. 
+  */ 
   changePageForAdmin = (props) => {
     const { userInfo, checkIfUserExists } = this.state;
     localStorage.setItem("usernameForAdmin", userInfo.email);
     window.location.href = 'http://localhost:3000/SeeStats';
   }
 
+
+  /*
+  Function: checkIfUserExists
+  Arguments: None
+  Purpose: Checking database if user exists. If yes, then user logins to corresponding page.  
+  */ 
   checkIfUserExists = _ => {
     const { userInfo, checkIfUserExists } = this.state;
 
@@ -110,6 +142,9 @@ class Login extends React.Component {
 
   }
 
+  /*
+  Render components for the webpage. HTML tags.
+  */
   render() {
 
     const { userInfo } = this.state;
@@ -160,5 +195,7 @@ class Login extends React.Component {
   }
 }
 
-
+/*
+Exporting component so other files can use component.
+*/
 export { Login }
