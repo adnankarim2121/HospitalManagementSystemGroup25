@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
         padding: 30
     }
 });
-
+//'Your Work Schedule' 
 class DoctorViewSchedule extends React.Component {
 
-    state = { selectedItem: 'Your Work Schedule',
+    state = { selectedItem: 'My Schedule',
     shifts: [],
     date: new Date(),
     doctorName: {

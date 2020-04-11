@@ -9,12 +9,9 @@ import LogoComponent from '../LogoComponent';
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconSchedule from '../icons/schedule.png';
-import IconMyPatients from '../icons/patient.png';
-import IconPrescriptions from '../icons/prescription.png';
-import IconReferrals from '../icons/referral.png'
 import IconMyNurse from '../icons/nurse.png'
 import IconSettings from '../icons/settings.png'
-import history from '../History';
+import IconLogout from '../icons/logout.png'
 
 /*
 Styling the webpage attributes.
@@ -208,15 +205,11 @@ class SidebarComponent extends React.Component {
                             <MenuItemComponent
                                 title="Assign Nurses to Patients" imgName={IconMyNurse}
                                 onClick={() => this.changePageToAssignNurses()}
-                                active={this.props.selectedItem === 'My Nurses'} />
+                                active={this.props.selectedItem === 'Assign Nurses to Patients'} />
                             <div className={css(styles.separator)}></div>
-                            <MenuItemComponent
-                                title="Settings" imgName={IconSettings}
-                                onClick={() => this.onItemClicked('Settings')}
-                                active={this.props.selectedItem === 'Settings'} />
                         </Column>
                             <MenuItemComponent
-                                title="Logout" imgName={IconSettings}
+                                title="Logout" imgName={IconLogout}
                                 onClick={() => this.changePageToLoginPage()}
                                 active={this.props.selectedItem === 'Logout'} />
                     </Column>
