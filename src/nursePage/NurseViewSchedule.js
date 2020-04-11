@@ -31,7 +31,7 @@ class NurseViewSchedule extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
-        document.title = "Patient";
+        document.title = "My Schedule";
         this.getSchedule();
     }
 

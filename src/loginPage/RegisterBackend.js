@@ -87,7 +87,7 @@ class RegisterBackend extends React.Component {
     const { userInfo } = this.state;
 
     if (userInfo.userType === 'Patient' && userInfo.password.localeCompare('') != 0 && userInfo.address.localeCompare('') != 0 && userInfo.healthCareNumber.localeCompare('') != 0 && userInfo.gender.localeCompare('') != 0 && userInfo.contactNumber.localeCompare('') != 0) {
-      fetch(`http://localhost:4000/HospitalManagementSystem/addNewUser?email=${userInfo.email}&password=${userInfo.password}&address=${userInfo.address}&healthCareNumber=${userInfo.healthCareNumber}&gender=${userInfo.gender}&contactNumber=${userInfo.contactNumber}`)
+      fetch(`http://localhost:4000/HospitalManagementSystem/addNewUser?userType=${userInfo.userType}&email=${userInfo.email}&password=${userInfo.password}&address=${userInfo.address}&healthCareNumber=${userInfo.healthCareNumber}&gender=${userInfo.gender}&contactNumber=${userInfo.contactNumber}`)
         .then((response) => { return response.json() })
         .then((response) => {
           this.setState({ userInformation: response.data })

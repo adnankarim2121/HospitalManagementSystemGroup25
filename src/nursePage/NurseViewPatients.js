@@ -31,7 +31,7 @@ class NurseViewPatients extends React.Component {
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
-        document.title = "Patient";
+        document.title = "My Tasks";
         this.getAppointments();
     }
 
@@ -53,9 +53,9 @@ class NurseViewPatients extends React.Component {
       /*
       Display results from database on webpage.
       */
-    renderPatientsGivenByDoctor = ({doctorName, appointments, setBy, doctorNotesForNurse, reasonForVisit}) => <div key={doctorName}><p>Assigned to <strong>{appointments.replace(doctorName, "patient ")} {setBy} </strong>by <strong>Dr. {doctorName}</strong></p>
+    renderPatientsGivenByDoctor = ({doctorName, appointments, setBy, doctorNotesForNurse, reasonForVisit}) => <div key={doctorName}> <p><li>Assigned to <strong>{appointments.replace(doctorName, "patient ")} {setBy} </strong>by <strong>Dr. {doctorName}</strong></li></p>
     <p>Patient's Reason for Visit: <strong>{reasonForVisit}</strong></p>
-    <p>Notes By Doctor Regarding Appointment: <i>{doctorNotesForNurse}</i></p>
+    <p>Notes By Doctor Regarding Appointment: <i>{doctorNotesForNurse}</i></p> 
     </div> ;
 
 
