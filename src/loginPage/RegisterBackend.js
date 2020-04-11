@@ -125,6 +125,8 @@ class RegisterBackend extends React.Component {
         <div className={css(styles.title)}>
           <form className="modal-content">
 
+          <div className={css(styles.title)}>{"Please fill out the form"}</div>
+
             <div className={css(styles.padding)}>
               <div className="imgcontainer">
                 <img src={IconAddStaff} alt="Avatar" width='100' height='100' />
