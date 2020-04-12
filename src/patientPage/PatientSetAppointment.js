@@ -140,8 +140,8 @@ class PatientSetAppointment extends React.Component {
   /*
   Display results from database on webpage.
   */
-  renderDoctors = ({ email, userType }) =>
-    <option value={email}>{email}</option>;
+  renderDoctors = ({ email, userType, departmentName }) =>
+    <option value={email}>{email} (Department of {departmentName})</option>;
 
   /*
   Render components for the webpage. HTML tags.
