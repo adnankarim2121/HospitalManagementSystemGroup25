@@ -1,3 +1,6 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import { Column, Row } from 'simple-flexbox';
@@ -8,6 +11,9 @@ import { TitleComponent } from './TitleComponent';
 import '../App.css';
 import IconSchedule from '../icons/schedule.png'
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
   container: {
     height: '100%',
@@ -49,8 +55,14 @@ const styles = StyleSheet.create({
 
 });
 
+/*
+Class PatietSetAppointment
+*/
 class PatientSetAppointment extends React.Component {
 
+  /*
+  Class Variable
+  */
   state = {
     selectedItem: 'Set Appointments',
     doctors: [],
@@ -63,16 +75,27 @@ class PatientSetAppointment extends React.Component {
     }
   };
 
+  /*
+  componentDidMount loads variables/functions on startup
+  */
   componentDidMount() {
     window.addEventListener('resize', this.resize);
     document.title = "Set Appointments";
     this.getDoctors();
   }
 
+  /*
+  componentWillUnmount is the last function to be called immediately before the component is removed from the DOM
+  */
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize);
   }
 
+  /*
+  Function: getDoctors
+  Arguments: None
+  Purpose: Retrieve doctors available to book appointment in database. 
+  */
   getDoctors = _ => {
     fetch(`http://localhost:4000/HospitalManagementSystem/getDoctors`)
       .then(response => response.json())
@@ -80,6 +103,11 @@ class PatientSetAppointment extends React.Component {
       .catch(err => console.error(err))
   }
 
+  /*
+  Function: addAppointment
+  Arguments: None
+  Purpose: Add apointment for patient with scheduled doctor in database. 
+  */
   addAppointment = _ => {
     const { date, doctorName, reasonForVisit } = this.state;
 
@@ -97,9 +125,16 @@ class PatientSetAppointment extends React.Component {
         window.location.href = 'http://localhost:3000/PatientSetAppointment';
       }
     }
-
   }
+
+  /*
+  When date changes from calendar, update data.
+  */
   onChange = date => this.setState({ date })
+  
+  /*
+  component re-renders.
+  */
   resize = () => this.forceUpdate();
 
   /*
@@ -108,6 +143,9 @@ class PatientSetAppointment extends React.Component {
   renderDoctors = ({ email, userType }) =>
     <option value={email}>{email}</option>;
 
+  /*
+  Render components for the webpage. HTML tags.
+  */
   render() {
     const { selectedItem, doctors, doctorName, reasonForVisit } = this.state;
     return (
@@ -122,11 +160,11 @@ class PatientSetAppointment extends React.Component {
 
                 <div className={css(styles.title)}>
 
-                <div className={css(styles.padding)}>
-                      <div className={"imgcontainer"} >
-                        <img src={IconSchedule} alt="Avatar" width='100' height='100' />
-                      </div>
+                  <div className={css(styles.padding)}>
+                    <div className={"imgcontainer"} >
+                      <img src={IconSchedule} alt="Avatar" width='100' height='100' />
                     </div>
+                  </div>
 
                   <div className={css(styles.padding)}>
                     <div>
@@ -137,9 +175,9 @@ class PatientSetAppointment extends React.Component {
                         value={this.state.date}
                       />
 
-                    {" With Doctor: "}
+                      {" With Doctor: "}
 
-                    <select id="doctors"
+                      <select id="doctors"
                         onChange={e => this.setState({ doctorName: { ...doctorName, name: e.target.value } })}>
                         <option value="" selected disabled hidden>Choose Doctor</option>
                         {doctors.map(this.renderDoctors)}
@@ -162,7 +200,6 @@ class PatientSetAppointment extends React.Component {
                   <div className={css(styles.padding)}>
                     <button onClick={this.addAppointment} type="submit">Set Appointment</button>
                   </div>
-
                 </div>
               </Column>
             </span>
@@ -173,4 +210,7 @@ class PatientSetAppointment extends React.Component {
   }
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export default PatientSetAppointment

@@ -1,3 +1,6 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
@@ -7,6 +10,9 @@ import '../App.css';
 import PatientSmile from '../images/patient-smile.jpg';
 //import Calendar from 'react-calendar';
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     container: {
         height: '100%',
@@ -23,23 +29,41 @@ const styles = StyleSheet.create({
 
 class PatientPage extends React.Component {
 
+    /*
+    Class Variable
+    */
     state = {
         selectedItem: 'Other Services',
     };
 
+    /*
+    componentDidMount loads variables/functions on startup
+    */
     componentDidMount() {
         window.addEventListener('resize', this.resize);
         document.title = "Other Services";
     }
 
+    /*
+    componentWillUnmount is the last function to be called immediately before the component is removed from the DOM
+    */
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
     }
 
+    /*
+    component re-renders.
+    */
     resize = () => this.forceUpdate();
 
+    /*
+    When date changes from calendar, update data.
+    */
     onChange = date => this.setState({ date })
 
+    /*
+    Render components for the webpage. HTML tags.
+    */
     render() {
         const { selectedItem } = this.state;
         return (
@@ -56,7 +80,7 @@ class PatientPage extends React.Component {
                             <li><a href='https://www.albertahealthservices.ca'>Alberta Health Services</a></li>
                             <li>Call 811 for Health Link</li>
                         </ul>
-                        <img src={PatientSmile} width='500' height='300'/>
+                        <img src={PatientSmile} width='500' height='300' />
                     </div>
                 </Column>
             </Row>
@@ -64,4 +88,7 @@ class PatientPage extends React.Component {
     }
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export default PatientPage;

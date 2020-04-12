@@ -1,8 +1,14 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { string } from 'prop-types';
 import { Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     avatar: {
         height: 35,
@@ -63,8 +69,19 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Class HeaderComponent
+*/
 function HeaderComponent(props) {
+
+    /*
+    Class Variable
+    */
     const { icon, title, ...otherProps } = props;
+
+    /*
+    Render header component
+    */
     return (
         <Row className={css(styles.container)} vertical="center" horizontal="space-between" {...otherProps}>
             <span className={css(styles.title)}>{title}</span>
@@ -78,8 +95,14 @@ function HeaderComponent(props) {
     );
 }
 
+/*
+Sets the propTypes for the headerComponent.
+*/
 HeaderComponent.propTypes = {
     title: string
 };
 
+/*
+Exporting component so other files can use component.
+*/
 export { HeaderComponent };

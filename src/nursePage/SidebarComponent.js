@@ -1,3 +1,6 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
@@ -10,9 +13,10 @@ import IconSchedule from '../icons/schedule.png';
 import IconAppointments from '../icons/appointments.png';
 import IconLogout from '../icons/logout.png'
 
-import history from '../History';
 
-
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     burgerIcon: {
         cursor: 'pointer',
@@ -69,51 +73,92 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Class SidebarComponent
+*/
 class SidebarComponent extends React.Component {
-
+    /*
+    Class Variable
+    */
     state = { expanded: false };
 
+    /*
+    Function: onItemClicked
+    Arguments: None
+    Purpose: When sidebar attribute clicked, update neccessary variables. 
+    */
     onItemClicked = (item) => {
         this.setState({ expanded: false });
         return this.props.onChange(item);
     }
 
+    /*
+    Function: isMobile
+    Arguments: None
+    Purpose: Set width of sidebar. 
+    */
     isMobile = () => window.innerWidth <= 768;
 
+    /*
+    Function: toggleMenu
+    Arguments: None
+    Purpose: Handle sidebar menu toggling. 
+    */
     toggleMenu = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
 
+    /*
+    Function: renderBurger
+    Arguments: None
+    Purpose: Return IconBurger component. 
+    */
     renderBurger = () => {
         return <div onClick={this.toggleMenu} className={css(styles.burgerIcon)}>
             <IconBurger />
         </div>
     }
-  changePageToHome = (props) => {
-    window.location.href = 'http://localhost:3000/';
-  }
 
-  changePageToSchedule = (props) => {
-    window.location.href = 'http://localhost:3000/NurseViewSchedule';
-  }
-
-  changePageToPatientsAndTasks = (props) => {
-    window.location.href = 'http://localhost:3000/NurseViewPatients';
-  }
-
-  changePageToNotes= (props) => {
-    window.location.href = 'http://localhost:3000/';
-  }
-
-  changePageToSettings= (props) => {
-    window.location.href = 'http://localhost:3000/';
-
-  }
-  changePageToLoginPage= (props) => {
-    var response = window.confirm(`Are you sure you want to logout?` );
-    if(response == true){
-        window.location.href = 'http://localhost:3000/LoginPage';
+    /*
+    Function: changePageToHome
+    Arguments: None
+    Purpose: Changing to home page when clicked on sidebar. 
+    */
+    changePageToHome = (props) => {
+        window.location.href = 'http://localhost:3000/';
     }
-}
 
+    /*
+    Function: changePageToSchedule
+    Arguments: None
+    Purpose: Changing to nurses schedule page when clicked on sidebar. 
+    */
+    changePageToSchedule = (props) => {
+        window.location.href = 'http://localhost:3000/NurseViewSchedule';
+    }
+
+    /*
+    Function: changePageToPatientsAndTasks
+    Arguments: None
+    Purpose: Changing to nurses patients and tasks page when clicked on sidebar. 
+    */
+    changePageToPatientsAndTasks = (props) => {
+        window.location.href = 'http://localhost:3000/NurseViewPatients';
+    }
+
+    /*
+    Function: changePageToLoginPage
+    Arguments: None
+    Purpose: Changing to login page when clicked on sidebar. 
+    */
+    changePageToLoginPage = (props) => {
+        var response = window.confirm(`Are you sure you want to logout?`);
+        if (response == true) {
+            window.location.href = 'http://localhost:3000/LoginPage';
+        }
+    }
+
+    /*
+    Render webpage
+    */
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -134,7 +179,6 @@ class SidebarComponent extends React.Component {
                                 onClick={() => this.changePageToSchedule()}
                                 active={this.props.selectedItem === 'My Schedule'}
                             />
-
                             <MenuItemComponent
                                 title="My Tasks" imgName={IconAppointments}
                                 onClick={() => this.changePageToPatientsAndTasks()}
@@ -154,4 +198,7 @@ class SidebarComponent extends React.Component {
     };
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export { SidebarComponent };

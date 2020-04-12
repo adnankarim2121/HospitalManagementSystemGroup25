@@ -1,8 +1,14 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { string } from 'prop-types';
 import { Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     avatar: {
         height: 35,
@@ -63,8 +69,15 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Function TitleComponent
+*/
 function TitleComponent(props) {
     const { icon, title, ...otherProps } = props;
+
+    /*
+    Return Title Component
+    */
     return (
         <Row className={css(styles.container)} vertical="center" horizontal="space-between" {...otherProps}>
             <span className={css(styles.title)}>{title}</span>
@@ -73,8 +86,14 @@ function TitleComponent(props) {
     );
 }
 
+/*
+Sets the propType of Title component
+*/
 TitleComponent.propTypes = {
     title: string
 };
 
+/*
+Exporting component so other files can use component.
+*/
 export { TitleComponent };

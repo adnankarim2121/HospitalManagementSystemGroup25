@@ -1,3 +1,6 @@
+/*
+Importing all necessary components required
+*/
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
@@ -11,10 +14,9 @@ import IconAppointments from '../icons/appointments.png';
 import IconOtherServices from '../icons/info.png'
 import IconLogout from '../icons/logout.png'
 
-
-import history from '../History';
-
-
+/*
+Styling the webpage attributes.
+*/
 const styles = StyleSheet.create({
     burgerIcon: {
         cursor: 'pointer',
@@ -71,67 +73,101 @@ const styles = StyleSheet.create({
     }
 });
 
+/*
+Class SidebarComponent
+*/
 class SidebarComponent extends React.Component {
-
+    /*
+    Class Variable
+    */
     state = { expanded: false };
 
+    /*
+    Function: onItemClicked
+    Arguments: None
+    Purpose: When sidebar attribute clicked, update neccessary variables. 
+    */
     onItemClicked = (item) => {
         this.setState({ expanded: false });
         return this.props.onChange(item);
     }
 
+    /*
+    Function: isMobile
+    Arguments: None
+    Purpose: Set width of sidebar. 
+    */
     isMobile = () => window.innerWidth <= 768;
 
+    /*
+    Function: toggleMenu
+    Arguments: None
+    Purpose: Handle sidebar menu toggling. 
+    */
     toggleMenu = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
 
+    /*
+    Function: renderBurger
+    Arguments: None
+    Purpose: Return IconBurger component. 
+    */
     renderBurger = () => {
         return <div onClick={this.toggleMenu} className={css(styles.burgerIcon)}>
             <IconBurger />
         </div>
     }
 
-  changePageToHome = (props) => {
-    window.location.href = 'http://localhost:3000/';
-
-  }
-
-  changePageToSetAppointments = (props) => {
-    window.location.href = 'http://localhost:3000/PatientSetAppointment';
-
-  }
-
-  changePageToViewAppointments = (props) => {
-    window.location.href = 'http://localhost:3000/PatientViewAppointment';
-
-  }
-
-  changePageToPrescriptions= (props) => {
-    window.location.href = 'http://localhost:3000/';
-
-  }
-
-  changePageToRefferals= (props) => {
-    window.location.href = 'http://localhost:3000/';
-
-  }
-
-  changePageToOtherServices= (props) => {
-    window.location.href = 'http://localhost:3000/OtherServices';
-
-  }
-
-  changePageToSettings= (props) => {
-    window.location.href = 'http://localhost:3000/';
-
-  }
-
-  changePageToLoginPage= (props) => {
-    var response = window.confirm(`Are you sure you want to logout?` );
-    if(response == true){
-        window.location.href = 'http://localhost:3000/LoginPage';
+    /*
+    Function: changePageToHome
+    Arguments: None
+    Purpose: Changing to home page when clicked on sidebar. 
+    */
+    changePageToHome = (props) => {
+        window.location.href = 'http://localhost:3000/';
     }
 
-  }
+    /*
+    Function: changePageToSetAppointments
+    Arguments: None
+    Purpose: Changing to set appointments page when clicked on sidebar. 
+    */
+    changePageToSetAppointments = (props) => {
+        window.location.href = 'http://localhost:3000/PatientSetAppointment';
+    }
+
+    /*
+    Function: changePageToViewAppointmentes
+    Arguments: None
+    Purpose: Changing to view appointments page when clicked on sidebar. 
+    */
+    changePageToViewAppointments = (props) => {
+        window.location.href = 'http://localhost:3000/PatientViewAppointment';
+    }
+
+    /*
+    Function: changePageToOtherServices
+    Arguments: None
+    Purpose: Changing to other services page when clicked on sidebar. 
+    */
+    changePageToOtherServices = (props) => {
+        window.location.href = 'http://localhost:3000/OtherServices';
+    }
+    
+    /*
+    Function: changePageToLoginPage
+    Arguments: None
+    Purpose: Changing to login page when clicked on sidebar. 
+    */
+    changePageToLoginPage = (props) => {
+        var response = window.confirm(`Are you sure you want to logout?`);
+        if (response == true) {
+            window.location.href = 'http://localhost:3000/LoginPage';
+        }
+    }
+
+    /*
+    Render sidebar component
+    */
     render() {
         const { expanded } = this.state;
         const isMobile = this.isMobile();
@@ -156,7 +192,7 @@ class SidebarComponent extends React.Component {
                                 title="View/Cancel Appointments" imgName={IconAppointments}
                                 onClick={() => this.changePageToViewAppointments()}
                                 active={this.props.selectedItem === 'View/Cancel Appointments'} />
-                                
+
                             <MenuItemComponent
                                 title="Other Services" imgName={IconOtherServices}
                                 onClick={() => this.changePageToOtherServices()}
@@ -175,4 +211,7 @@ class SidebarComponent extends React.Component {
     };
 }
 
+/*
+Exporting component so other files can use component.
+*/
 export { SidebarComponent };
