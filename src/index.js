@@ -25,6 +25,7 @@ import './index.css';
 import history from './History';
 import PatientSetAppointment  from './patientPage/PatientSetAppointment.js';
 import PatientViewAppointment  from './patientPage/PatientViewAppointment.js';
+import PatientViewAllPrescriptions  from './patientPage/PatientViewAllPrescriptions.js';
 import About from './homePage/About.js';
 import OtherServices from './patientPage/OtherServices.js';
 
@@ -53,7 +54,8 @@ ReactDOM.render(
             <Route path='/AssignNurses' component={AssignNurses}/>
             <Route path='/DoctorViewSchedule' component={DoctorViewSchedule}/> 
             <Route path='/RegisterNewPatient' component={RegisterNewPatient}/>
-            <Route path='/AssignPrescriptionToPatients' component={AssignPrescriptionToPatients}/>     
+            <Route path='/AssignPrescriptionToPatients' component={AssignPrescriptionToPatients}/> 
+            <Route path='/PatientViewAllPrescriptions' component={PatientViewAllPrescriptions}/>     
     </BrowserRouter>
 
 

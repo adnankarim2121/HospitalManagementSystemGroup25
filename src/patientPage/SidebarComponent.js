@@ -6,7 +6,7 @@ import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 import MenuItemComponent from '../MenuItemComponent';
 import LogoComponent from '../LogoComponent';
-
+import PrescriptionsIcon from '../icons/notes.png';
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconSchedule from '../icons/schedule.png'
@@ -145,6 +145,15 @@ class SidebarComponent extends React.Component {
     }
 
     /*
+    Function: changePageToViewAllPrescriptions
+    Arguments: None
+    Purpose: Changing to view prescriptions page when clicked on sidebar. 
+    */
+    changePageToViewAllPrescriptions = (props) => {
+        window.location.href = 'http://localhost:3000/PatientViewAllPrescriptions';
+    }
+
+    /*
     Function: changePageToOtherServices
     Arguments: None
     Purpose: Changing to other services page when clicked on sidebar. 
@@ -192,6 +201,11 @@ class SidebarComponent extends React.Component {
                                 title="View/Cancel Appointments" imgName={IconAppointments}
                                 onClick={() => this.changePageToViewAppointments()}
                                 active={this.props.selectedItem === 'View/Cancel Appointments'} />
+
+                            <MenuItemComponent
+                                title="View All Prescriptions" imgName={PrescriptionsIcon}
+                                onClick={() => this.changePageToViewAllPrescriptions()}
+                                active={this.props.selectedItem === 'View All Prescriptions'} />
 
                             <MenuItemComponent
                                 title="Other Services" imgName={IconOtherServices}

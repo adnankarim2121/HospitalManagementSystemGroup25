@@ -257,6 +257,31 @@ app.get('/HospitalManagementSystem/getAppointment', (req, res) => {
 
 
 /*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getAppointment
+Patients viewing their appointments.
+*/
+app.get('/HospitalManagementSystem/getPrescriptions', (req, res) => {
+	const { username} = req.query;
+
+	const query = `SELECT * FROM appointments WHERE setBy=?`;
+
+	const data = [username];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+/*
 Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getShiftsForNurse
 */
 app.get('/HospitalManagementSystem/getShiftsForNurse', (req, res) => {
