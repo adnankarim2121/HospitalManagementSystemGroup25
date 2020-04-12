@@ -41,9 +41,9 @@ Call database with query within function. Post query results within localhost:40
 Adding new users into database.
 */
 app.get('/HospitalManagementSystem/add', (req, res) => {
-	const { email, password, userType} = req.query;
-	const query = `INSERT INTO users (email, password, userType) SELECT ?, ?, ? FROM DUAL WHERE NOT EXISTS (SELECT * FROM users WHERE email=? LIMIT 1)`;
-	const data = [email, password, userType, email];
+	const { email, password, userType, departmentName} = req.query;
+	const query = `INSERT INTO users (email, password, userType, departmentName) SELECT ?, ?, ?, ? FROM DUAL WHERE NOT EXISTS (SELECT * FROM users WHERE email=? LIMIT 1)`;
+	const data = [email, password, userType, departmentName, email];
 	connection.query(query, data, (err, results) => {
 		if(err)
 		{

@@ -49,7 +49,8 @@ class Admin extends React.Component {
       {
         email: '',
         password: '',
-        userType: ''
+        userType: '',
+        departmentName: ''
       }
     }
 
@@ -60,8 +61,16 @@ class Admin extends React.Component {
    */
   addUser = _ => {
     const { userInfo } = this.state;
-    if (userInfo.userType === 'Nurse' || userInfo.userType === 'Doctor') {
-      fetch(`http://localhost:4000/HospitalManagementSystem/add?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}`)
+    if(userInfo.userType === 'Nurse' && userInfo.departmentName !== '')
+    {
+      alert('Please do not add a department with a nurse.')
+    }
+
+    else
+    {
+    if ((userInfo.userType === 'Doctor' && userInfo.password !=='' && userInfo.userType !== '' && userInfo.departmentName !== '')
+      || (userInfo.userType === 'Nurse' && userInfo.password !=='' && userInfo.userType !== '' && userInfo.departmentName === '')) {
+      fetch(`http://localhost:4000/HospitalManagementSystem/add?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}&departmentName=${userInfo.departmentName}`)
         .then((response) => { return response.json() })
         .then((response) => {
           // Get data from database after adding.
@@ -81,7 +90,8 @@ class Admin extends React.Component {
     }
     // User handles input incorrectly.
     else {
-      alert("User was not added. Please try again.");
+      alert("User was not added. Please ensure all fields are filled out. Username may already exist too.");
+    }
     }
   }
 
@@ -103,7 +113,7 @@ class Admin extends React.Component {
 
             <div className={css(styles.padding)}></div>
             <div className="credentials">
-              <label for="uname"><b>Username</b></label>
+              <label for="uname"><b>Username &nbsp;</b></label>
               <input
                 type="text"
                 placeholder="Enter Username"
@@ -114,7 +124,7 @@ class Admin extends React.Component {
 
             <div className={css(styles.padding10)}></div>
             <div>
-              <label for="psw"><b>Password</b></label>
+              <label for="psw"><b>Password &nbsp;</b></label>
               <input
                 type="password"
                 placeholder="Enter Password"
@@ -125,12 +135,28 @@ class Admin extends React.Component {
 
             <div className={css(styles.padding10)}></div>
             <div>
-              <label for="psw"><b>Staff Type</b></label>
+              <label for="psw"><b>Staff Type &nbsp;</b></label>
               <select id="userType"
                 onChange={e => this.setState({ userInfo: { ...userInfo, userType: e.target.value } })}>
                 <option value="" selected disabled hidden>Select Staff Type</option>
                 <option value="Doctor">Doctor </option>;
-                    <option value="Nurse">Nurse </option>;
+                <option value="Nurse">Nurse </option>;
+                    </select>
+            </div>
+            <br/>
+            <div>
+              <label for="departmentName"><b>Select Department Name &nbsp;</b></label>
+              <select id="departmentName"
+                onChange={e => this.setState({ userInfo: { ...userInfo, departmentName: e.target.value } })}>
+                <option value="" selected disabled hidden>Select Department Name</option>
+                <option value="Emergency">Emergency</option>;
+                <option value="Cardiology">Cardiology</option>;
+                <option value="Neurology">Neurology</option>;
+                <option value="Oncology">Oncology</option>;
+                <option value="Intensive Care">Intensive Care</option>;
+                <option value="Radiology">Radiology</option>;
+                <option value="Gynaecology">Gynaecology</option>;
+
                     </select>
             </div>
 

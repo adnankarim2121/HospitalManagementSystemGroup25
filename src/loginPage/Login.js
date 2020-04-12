@@ -131,6 +131,7 @@ class Login extends React.Component {
         }
 
         else if (dataParsed[0].userType === 'Doctor') {
+          localStorage.setItem("departmentName", dataParsed[0].departmentName);
           this.changePageForDoctor();
         }
         else if (dataParsed[0].userType === 'Admin') {
