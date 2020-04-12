@@ -1,3 +1,4 @@
+// Importing all necessary components required
 import React from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import { Column, Row } from 'simple-flexbox';
@@ -6,8 +7,10 @@ import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 
+// Import logos
 import IconSchedule from '../icons/schedule.png';
 
+// Styling the webpage attributes
 const styles = StyleSheet.create({
   container: {
     height: '100%',
@@ -49,8 +52,10 @@ const styles = StyleSheet.create({
 
 });
 
+// Class DoctorViewSchedule
 class DoctorViewSchedule extends React.Component {
 
+  // Class variable
   state = {
     selectedItem: 'My Schedule',
     shifts: [],
@@ -80,13 +85,14 @@ class DoctorViewSchedule extends React.Component {
   onChange = date => this.setState({ date })
   resize = () => this.forceUpdate();
 
-  /*
-  Display results from database on webpage.
-  */
+  // Display results from database on webpage.
   renderDoctorSchedule = ({ name, workshift }) => <div key={name}><strong><li>{workshift}</li><br/></strong></div>;
 
-
-
+  /**
+   * function completeAppointment
+   * @param { appointment } e 
+   * Confirms appointment
+   */
   completeAppointment(e) {
     var response = window.confirm(`Are you sure you want to confirm this appointment has been completed?`);
     if (response == true) {
@@ -99,13 +105,9 @@ class DoctorViewSchedule extends React.Component {
 
       window.location.href = 'http://localhost:3000/DoctorViewSchedule';
     }
-
-    else {
-
-    }
-
   }
 
+  // Render components for the webpage. HTML tags.
   render() {
     const { selectedItem, shifts } = this.state;
     return (
@@ -137,5 +139,6 @@ class DoctorViewSchedule extends React.Component {
   }
 }
 
+// Exporting component so other files can use component
 export default DoctorViewSchedule
 

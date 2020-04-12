@@ -1,19 +1,13 @@
-/*
-Importing all necessary components required
-*/
+// Importing all necessary components required
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 
-/*
-Import Logos
-*/
+// Import Logos
 import IconAddStaff from '../icons/staff.png'
 
-/*
-Styling the webpage attributes.
-*/
+// Styling the webpage attributes
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -42,14 +36,10 @@ const styles = StyleSheet.create({
   }
 });
 
-/*
-Class Admin
-*/
+// Class Admin
 class Admin extends React.Component {
 
-  /*
-  Class Variable
-  */
+  // Class variable
   state =
     {
       userInformation: [],
@@ -63,49 +53,39 @@ class Admin extends React.Component {
       }
     }
 
-  /*
-  Function: addUser
-  Arguments: None
-  Purpose: Adding a new doctor or nurse to the database. 
-  */
+  /**
+   * Function: addUser
+   * Arguments: None
+   * Purpose: Adding a new doctor or nurse to the database. 
+   */
   addUser = _ => {
     const { userInfo } = this.state;
     if (userInfo.userType === 'Nurse' || userInfo.userType === 'Doctor') {
       fetch(`http://localhost:4000/HospitalManagementSystem/add?email=${userInfo.email}&password=${userInfo.password}&userType=${userInfo.userType}`)
         .then((response) => { return response.json() })
         .then((response) => {
-          /*
-          Get data from database after adding.
-          */
+          // Get data from database after adding.
           this.setState({ userInformation: response.data })
           var data = JSON.stringify(response.data);
           var dataParsed = JSON.parse(data);
-          /*
-          if empty set returned, that means the username already exists.
-          */
+          // if empty set returned, that means the username already exists.
           if (dataParsed.affectedRows === 0) {
             alert("Username already exists! Please try again.");
           }
-          /*
-          Else, user added successfully. 
-          */
+          // Else, user added successfully.
           else {
             alert("User added successfully!")
           }
         })
         .catch(err => console.error(err));
     }
-    /* 
-    User handles input incorrectly. 
-    */
+    // User handles input incorrectly.
     else {
       alert("User was not added. Please try again.");
     }
   }
 
-  /*
-  Render components for the webpage. HTML tags.
-  */
+  // Render components for the webpage. HTML tags.
   render() {
 
     const { userInfo } = this.state;
@@ -166,7 +146,5 @@ class Admin extends React.Component {
   }
 }
 
-/*
-Exporting component so other files can use component.
-*/
+// Exporting component so other files can use component
 export default withRouter(Admin);

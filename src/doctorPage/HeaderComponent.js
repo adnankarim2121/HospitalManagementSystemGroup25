@@ -1,8 +1,10 @@
+// Importing all necessary components required
 import React from 'react';
 import { string } from 'prop-types';
 import { Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
 
+// Styling the webpage attributes
 const styles = StyleSheet.create({
     avatar: {
         height: 35,
@@ -63,6 +65,10 @@ const styles = StyleSheet.create({
     }
 });
 
+/**
+ * Function HeaderComponent
+ * @param {*} props 
+ */
 function HeaderComponent(props) {
     const { icon, title, ...otherProps } = props;
     return (

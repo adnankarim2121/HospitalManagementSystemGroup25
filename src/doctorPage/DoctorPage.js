@@ -1,3 +1,4 @@
+// Importing all necessary components required
 import React from 'react';
 import { Column, Row } from 'simple-flexbox';
 import { StyleSheet, css } from 'aphrodite';
@@ -5,6 +6,7 @@ import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 
+// Styling the webpage attributes
 const styles = StyleSheet.create({
     container: {
         height: '100%',
@@ -19,8 +21,10 @@ const styles = StyleSheet.create({
     }
 });
 
+// Class DoctorPage
 class DoctorPage extends React.Component {
 
+    // Class variable
     state = { selectedItem: 'My Schedule' };
 
     componentDidMount() {
@@ -34,6 +38,7 @@ class DoctorPage extends React.Component {
 
     resize = () => this.forceUpdate();
 
+    // Render components for the webpage. HTML tags.
     render() {
         const { selectedItem } = this.state;
         return (
@@ -50,4 +55,5 @@ class DoctorPage extends React.Component {
     }
 }
 
+// Exporting component so other files can use component
 export default DoctorPage;

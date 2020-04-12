@@ -1,3 +1,4 @@
+// Importing all necessary components required
 import React from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import { Column, Row } from 'simple-flexbox';
@@ -6,9 +7,10 @@ import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 
+// Import logos
 import IconNurse from '../icons/nurse.png'
 
-
+// Styling the webpage attributes
 const styles = StyleSheet.create({
   container: {
     height: '100%',
@@ -50,8 +52,10 @@ const styles = StyleSheet.create({
 
 });
 
+// Class AssignNurses
 class AssignNurses extends React.Component {
 
+  // Class variable
   state = {
     selectedItem: 'Assign Nurses to Patients',
     nurses: [],
@@ -77,6 +81,7 @@ class AssignNurses extends React.Component {
     window.removeEventListener('resize', this.resize);
   }
 
+  // Function: retrieve nurse data
   getNurses = _ => {
     fetch(`http://localhost:4000/HospitalManagementSystem/getNurses`)
       .then(response => response.json())
@@ -84,6 +89,7 @@ class AssignNurses extends React.Component {
       .catch(err => console.error(err))
   }
 
+  // Function: retrive patient data
   getPatients = _ => {
     fetch(`http://localhost:4000/HospitalManagementSystem/getPatientsForDoctors?doctorName=${localStorage.getItem("usernameForDoctor")}`)
       .then(response => response.json())
@@ -94,6 +100,11 @@ class AssignNurses extends React.Component {
   onChange = date => this.setState({ date })
   resize = () => this.forceUpdate();
 
+  /**
+   * Function deleteAppointment
+   * @param { appointment } e 
+   * Deletes the appointment passed in
+   */
   deleteAppointment(e) {
     var response = window.confirm(`Are you sure you want to cancel the appointment?`);
     if (response == true) {
@@ -106,25 +117,17 @@ class AssignNurses extends React.Component {
 
       window.location.href = 'http://localhost:3000/AssignNurses';
     }
-
-    else {
-
-    }
-
   }
 
-  /*
-  Display results from database on webpage.
-  */
+  // Display results from database on webpage.
   renderNurses = ({ email, userType }) =>
     <option value={email}>{email} </option>;
 
-  /*
-  Display results from database on webpage.
-  */
+  // Display results from database on webpage.
   renderAppointment = ({ doctorName, setBy, appointments }) =>
     <option value={appointments}>{appointments.replace(doctorName, "with ")} patient {setBy}</option>;
 
+  // Function: assign a nurse to an appointment
   assignNurse = _ => {
     const { appointmentName, nurseName } = this.state;
 
@@ -132,7 +135,6 @@ class AssignNurses extends React.Component {
       alert("Please choose a nurse to assign to an appointment.");
     }
     else {
-
       var response = window.confirm(`Are you sure to assign ${nurseName.name} to the selected appointment?`);
       if (response == true) {
         fetch(`http://localhost:4000/HospitalManagementSystem/assignNurse?nurseName=${nurseName.name}&appointments=${appointmentName.name}&notesForNurse=${appointmentName.notesFromDoctor}`)
@@ -145,6 +147,7 @@ class AssignNurses extends React.Component {
 
   }
 
+  // Render components for the webpage. HTML tags.
   render() {
     const { selectedItem, nurses, patients, nurseName, appointmentName } = this.state;
     return (
@@ -204,4 +207,5 @@ class AssignNurses extends React.Component {
   }
 }
 
+// Exporting component so other files can use component
 export default AssignNurses

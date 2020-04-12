@@ -1,3 +1,4 @@
+// Importing all necessary components required
 import React from 'react';
 import DateTimePicker from 'react-datetime-picker';
 import { Column, Row } from 'simple-flexbox';
@@ -6,9 +7,10 @@ import { SidebarComponent } from './SidebarComponent';
 import { HeaderComponent } from './HeaderComponent';
 import '../App.css';
 
+// Import logos
 import IconAppointments from '../icons/appointments.png';
 
-
+// Styling the webpage attributes
 const styles = StyleSheet.create({
   container: {
     height: '100%',
@@ -49,8 +51,11 @@ const styles = StyleSheet.create({
   }
 
 });
+
+// Class DoctorViewPatientAppointments
 class DoctorViewPatientAppointments extends React.Component {
 
+  // Class variable
   state = {
     selectedItem: 'My Appointments',
     appointments: [],
@@ -80,16 +85,17 @@ class DoctorViewPatientAppointments extends React.Component {
   onChange = date => this.setState({ date })
   resize = () => this.forceUpdate();
 
-  /*
-  Display results from database on webpage.
-  */
+  // Display results from database on webpage.
   renderPatientInformation = ({ doctorName, appointments, setBy, reasonForVisit }) => <div key={doctorName}> <p><li>You have an <strong>{appointments.replace(doctorName, setBy)}</strong></li></p>
     <p id="reasonForVisit">Reason for Visit: <strong>{reasonForVisit}</strong></p>
     <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Appointment Complete </button> &nbsp; 
     &nbsp; <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Cancel Appointment</button></div>;
 
-
-
+  /**
+   * function completeAppointment
+   * @param { appointment } e 
+   * Confirms appointment
+   */
   completeAppointment(e) {
     var response = window.confirm(`Are you sure you want to confirm this appointment has been completed?`);
     if (response == true) {
@@ -102,12 +108,13 @@ class DoctorViewPatientAppointments extends React.Component {
 
       window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
     }
-
-    else {
-
-    }
-
   }
+
+  /**
+   * function deleteAppointment
+   * @param { appointment } e 
+   * Deletes appointment
+   */
   deleteAppointment(e) {
     var response = window.confirm(`Are you sure you want to cancel the appointment?`);
     if (response == true) {
@@ -120,13 +127,9 @@ class DoctorViewPatientAppointments extends React.Component {
 
       window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
     }
-
-    else {
-
-    }
-
   }
 
+  // Render components for the webpage. HTML tags.
   render() {
     const { selectedItem, appointments } = this.state;
     return (
@@ -158,4 +161,5 @@ class DoctorViewPatientAppointments extends React.Component {
   }
 }
 
+// Exporting component so other files can use component
 export default DoctorViewPatientAppointments
