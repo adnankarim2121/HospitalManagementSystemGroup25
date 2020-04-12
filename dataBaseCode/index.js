@@ -330,6 +330,31 @@ app.get('/HospitalManagementSystem/assignNurse', (req, res) => {
 });
 
 /*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/assignPrescription
+When doctor assigns a prescription to a patient, this function runs. 
+*/
+app.get('/HospitalManagementSystem/assignPrescription', (req, res) => {
+	const {prescription, appointments} = req.query;
+
+	const query = `UPDATE appointments SET prescriptionFromDoctor=? WHERE appointments=?`;
+
+	const data = [prescription, appointments];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+/*
 Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getAppointmentsForDoctors
 */
 app.get('/HospitalManagementSystem/getAppointmentsForDoctors', (req, res) => {

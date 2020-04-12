@@ -88,8 +88,9 @@ class DoctorViewPatientAppointments extends React.Component {
   // Display results from database on webpage.
   renderPatientInformation = ({ doctorName, appointments, setBy, reasonForVisit }) => <div key={doctorName}> <p><li>You have an <strong>{appointments.replace(doctorName, setBy)}</strong></li></p>
     <p id="reasonForVisit">Reason for Visit: <strong>{reasonForVisit}</strong></p>
-    <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Appointment Complete </button> &nbsp; 
-    &nbsp; <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Cancel Appointment</button></div>;
+    <button value={appointments} onClick={e => this.completeAppointment(e, "value")} type="submit"> Appointment Complete </button> &nbsp; 
+    &nbsp; <button value={appointments} onClick={e => this.deleteAppointment(e, "value")} type="submit"> Cancel Appointment</button>
+    </div>;
 
   /**
    * function completeAppointment
@@ -97,6 +98,8 @@ class DoctorViewPatientAppointments extends React.Component {
    * Confirms appointment
    */
   completeAppointment(e) {
+    const {reasonForVisit} = this.state;
+    alert(reasonForVisit.reasonForVisit);
     var response = window.confirm(`Are you sure you want to confirm this appointment has been completed?`);
     if (response == true) {
       fetch(`http://localhost:4000/HospitalManagementSystem/deleteAppointment?appointment=${e.target.value}`)

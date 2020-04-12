@@ -16,6 +16,7 @@ import NurseViewSchedule  from './nursePage/NurseViewSchedule.js';
 import DoctorPage  from './doctorPage/DoctorPage.js';
 import DoctorViewPatientAppointments  from './doctorPage/DoctorViewPatientAppointments.js';
 import AssignNurses  from './doctorPage/AssignNurses.js';
+import AssignPrescriptionToPatients  from './doctorPage/AssignPrescriptionToPatients.js';
 import DoctorViewSchedule  from './doctorPage/DoctorViewSchedule.js';
 import HomePage  from './homePage/HomePage.js';
 import AddStaff from './adminPage/AddStaff.js';
@@ -51,7 +52,8 @@ ReactDOM.render(
             <Route path='/DoctorViewPatientAppointments' component={DoctorViewPatientAppointments}/>
             <Route path='/AssignNurses' component={AssignNurses}/>
             <Route path='/DoctorViewSchedule' component={DoctorViewSchedule}/> 
-            <Route path='/RegisterNewPatient' component={RegisterNewPatient}/>     
+            <Route path='/RegisterNewPatient' component={RegisterNewPatient}/>
+            <Route path='/AssignPrescriptionToPatients' component={AssignPrescriptionToPatients}/>     
     </BrowserRouter>
 
 

@@ -125,7 +125,7 @@ class AssignNurses extends React.Component {
 
   // Display results from database on webpage.
   renderAppointment = ({ doctorName, setBy, appointments }) =>
-    <option value={appointments}>{appointments.replace(doctorName, "with ")} patient {setBy}</option>;
+    <option value={appointments}>{appointments.replace(doctorName, " ")} patient {setBy}</option>;
 
   // Function: assign a nurse to an appointment
   assignNurse = _ => {

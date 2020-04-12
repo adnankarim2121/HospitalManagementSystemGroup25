@@ -9,6 +9,7 @@ import LogoComponent from '../LogoComponent';
 import IconBurger from '../icons/icon-burger';
 import IconHome from '../icons/health.png';
 import IconSchedule from '../icons/schedule.png';
+import NotesSchedule from '../icons/notes.png';
 import IconMyNurse from '../icons/nurse.png'
 import IconApppointments from '../icons/appointments.png';
 import IconLogout from '../icons/logout.png'
@@ -144,6 +145,16 @@ class SidebarComponent extends React.Component {
     window.location.href = 'http://localhost:3000/DoctorViewPatientAppointments';
   }
 
+
+  /*
+  Function: changePageToAssignPrescriptions
+  Arguments: None
+  Purpose: Changing to prescriptions page when clicked on sidebar. 
+  */ 
+  changePageToAssignPrescriptions = (props) => {
+    window.location.href = 'http://localhost:3000/AssignPrescriptionToPatients';
+  }
+
   /*
   Function: changePageToAssignNurses
   Arguments: None
@@ -201,6 +212,12 @@ class SidebarComponent extends React.Component {
                                 title="My Appointments" imgName={IconApppointments}
                                 onClick={() => this.changePageToAppointments()}
                                 active={this.props.selectedItem === 'My Appointments'} />
+
+                            <MenuItemComponent
+                                title="Assign Prescriptions to Patients" imgName={NotesSchedule}
+                                onClick={() => this.changePageToAssignPrescriptions()}
+                                active={this.props.selectedItem === 'Assign Prescriptions to Patients'} />
+                            <div className={css(styles.separator)}></div>
 
                             <MenuItemComponent
                                 title="Assign Nurses to Patients" imgName={IconMyNurse}
