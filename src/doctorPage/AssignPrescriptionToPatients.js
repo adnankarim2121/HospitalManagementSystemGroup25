@@ -176,7 +176,7 @@ class AssignPrescriptionToPatients extends React.Component {
                 </div>
                 <br/>
                 <div>
-                  <label for="Referral">Referral &nbsp;</label>
+                  <label for="Referral">Referral Notes &nbsp;</label>
                   <textarea
                     type="text"
                     placeholder="Referral Notes"

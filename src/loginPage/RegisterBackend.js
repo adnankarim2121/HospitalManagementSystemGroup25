@@ -98,7 +98,7 @@ class RegisterBackend extends React.Component {
           }
 
           else {
-            alert("User added successfully!")
+            alert("Registration was successful! Please login now.")
             window.location.href = 'http://localhost:3000/LoginPage';
           }
         })
