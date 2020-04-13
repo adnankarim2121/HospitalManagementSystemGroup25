@@ -67,6 +67,7 @@ class PatientSetAppointment extends React.Component {
     selectedItem: 'Set Appointments',
     doctors: [],
     date: new Date(),
+    todaysDate: new Date(),
     reasonForVisit: {
       reasonForVisit: ''
     },
@@ -109,11 +110,17 @@ class PatientSetAppointment extends React.Component {
   Purpose: Add apointment for patient with scheduled doctor in database. 
   */
   addAppointment = _ => {
-    const { date, doctorName, reasonForVisit } = this.state;
+    const { date, todaysDate,doctorName, reasonForVisit } = this.state;
 
     if (doctorName.name === '' || reasonForVisit.reasonForVisit === '') {
       alert("Please choose a doctor and/or provide a reason for your visit.");
     }
+
+    if (date < todaysDate)
+    {
+      alert("Selected date must be later than the current date and time.");
+    }
+
     else {
       var updatedAppointment = "Appointment on " + date + " with " + doctorName.name;
       var response = window.confirm(`Are you sure you want to set an ${updatedAppointment}?`);

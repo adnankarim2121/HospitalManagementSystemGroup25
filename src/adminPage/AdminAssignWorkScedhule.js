@@ -71,6 +71,7 @@ class AdminAssignWorkScedhule extends React.Component {
     selectedItem: 'Assign Work Schedule',
     doctorsAndNurses: [],
     date: new Date(),
+    todaysDate: new Date(),
     endDate: new Date(),
     userName: {
       name: '',
@@ -111,10 +112,15 @@ class AdminAssignWorkScedhule extends React.Component {
   Purpose: Set a work shift for a doctor or nurse. 
   */
   addShift = _ => {
-    const { date, endDate, userName } = this.state;
+    const { date, endDate, todaysDate, userName } = this.state;
 
     if (userName.name === '') {
       alert("Please choose a staff member.");
+    }
+
+    if((date < todaysDate) || (endDate < date) || (endDate < todaysDate))
+    {
+      alert("Cannot assign shift. Please ensure the start and end shifts are after today's current time and shift, as well the end shift is after the start shift.")
     }
     else {
       var updatedShift = "Shift on " + date + " to " + endDate;
