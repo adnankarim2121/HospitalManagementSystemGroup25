@@ -64,7 +64,7 @@ class PatientViewAllPrescriptions extends React.Component {
   Class Variable
   */
   state = {
-    selectedItem: 'View All Prescriptions',
+    selectedItem: 'View All Prescriptions/Referrals',
     appointments: [],
     date: new Date(),
     doctorName: {
@@ -77,7 +77,7 @@ class PatientViewAllPrescriptions extends React.Component {
   */
   componentDidMount() {
     window.addEventListener('resize', this.resize);
-    document.title = "View All Prescriptions";
+    document.title = "View All Prescriptions/Referrals";
     this.getAppointments();
   }
 
@@ -113,8 +113,11 @@ class PatientViewAllPrescriptions extends React.Component {
   /*
   Display results from database on webpage.
   */
-  renderViewPrescriptions = ({setBy, appointments, prescriptionFromDoctor }) => <div key={setBy}><li>For the {appointments} 
-  , you have been prescribed: <i>{prescriptionFromDoctor}</i></li> <br /></div>;
+  renderViewPrescriptions = ({setBy, appointments, prescriptionFromDoctor, referralFromDoctor }) => <div key={setBy}><br/><li>For the {appointments}, 
+  </li><br/>You have been prescribed: <i>{prescriptionFromDoctor}</i> <br/><br/>
+  With the following referral: <i> {referralFromDoctor}<br/></i><br/>
+  <b>---------------------</b> 
+  </div>;
 
   /*
   Render components for the webpage. HTML tags.

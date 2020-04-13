@@ -214,9 +214,9 @@ class SidebarComponent extends React.Component {
                                 active={this.props.selectedItem === 'My Appointments'} />
 
                             <MenuItemComponent
-                                title="Assign Prescriptions to Patients" imgName={NotesSchedule}
+                                title="Assign Prescriptions/Referrals to Patients" imgName={NotesSchedule}
                                 onClick={() => this.changePageToAssignPrescriptions()}
-                                active={this.props.selectedItem === 'Assign Prescriptions to Patients'} />
+                                active={this.props.selectedItem === 'Assign Prescriptions/Referrals to Patients'} />
                             <div className={css(styles.separator)}></div>
 
                             <MenuItemComponent

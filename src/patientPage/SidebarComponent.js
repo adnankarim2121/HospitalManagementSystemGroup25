@@ -203,9 +203,9 @@ class SidebarComponent extends React.Component {
                                 active={this.props.selectedItem === 'View/Cancel Appointments'} />
 
                             <MenuItemComponent
-                                title="View All Prescriptions" imgName={PrescriptionsIcon}
+                                title="View All Prescriptions/Referrals" imgName={PrescriptionsIcon}
                                 onClick={() => this.changePageToViewAllPrescriptions()}
-                                active={this.props.selectedItem === 'View All Prescriptions'} />
+                                active={this.props.selectedItem === 'View All Prescriptions/Referrals'} />
 
                             <MenuItemComponent
                                 title="Other Services" imgName={IconOtherServices}

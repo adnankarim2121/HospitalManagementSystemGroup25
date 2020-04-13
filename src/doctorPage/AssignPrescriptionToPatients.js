@@ -57,21 +57,27 @@ class AssignPrescriptionToPatients extends React.Component {
 
   // Class variable
   state = {
-    selectedItem: 'Assign Prescriptions to Patients',
+    selectedItem: 'Assign Prescriptions/Referrals to Patients',
     appointments: [],
+    departments: [],
     date: new Date(),
     appointment:{
       name:'',
     },
     prescription: {
       description: '',
+    },
+    department: {
+      name: '',
+      description:'',
     }
   };
 
   componentDidMount() {
     window.addEventListener('resize', this.resize);
-    document.title = "Assign Prescription(s)";
+    document.title = "Assign Prescription(s)/Referrals";
     this.getAppointments();
+    this.getDepartments();
   }
 
   componentWillUnmount() {
@@ -85,12 +91,26 @@ class AssignPrescriptionToPatients extends React.Component {
       .catch(err => console.error(err))
   }
 
+    getDepartments = _ => {
+    fetch(`http://localhost:4000/HospitalManagementSystem/getDepartments`)
+      .then(response => response.json())
+      .then(response => this.setState({ departments: response.data }))
+      .catch(err => console.error(err))
+  }
+
   onChange = date => this.setState({ date })
   resize = () => this.forceUpdate();
 
   // Display results from database on webpage.
   renderAppointment = ({ doctorName, setBy, appointments }) =>
     <option value={appointments.replace(doctorName, `${setBy}`)}>{appointments.replace(doctorName, " ")} patient {setBy}</option>;
+
+
+  // Display results from database on webpage.
+  renderDepartments = ({departmentName}) =>
+    <option value={departmentName}>{departmentName}</option>;
+
+
   
   /*
   Function: assignPrescription
@@ -98,7 +118,7 @@ class AssignPrescriptionToPatients extends React.Component {
   Purpose: Add prescription for patient given by doctor in database. 
   */
   assignPrescription = _ => {
-    const {appointment, prescription } = this.state;
+    const {appointment, prescription, department } = this.state;
 
     if (appointment.name === '' || prescription.description === '') {
       alert("Please choose an appointment and assign a prescription to them.");
@@ -106,9 +126,10 @@ class AssignPrescriptionToPatients extends React.Component {
     else {
       var stringParsed = appointment.name.split("with")[0];
       var updatedAppointment = stringParsed + "with " + localStorage.getItem("usernameForDoctor");
-      var response = window.confirm(`Are you sure you want to assign a prescription for ${appointment.name}?`);
+      var updatedReferral = department.description + " in the " + department.name + " Department";
+      var response = window.confirm(`Are you sure you want to assign a prescription and/or referral for ${appointment.name}?`);
       if (response == true) {
-        fetch(`http://localhost:4000/HospitalManagementSystem/assignPrescription?prescription=${prescription.description}&appointments=${updatedAppointment}`)
+        fetch(`http://localhost:4000/HospitalManagementSystem/assignPrescription?prescription=${prescription.description}&appointments=${updatedAppointment}&referralNote=${updatedReferral}`)
           .then((response) => { return response.json() })
           .catch(err => console.error(err));
         alert('Prescription assigned successfully!');
@@ -119,7 +140,7 @@ class AssignPrescriptionToPatients extends React.Component {
 
   // Render components for the webpage. HTML tags.
   render() {
-    const { selectedItem, appointments, prescription, appointment } = this.state;
+    const { selectedItem, appointments, prescription, appointment, department, departments } = this.state;
     return (
       <Row className={css(styles.container)}>
         <SidebarComponent selectedItem={selectedItem} onChange={(selectedItem) => this.setState({ selectedItem })} />
@@ -144,6 +165,26 @@ class AssignPrescriptionToPatients extends React.Component {
                         onChange={e => this.setState({ prescription: { ...prescription, description: e.target.value } })}
                         name="prescription" required />
                     </div>
+                    <br/>
+                  <div>
+                    Refer To Department &nbsp;
+                    <select id="Refer To Department"
+                      onChange={e => this.setState({ department: { ...department, name: e.target.value } })}>
+                      <option value="" selected disabled hidden>Choose Department </option>
+                      {departments.map(this.renderDepartments)}
+                    </select>
+                </div>
+                <br/>
+                <div>
+                  <label for="Referral">Referral &nbsp;</label>
+                  <textarea
+                    type="text"
+                    placeholder="Referral Notes"
+                    value={department.description}
+                    onChange={e => this.setState({ department: { ...department, description: e.target.value } })}
+                    name="department" required />
+                </div>
+                <br/>
                   <div className={css(styles.padding)}>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;

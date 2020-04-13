@@ -257,6 +257,32 @@ app.get('/HospitalManagementSystem/getAppointment', (req, res) => {
 
 
 /*
+Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getDepartments
+View all departments.
+*/
+app.get('/HospitalManagementSystem/getDepartments', (req, res) => {
+	const { username} = req.query;
+
+	const query = `SELECT * FROM departments`;
+
+	const data = [username];
+	connection.query(query, data, (err, results) => {
+		if(err)
+		{
+			return res.send(err);
+		}
+
+		else
+		{
+			return res.json({
+				data: results
+			})
+		}
+	})
+});
+
+
+/*
 Call database with query within function. Post query results within localhost:4000/HospitalManagementSystem/getAppointment
 Patients viewing their appointments.
 */
@@ -359,11 +385,11 @@ Call database with query within function. Post query results within localhost:40
 When doctor assigns a prescription to a patient, this function runs. 
 */
 app.get('/HospitalManagementSystem/assignPrescription', (req, res) => {
-	const {prescription, appointments} = req.query;
+	const {prescription, appointments, referralNote} = req.query;
 
-	const query = `UPDATE appointments SET prescriptionFromDoctor=? WHERE appointments=?`;
+	const query = `UPDATE appointments SET prescriptionFromDoctor=?, referralFromDoctor=? WHERE appointments=?`;
 
-	const data = [prescription, appointments];
+	const data = [prescription, referralNote,appointments];
 	connection.query(query, data, (err, results) => {
 		if(err)
 		{
