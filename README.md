@@ -1,3 +1,8 @@
+##Hospital Management System
+A website written using React and MySQL to help patients, doctors and nurses manage a hospital well through a website. Each actor has different set of roles that they can do. Demo Video to be uploaded.
+
+
+
 ## SENG Group 25
 
 This is a React app. All written code is located within the 'src' folder.
