@@ -526,4 +526,5 @@ Display message to terminal if connection to database is successfully running.
 */
 app.listen(4000, () =>{
 	console.log("Database is up and running!");
+    // new changes
 })
