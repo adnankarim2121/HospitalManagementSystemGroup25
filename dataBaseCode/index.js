@@ -9,6 +9,7 @@ const express = require('express');
 const cors = require('cors');
 const sql = require('mysql');
 const app = express();
+const CHECKNUMBER = 200;
 
 /*
 Create connection with database.
