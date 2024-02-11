@@ -1,2 +1,2 @@
 let carName1 = "Volvo XC60";  // Double quotes
-let carName2 = 'Volvo XC60';  // Single quotessdsdsd
+let carName2 = 'Volvo XC60'; asdsds // Single quotessdsdsd
